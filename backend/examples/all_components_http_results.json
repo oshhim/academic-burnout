@@ -1,0 +1,2048 @@
+{
+  "data_source": "synthetic_demo",
+  "participant_id": "DEMO-HTTP-VERIFIED",
+  "baseline": {
+    "baseline_id": "8d228c68-23b7-4507-b8b2-83d5fd7f97e5",
+    "participant_id": "DEMO-HTTP-VERIFIED",
+    "data_source": "synthetic_demo",
+    "version": 1,
+    "created_at": "2026-10-17T08:46:53.680082+00:00",
+    "effective_at": "2026-10-14T10:47:08.637586+00:00",
+    "session_ids": [
+      "88185f75-4072-4c4d-b9e6-08965723ca2c",
+      "9a024590-e831-4510-a6c4-d2ebd71ba3a9",
+      "a0164eb8-7c7a-4ac3-8b51-1661420bd0cd"
+    ],
+    "center": {
+      "eye_aspect_ratio": 0.3,
+      "brow_lowering": 0.1,
+      "lip_press": 0.08,
+      "jaw_open": 0.04000000000000001,
+      "head_motion_deg": 1.0
+    },
+    "scale": {
+      "eye_aspect_ratio": 0.025,
+      "brow_lowering": 0.025,
+      "lip_press": 0.025,
+      "jaw_open": 0.025,
+      "head_motion_deg": 1.0
+    },
+    "scale_floors": {
+      "eye_aspect_ratio": 0.025,
+      "brow_lowering": 0.025,
+      "lip_press": 0.025,
+      "jaw_open": 0.025,
+      "head_motion_deg": 1.0
+    },
+    "extractor_version": "synthetic-v1",
+    "evidence": {
+      "model_version": "c1-statistical-v1.0.0",
+      "method": "robust_personal_baseline_deviation",
+      "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+      "validation_status": "software_verified_not_wellbeing_validated",
+      "feature_schema_version": "facial-window-v1"
+    },
+    "warnings": [
+      "Reference conditions are participant-confirmed, not proof of a healthy or unstressed state.",
+      "Three sessions are a technical minimum; collect several days of calibration and inspect stability.",
+      "Synthetic demonstration baseline."
+    ]
+  },
+  "scenarios": {
+    "stable": {
+      "session_id": "f9804c68-15c2-4477-96e6-8c2ed6b4cf8a",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "stable",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-17T07:46:53.685933+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "accepted",
+      "quality": {
+        "status": "accepted",
+        "usable_duration_sec": 45.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 1.0,
+        "quality_score": 0.95,
+        "rejected_window_count": 0,
+        "reasons": []
+      },
+      "session_features": {
+        "eye_aspect_ratio": 0.2983333333333333,
+        "brow_lowering": 0.1016666666666667,
+        "lip_press": 0.08166666666666668,
+        "jaw_open": 0.041666666666666664,
+        "head_motion_deg": 1.0166666666666666
+      },
+      "baseline_id": "8d228c68-23b7-4507-b8b2-83d5fd7f97e5",
+      "deviation": {
+        "mean_absolute_standardized_deviation": 0.056667,
+        "level": "within_reference_range",
+        "per_feature_signed_z": {
+          "eye_aspect_ratio": -0.066667,
+          "brow_lowering": 0.066667,
+          "lip_press": 0.066667,
+          "jaw_open": 0.066667,
+          "head_motion_deg": 0.016667
+        },
+        "top_changed_features": [
+          "eye_aspect_ratio",
+          "brow_lowering",
+          "lip_press"
+        ]
+      },
+      "temporal": {
+        "status": "not_measurable",
+        "reason": "no_observed_task_increase_over_neutral",
+        "phase_deviations": {
+          "neutral": 0.0,
+          "task": 0.17,
+          "recovery": 0.0
+        },
+        "task_to_recovery_change": null,
+        "return_fraction": null,
+        "return_rate_z_per_sec": null,
+        "interpretation": "No psychological recovery inference is made."
+      },
+      "request_self_report": true,
+      "self_report_reason": "Research-stage labels are requested for EVERY session, not only uncertain predictions.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student."
+      ]
+    },
+    "return": {
+      "session_id": "2203c711-ee79-4df1-834f-8a10cf70df79",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "return",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-17T07:46:53.701084+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "accepted",
+      "quality": {
+        "status": "accepted",
+        "usable_duration_sec": 45.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 1.0,
+        "quality_score": 0.95,
+        "rejected_window_count": 0,
+        "reasons": []
+      },
+      "session_features": {
+        "eye_aspect_ratio": 0.265,
+        "brow_lowering": 0.135,
+        "lip_press": 0.11500000000000002,
+        "jaw_open": 0.07500000000000002,
+        "head_motion_deg": 1.35
+      },
+      "baseline_id": "8d228c68-23b7-4507-b8b2-83d5fd7f97e5",
+      "deviation": {
+        "mean_absolute_standardized_deviation": 1.19,
+        "level": "moderate_visual_change",
+        "per_feature_signed_z": {
+          "eye_aspect_ratio": -1.4,
+          "brow_lowering": 1.4,
+          "lip_press": 1.4,
+          "jaw_open": 1.4,
+          "head_motion_deg": 0.35
+        },
+        "top_changed_features": [
+          "lip_press",
+          "jaw_open",
+          "brow_lowering"
+        ]
+      },
+      "temporal": {
+        "status": "measured",
+        "reason": null,
+        "phase_deviations": {
+          "neutral": 0.0,
+          "task": 3.06,
+          "recovery": 0.51
+        },
+        "task_to_recovery_change": 2.55,
+        "return_fraction": 0.833333,
+        "return_rate_z_per_sec": 0.17,
+        "interpretation": "positive: closer to baseline; negative: farther from baseline. This is a visual measurement only."
+      },
+      "request_self_report": true,
+      "self_report_reason": "Research-stage labels are requested for EVERY session, not only uncertain predictions.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student."
+      ]
+    },
+    "persistent": {
+      "session_id": "3530f716-5903-4f7f-ba4b-9ca9a8f24194",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "persistent",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-17T07:46:53.711581+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "accepted",
+      "quality": {
+        "status": "accepted",
+        "usable_duration_sec": 45.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 1.0,
+        "quality_score": 0.95,
+        "rejected_window_count": 0,
+        "reasons": []
+      },
+      "session_features": {
+        "eye_aspect_ratio": 0.235,
+        "brow_lowering": 0.165,
+        "lip_press": 0.145,
+        "jaw_open": 0.10500000000000001,
+        "head_motion_deg": 1.65
+      },
+      "baseline_id": "8d228c68-23b7-4507-b8b2-83d5fd7f97e5",
+      "deviation": {
+        "mean_absolute_standardized_deviation": 2.21,
+        "level": "large_visual_change",
+        "per_feature_signed_z": {
+          "eye_aspect_ratio": -2.6,
+          "brow_lowering": 2.6,
+          "lip_press": 2.6,
+          "jaw_open": 2.6,
+          "head_motion_deg": 0.65
+        },
+        "top_changed_features": [
+          "eye_aspect_ratio",
+          "brow_lowering",
+          "jaw_open"
+        ]
+      },
+      "temporal": {
+        "status": "measured",
+        "reason": null,
+        "phase_deviations": {
+          "neutral": 0.0,
+          "task": 3.06,
+          "recovery": 3.57
+        },
+        "task_to_recovery_change": -0.51,
+        "return_fraction": -0.166667,
+        "return_rate_z_per_sec": -0.034,
+        "interpretation": "positive: closer to baseline; negative: farther from baseline. This is a visual measurement only."
+      },
+      "request_self_report": true,
+      "self_report_reason": "Research-stage labels are requested for EVERY session, not only uncertain predictions.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student."
+      ]
+    },
+    "poor_quality": {
+      "session_id": "b3f22ac3-4824-499a-b71f-20b2fdfc0e41",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "poor_quality",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-17T07:46:53.725017+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "insufficient_quality",
+      "quality": {
+        "status": "insufficient_quality",
+        "usable_duration_sec": 0.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 0.0,
+        "quality_score": 0.0,
+        "rejected_window_count": 18,
+        "reasons": [
+          "less_than_80_percent_usable_coverage",
+          "less_than_8_usable_seconds",
+          "low_tracking_score",
+          "poor_brightness",
+          "require_exactly_one_face"
+        ]
+      },
+      "session_features": null,
+      "baseline_id": "8d228c68-23b7-4507-b8b2-83d5fd7f97e5",
+      "deviation": null,
+      "temporal": null,
+      "request_self_report": true,
+      "self_report_reason": "Use self-report as fallback; no visual conclusion is available.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student.",
+        "Insufficient quality: no facial deviation or temporal result was computed."
+      ]
+    }
+  },
+  "verification": {
+    "transport": "real_http_tcp",
+    "history_count": 4,
+    "temporary_database": true
+  },
+  "voice_public_audio_verification": {
+    "participant_id": "RAVDEMO-HTTP-VERIFIED",
+    "data_source": "public_dataset",
+    "results": [
+      {
+        "sample": {
+          "filename": "03-01-01-01-01-01-19.wav",
+          "dataset_recording_id": "03-01-01-01-01-01-19",
+          "actor": 19,
+          "dataset_label": "neutral",
+          "sha256": "1a48046495796d742987711910f507e1c373b42d779b25f031285e27e5ee80ed",
+          "training_member": false,
+          "test_member": true
+        },
+        "response": {
+          "session_id": "803e6135-aeec-4cd8-a2c5-fe2f360de6d3",
+          "participant_id": "RAVDEMO-HTTP-VERIFIED",
+          "client_session_id": "03-01-01-01-01-01-19",
+          "data_source": "public_dataset",
+          "submitted_at": "2026-10-17T08:46:53.936378+00:00",
+          "recorded_at": null,
+          "dataset": "RAVDESS",
+          "dataset_recording_id": "03-01-01-01-01-01-19",
+          "audio_sha256": "1a48046495796d742987711910f507e1c373b42d779b25f031285e27e5ee80ed",
+          "status": "accepted",
+          "feature_schema_version": "egemaps-v02-functionals-88-16k-v1",
+          "extractor_version": "egemaps-v02-functionals-88-16k-v1-opensmile-2.6.0",
+          "quality": {
+            "status": "accepted",
+            "reasons": [],
+            "duration_sec": 3.370062,
+            "original_sample_rate": 48000,
+            "sample_rate": 16000,
+            "original_channels": 1,
+            "rms_dbfs": -48.6491,
+            "active_duration_sec": 1.12,
+            "active_fraction": 0.333333,
+            "clipping_fraction": 0.0,
+            "gate_status": "provisional_signal_activity_heuristic_not_speech_or_snr_detector"
+          },
+          "features": {
+            "F0semitoneFrom27.5Hz_sma3nz_amean": 25.85392189025879,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevNorm": 0.049521271139383316,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile20.0": 24.835773468017578,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile50.0": 25.61893081665039,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile80.0": 27.383056640625,
+            "F0semitoneFrom27.5Hz_sma3nz_pctlrange0-2": 2.547283172607422,
+            "F0semitoneFrom27.5Hz_sma3nz_meanRisingSlope": 32.29880142211914,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope": 33.76359558105469,
+            "F0semitoneFrom27.5Hz_sma3nz_meanFallingSlope": 0.43906211853027344,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevFallingSlope": 8.482720375061035,
+            "loudness_sma3_amean": 0.05651696398854256,
+            "loudness_sma3_stddevNorm": 1.3101385831832886,
+            "loudness_sma3_percentile20.0": 0.004244628362357616,
+            "loudness_sma3_percentile50.0": 0.008388101123273373,
+            "loudness_sma3_percentile80.0": 0.11589785665273666,
+            "loudness_sma3_pctlrange0-2": 0.11165323108434677,
+            "loudness_sma3_meanRisingSlope": 1.3008638620376587,
+            "loudness_sma3_stddevRisingSlope": 0.8236513137817383,
+            "loudness_sma3_meanFallingSlope": 1.1023895740509033,
+            "loudness_sma3_stddevFallingSlope": 0.6196449995040894,
+            "spectralFlux_sma3_amean": 0.009503704495728016,
+            "spectralFlux_sma3_stddevNorm": 1.380028486251831,
+            "mfcc1_sma3_amean": 14.818514823913574,
+            "mfcc1_sma3_stddevNorm": 1.1987228393554688,
+            "mfcc2_sma3_amean": 9.377629280090332,
+            "mfcc2_sma3_stddevNorm": 0.9354214072227478,
+            "mfcc3_sma3_amean": 8.288116455078125,
+            "mfcc3_sma3_stddevNorm": 1.467858910560608,
+            "mfcc4_sma3_amean": 2.229738473892212,
+            "mfcc4_sma3_stddevNorm": 6.186351776123047,
+            "jitterLocal_sma3nz_amean": 0.014151832088828087,
+            "jitterLocal_sma3nz_stddevNorm": 1.4128652811050415,
+            "shimmerLocaldB_sma3nz_amean": 0.9259492754936218,
+            "shimmerLocaldB_sma3nz_stddevNorm": 1.0217084884643555,
+            "HNRdBACF_sma3nz_amean": 6.001713752746582,
+            "HNRdBACF_sma3nz_stddevNorm": 0.3590087294578552,
+            "logRelF0-H1-H2_sma3nz_amean": 2.2939069271087646,
+            "logRelF0-H1-H2_sma3nz_stddevNorm": 1.5117400884628296,
+            "logRelF0-H1-A3_sma3nz_amean": 28.982208251953125,
+            "logRelF0-H1-A3_sma3nz_stddevNorm": 0.26030513644218445,
+            "F1frequency_sma3nz_amean": 573.090087890625,
+            "F1frequency_sma3nz_stddevNorm": 0.37295013666152954,
+            "F1bandwidth_sma3nz_amean": 1357.5574951171875,
+            "F1bandwidth_sma3nz_stddevNorm": 0.136847585439682,
+            "F1amplitudeLogRelF0_sma3nz_amean": -141.22317504882812,
+            "F1amplitudeLogRelF0_sma3nz_stddevNorm": -0.634665310382843,
+            "F2frequency_sma3nz_amean": 1591.39501953125,
+            "F2frequency_sma3nz_stddevNorm": 0.16239920258522034,
+            "F2bandwidth_sma3nz_amean": 1162.7720947265625,
+            "F2bandwidth_sma3nz_stddevNorm": 0.28304824233055115,
+            "F2amplitudeLogRelF0_sma3nz_amean": -143.8081817626953,
+            "F2amplitudeLogRelF0_sma3nz_stddevNorm": -0.5790038704872131,
+            "F3frequency_sma3nz_amean": 2704.6220703125,
+            "F3frequency_sma3nz_stddevNorm": 0.10312966257333755,
+            "F3bandwidth_sma3nz_amean": 957.7659912109375,
+            "F3bandwidth_sma3nz_stddevNorm": 0.43015095591545105,
+            "F3amplitudeLogRelF0_sma3nz_amean": -146.3403778076172,
+            "F3amplitudeLogRelF0_sma3nz_stddevNorm": -0.5425406694412231,
+            "alphaRatioV_sma3nz_amean": -15.516481399536133,
+            "alphaRatioV_sma3nz_stddevNorm": -0.4558907449245453,
+            "hammarbergIndexV_sma3nz_amean": 25.492530822753906,
+            "hammarbergIndexV_sma3nz_stddevNorm": 0.29532864689826965,
+            "slopeV0-500_sma3nz_amean": 0.05988563224673271,
+            "slopeV0-500_sma3nz_stddevNorm": 0.3244112432003021,
+            "slopeV500-1500_sma3nz_amean": -0.011487806215882301,
+            "slopeV500-1500_sma3nz_stddevNorm": -1.6014577150344849,
+            "spectralFluxV_sma3nz_amean": 0.023759813979268074,
+            "spectralFluxV_sma3nz_stddevNorm": 0.5196149349212646,
+            "mfcc1V_sma3nz_amean": 34.1557731628418,
+            "mfcc1V_sma3nz_stddevNorm": 0.3360465466976166,
+            "mfcc2V_sma3nz_amean": 10.42963981628418,
+            "mfcc2V_sma3nz_stddevNorm": 1.1254243850708008,
+            "mfcc3V_sma3nz_amean": 7.411377906799316,
+            "mfcc3V_sma3nz_stddevNorm": 2.2767717838287354,
+            "mfcc4V_sma3nz_amean": -11.224379539489746,
+            "mfcc4V_sma3nz_stddevNorm": -1.3179881572723389,
+            "alphaRatioUV_sma3nz_amean": -11.095220565795898,
+            "hammarbergIndexUV_sma3nz_amean": 22.07786750793457,
+            "slopeUV0-500_sma3nz_amean": 0.015138563700020313,
+            "slopeUV500-1500_sma3nz_amean": 0.03801506385207176,
+            "spectralFluxUV_sma3nz_amean": 0.00356482807546854,
+            "loudnessPeaksPerSec": 1.7857143878936768,
+            "VoicedSegmentsPerSec": 1.5105741024017334,
+            "MeanVoicedSegmentLengthSec": 0.1939999908208847,
+            "StddevVoicedSegmentLengthSec": 0.11306635290384293,
+            "MeanUnvoicedSegmentLength": 0.37166666984558105,
+            "StddevUnvoicedSegmentLength": 0.4480854272842407,
+            "equivalentSoundLevel_dBp": -48.65176010131836
+          },
+          "prediction": {
+            "predicted_emotion_style": "neutral",
+            "decision_scores": {
+              "angry": 0.08459518622027806,
+              "calm": 3.7816590685977616,
+              "disgust": -1.148925634076022,
+              "fearful": -2.153872850046536,
+              "happy": -1.7505197352916122,
+              "neutral": 5.459492531418077,
+              "sad": 1.0723997967742003,
+              "surprised": -5.3448283635960365
+            },
+            "score_type": "uncalibrated_multiclass_decision_scores_not_probabilities",
+            "probabilities": null,
+            "model_id": "c2-ravdess-egemaps-e70b6f14f1b9",
+            "baseline_model": "logistic_regression_C1",
+            "domain_status": "evaluated_on_heldout_RAVDESS_actors_only"
+          },
+          "ratings": null,
+          "request_self_report": true,
+          "evidence": {
+            "training_data_source": "public_dataset",
+            "training_dataset": "RAVDESS audio speech",
+            "emotion_labels_are_acted": true,
+            "clinical_validation": false,
+            "no_llm_used": true
+          },
+          "warnings": [
+            "Acted emotion-style classification is not evidence of the speaker's internal emotion, stress, burnout or mental-health state.",
+            "Signal quality uses provisional heuristics; noise, music and non-speech may pass. No speech-content or language detector is implemented.",
+            "Raw audio is not stored by this application; only features, its hash, metadata and results are persisted for check-ins."
+          ]
+        }
+      },
+      {
+        "sample": {
+          "filename": "03-01-03-01-01-01-19.wav",
+          "dataset_recording_id": "03-01-03-01-01-01-19",
+          "actor": 19,
+          "dataset_label": "happy",
+          "sha256": "490ebea9bfcbf193abf2d0efea014f0a63f0bc35c15fa0f71a09c7d5d04a2576",
+          "training_member": false,
+          "test_member": true
+        },
+        "response": {
+          "session_id": "cbfaf900-7379-4dbe-bce3-148d72df68b5",
+          "participant_id": "RAVDEMO-HTTP-VERIFIED",
+          "client_session_id": "03-01-03-01-01-01-19",
+          "data_source": "public_dataset",
+          "submitted_at": "2026-10-17T08:46:54.126446+00:00",
+          "recorded_at": null,
+          "dataset": "RAVDESS",
+          "dataset_recording_id": "03-01-03-01-01-01-19",
+          "audio_sha256": "490ebea9bfcbf193abf2d0efea014f0a63f0bc35c15fa0f71a09c7d5d04a2576",
+          "status": "accepted",
+          "feature_schema_version": "egemaps-v02-functionals-88-16k-v1",
+          "extractor_version": "egemaps-v02-functionals-88-16k-v1-opensmile-2.6.0",
+          "quality": {
+            "status": "accepted",
+            "reasons": [],
+            "duration_sec": 3.637,
+            "original_sample_rate": 48000,
+            "sample_rate": 16000,
+            "original_channels": 1,
+            "rms_dbfs": -46.8308,
+            "active_duration_sec": 1.54,
+            "active_fraction": 0.425414,
+            "clipping_fraction": 0.0,
+            "gate_status": "provisional_signal_activity_heuristic_not_speech_or_snr_detector"
+          },
+          "features": {
+            "F0semitoneFrom27.5Hz_sma3nz_amean": 29.351781845092773,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevNorm": 0.0729023814201355,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile20.0": 27.8851318359375,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile50.0": 29.65106201171875,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile80.0": 31.242948532104492,
+            "F0semitoneFrom27.5Hz_sma3nz_pctlrange0-2": 3.357816696166992,
+            "F0semitoneFrom27.5Hz_sma3nz_meanRisingSlope": 25.95758056640625,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope": 4.909636497497559,
+            "F0semitoneFrom27.5Hz_sma3nz_meanFallingSlope": 10.7484769821167,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevFallingSlope": 15.918376922607422,
+            "loudness_sma3_amean": 0.07395723462104797,
+            "loudness_sma3_stddevNorm": 1.047622561454773,
+            "loudness_sma3_percentile20.0": 0.00404407037422061,
+            "loudness_sma3_percentile50.0": 0.04777608811855316,
+            "loudness_sma3_percentile80.0": 0.1444224715232849,
+            "loudness_sma3_pctlrange0-2": 0.14037840068340302,
+            "loudness_sma3_meanRisingSlope": 1.0751935243606567,
+            "loudness_sma3_stddevRisingSlope": 0.6160929203033447,
+            "loudness_sma3_meanFallingSlope": 1.2144765853881836,
+            "loudness_sma3_stddevFallingSlope": 0.7549793124198914,
+            "spectralFlux_sma3_amean": 0.014008358120918274,
+            "spectralFlux_sma3_stddevNorm": 1.0895048379898071,
+            "mfcc1_sma3_amean": 16.174440383911133,
+            "mfcc1_sma3_stddevNorm": 1.1385142803192139,
+            "mfcc2_sma3_amean": 9.436466217041016,
+            "mfcc2_sma3_stddevNorm": 1.267354130744934,
+            "mfcc3_sma3_amean": 5.3210978507995605,
+            "mfcc3_sma3_stddevNorm": 2.3532984256744385,
+            "mfcc4_sma3_amean": 5.408002853393555,
+            "mfcc4_sma3_stddevNorm": 2.976722240447998,
+            "jitterLocal_sma3nz_amean": 0.016465619206428528,
+            "jitterLocal_sma3nz_stddevNorm": 0.7743767499923706,
+            "shimmerLocaldB_sma3nz_amean": 1.2484443187713623,
+            "shimmerLocaldB_sma3nz_stddevNorm": 0.6395920515060425,
+            "HNRdBACF_sma3nz_amean": 6.840461254119873,
+            "HNRdBACF_sma3nz_stddevNorm": 0.3221588432788849,
+            "logRelF0-H1-H2_sma3nz_amean": 4.932924270629883,
+            "logRelF0-H1-H2_sma3nz_stddevNorm": 1.343287467956543,
+            "logRelF0-H1-A3_sma3nz_amean": 32.5953254699707,
+            "logRelF0-H1-A3_sma3nz_stddevNorm": 0.25436466932296753,
+            "F1frequency_sma3nz_amean": 578.9442749023438,
+            "F1frequency_sma3nz_stddevNorm": 0.3894534111022949,
+            "F1bandwidth_sma3nz_amean": 1362.889404296875,
+            "F1bandwidth_sma3nz_stddevNorm": 0.22409991919994354,
+            "F1amplitudeLogRelF0_sma3nz_amean": -128.79554748535156,
+            "F1amplitudeLogRelF0_sma3nz_stddevNorm": -0.715072751045227,
+            "F2frequency_sma3nz_amean": 1623.89697265625,
+            "F2frequency_sma3nz_stddevNorm": 0.19032298028469086,
+            "F2bandwidth_sma3nz_amean": 1047.6671142578125,
+            "F2bandwidth_sma3nz_stddevNorm": 0.22279702126979828,
+            "F2amplitudeLogRelF0_sma3nz_amean": -131.39903259277344,
+            "F2amplitudeLogRelF0_sma3nz_stddevNorm": -0.6515000462532043,
+            "F3frequency_sma3nz_amean": 2761.250244140625,
+            "F3frequency_sma3nz_stddevNorm": 0.0974864810705185,
+            "F3bandwidth_sma3nz_amean": 957.5541381835938,
+            "F3bandwidth_sma3nz_stddevNorm": 0.3419426679611206,
+            "F3amplitudeLogRelF0_sma3nz_amean": -135.13790893554688,
+            "F3amplitudeLogRelF0_sma3nz_stddevNorm": -0.599280595779419,
+            "alphaRatioV_sma3nz_amean": -16.912052154541016,
+            "alphaRatioV_sma3nz_stddevNorm": -0.49462419748306274,
+            "hammarbergIndexV_sma3nz_amean": 27.574668884277344,
+            "hammarbergIndexV_sma3nz_stddevNorm": 0.32131463289260864,
+            "slopeV0-500_sma3nz_amean": 0.05896572768688202,
+            "slopeV0-500_sma3nz_stddevNorm": 0.4101862609386444,
+            "slopeV500-1500_sma3nz_amean": -0.009092090651392937,
+            "slopeV500-1500_sma3nz_stddevNorm": -2.1404590606689453,
+            "spectralFluxV_sma3nz_amean": 0.029624301940202713,
+            "spectralFluxV_sma3nz_stddevNorm": 0.34578487277030945,
+            "mfcc1V_sma3nz_amean": 32.190460205078125,
+            "mfcc1V_sma3nz_stddevNorm": 0.3860154151916504,
+            "mfcc2V_sma3nz_amean": 15.669574737548828,
+            "mfcc2V_sma3nz_stddevNorm": 0.689215362071991,
+            "mfcc3V_sma3nz_amean": 5.195021629333496,
+            "mfcc3V_sma3nz_stddevNorm": 3.4174892902374268,
+            "mfcc4V_sma3nz_amean": -3.3638134002685547,
+            "mfcc4V_sma3nz_stddevNorm": -5.690420150756836,
+            "alphaRatioUV_sma3nz_amean": -9.03600025177002,
+            "hammarbergIndexUV_sma3nz_amean": 21.45572853088379,
+            "slopeUV0-500_sma3nz_amean": 0.020797988399863243,
+            "slopeUV500-1500_sma3nz_amean": 0.039632074534893036,
+            "spectralFluxUV_sma3nz_amean": 0.004682582337409258,
+            "loudnessPeaksPerSec": 2.209944725036621,
+            "VoicedSegmentsPerSec": 1.4005602598190308,
+            "MeanVoicedSegmentLengthSec": 0.26600000262260437,
+            "StddevVoicedSegmentLengthSec": 0.3072848916053772,
+            "MeanUnvoicedSegmentLength": 0.35499998927116394,
+            "StddevUnvoicedSegmentLength": 0.4425211548805237,
+            "equivalentSoundLevel_dBp": -46.83058166503906
+          },
+          "prediction": {
+            "predicted_emotion_style": "calm",
+            "decision_scores": {
+              "angry": -4.550711995820964,
+              "calm": 2.4561111713571737,
+              "disgust": 0.3752870890352107,
+              "fearful": -1.917622955483985,
+              "happy": 0.49142869266988587,
+              "neutral": 1.7999380797666586,
+              "sad": 2.3507668077581094,
+              "surprised": -1.0051968892819927
+            },
+            "score_type": "uncalibrated_multiclass_decision_scores_not_probabilities",
+            "probabilities": null,
+            "model_id": "c2-ravdess-egemaps-e70b6f14f1b9",
+            "baseline_model": "logistic_regression_C1",
+            "domain_status": "evaluated_on_heldout_RAVDESS_actors_only"
+          },
+          "ratings": null,
+          "request_self_report": true,
+          "evidence": {
+            "training_data_source": "public_dataset",
+            "training_dataset": "RAVDESS audio speech",
+            "emotion_labels_are_acted": true,
+            "clinical_validation": false,
+            "no_llm_used": true
+          },
+          "warnings": [
+            "Acted emotion-style classification is not evidence of the speaker's internal emotion, stress, burnout or mental-health state.",
+            "Signal quality uses provisional heuristics; noise, music and non-speech may pass. No speech-content or language detector is implemented.",
+            "Raw audio is not stored by this application; only features, its hash, metadata and results are persisted for check-ins."
+          ]
+        }
+      },
+      {
+        "sample": {
+          "filename": "03-01-05-01-01-01-19.wav",
+          "dataset_recording_id": "03-01-05-01-01-01-19",
+          "actor": 19,
+          "dataset_label": "angry",
+          "sha256": "47f1536a1fa2b80db7b5e6d0fdfe2bd1b3ee513ddef14eeed043be9143ceef3f",
+          "training_member": false,
+          "test_member": true
+        },
+        "response": {
+          "session_id": "71e2dbeb-6b04-4413-8e63-a4f99f69090f",
+          "participant_id": "RAVDEMO-HTTP-VERIFIED",
+          "client_session_id": "03-01-05-01-01-01-19",
+          "data_source": "public_dataset",
+          "submitted_at": "2026-10-17T08:46:54.251793+00:00",
+          "recorded_at": null,
+          "dataset": "RAVDESS",
+          "dataset_recording_id": "03-01-05-01-01-01-19",
+          "audio_sha256": "47f1536a1fa2b80db7b5e6d0fdfe2bd1b3ee513ddef14eeed043be9143ceef3f",
+          "status": "accepted",
+          "feature_schema_version": "egemaps-v02-functionals-88-16k-v1",
+          "extractor_version": "egemaps-v02-functionals-88-16k-v1-opensmile-2.6.0",
+          "quality": {
+            "status": "accepted",
+            "reasons": [],
+            "duration_sec": 3.770437,
+            "original_sample_rate": 48000,
+            "sample_rate": 16000,
+            "original_channels": 1,
+            "rms_dbfs": -35.3584,
+            "active_duration_sec": 1.76,
+            "active_fraction": 0.468085,
+            "clipping_fraction": 0.0,
+            "gate_status": "provisional_signal_activity_heuristic_not_speech_or_snr_detector"
+          },
+          "features": {
+            "F0semitoneFrom27.5Hz_sma3nz_amean": 35.202632904052734,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevNorm": 0.14863939583301544,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile20.0": 28.02311134338379,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile50.0": 37.70044708251953,
+            "F0semitoneFrom27.5Hz_sma3nz_percentile80.0": 39.79707336425781,
+            "F0semitoneFrom27.5Hz_sma3nz_pctlrange0-2": 11.773962020874023,
+            "F0semitoneFrom27.5Hz_sma3nz_meanRisingSlope": 168.78530883789062,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope": 134.29019165039062,
+            "F0semitoneFrom27.5Hz_sma3nz_meanFallingSlope": 52.96846389770508,
+            "F0semitoneFrom27.5Hz_sma3nz_stddevFallingSlope": 38.29792404174805,
+            "loudness_sma3_amean": 0.21000412106513977,
+            "loudness_sma3_stddevNorm": 1.3669618368148804,
+            "loudness_sma3_percentile20.0": 0.004896634723991156,
+            "loudness_sma3_percentile50.0": 0.041172221302986145,
+            "loudness_sma3_percentile80.0": 0.4058198928833008,
+            "loudness_sma3_pctlrange0-2": 0.4009232521057129,
+            "loudness_sma3_meanRisingSlope": 3.5275344848632812,
+            "loudness_sma3_stddevRisingSlope": 1.9135257005691528,
+            "loudness_sma3_meanFallingSlope": 4.071069240570068,
+            "loudness_sma3_stddevFallingSlope": 2.4216082096099854,
+            "spectralFlux_sma3_amean": 0.06902288645505905,
+            "spectralFlux_sma3_stddevNorm": 1.5188260078430176,
+            "mfcc1_sma3_amean": 9.6446533203125,
+            "mfcc1_sma3_stddevNorm": 1.4239708185195923,
+            "mfcc2_sma3_amean": 1.8698595762252808,
+            "mfcc2_sma3_stddevNorm": 7.949563503265381,
+            "mfcc3_sma3_amean": 7.0364508628845215,
+            "mfcc3_sma3_stddevNorm": 2.2707862854003906,
+            "mfcc4_sma3_amean": -0.99640291929245,
+            "mfcc4_sma3_stddevNorm": -17.30684471130371,
+            "jitterLocal_sma3nz_amean": 0.025425514206290245,
+            "jitterLocal_sma3nz_stddevNorm": 0.9651450514793396,
+            "shimmerLocaldB_sma3nz_amean": 1.4265596866607666,
+            "shimmerLocaldB_sma3nz_stddevNorm": 0.6860674619674683,
+            "HNRdBACF_sma3nz_amean": 3.787770986557007,
+            "HNRdBACF_sma3nz_stddevNorm": 1.2361016273498535,
+            "logRelF0-H1-H2_sma3nz_amean": 5.598109722137451,
+            "logRelF0-H1-H2_sma3nz_stddevNorm": 1.7653635740280151,
+            "logRelF0-H1-A3_sma3nz_amean": 14.212542533874512,
+            "logRelF0-H1-A3_sma3nz_stddevNorm": 0.7060264945030212,
+            "F1frequency_sma3nz_amean": 747.9066772460938,
+            "F1frequency_sma3nz_stddevNorm": 0.36290544271469116,
+            "F1bandwidth_sma3nz_amean": 1145.6478271484375,
+            "F1bandwidth_sma3nz_stddevNorm": 0.1990375816822052,
+            "F1amplitudeLogRelF0_sma3nz_amean": -165.0955352783203,
+            "F1amplitudeLogRelF0_sma3nz_stddevNorm": -0.43071553111076355,
+            "F2frequency_sma3nz_amean": 1873.327880859375,
+            "F2frequency_sma3nz_stddevNorm": 0.16516898572444916,
+            "F2bandwidth_sma3nz_amean": 844.0713500976562,
+            "F2bandwidth_sma3nz_stddevNorm": 0.3143998682498932,
+            "F2amplitudeLogRelF0_sma3nz_amean": -157.3546905517578,
+            "F2amplitudeLogRelF0_sma3nz_stddevNorm": -0.4827357828617096,
+            "F3frequency_sma3nz_amean": 2814.400390625,
+            "F3frequency_sma3nz_stddevNorm": 0.09191163629293442,
+            "F3bandwidth_sma3nz_amean": 896.9751586914062,
+            "F3bandwidth_sma3nz_stddevNorm": 0.3765406906604767,
+            "F3amplitudeLogRelF0_sma3nz_amean": -157.09375,
+            "F3amplitudeLogRelF0_sma3nz_stddevNorm": -0.4860130250453949,
+            "alphaRatioV_sma3nz_amean": -6.1968302726745605,
+            "alphaRatioV_sma3nz_stddevNorm": -1.3123574256896973,
+            "hammarbergIndexV_sma3nz_amean": 12.164424896240234,
+            "hammarbergIndexV_sma3nz_stddevNorm": 0.6738854646682739,
+            "slopeV0-500_sma3nz_amean": 0.03911248594522476,
+            "slopeV0-500_sma3nz_stddevNorm": 0.9569699764251709,
+            "slopeV500-1500_sma3nz_amean": -0.00764246704056859,
+            "slopeV500-1500_sma3nz_stddevNorm": -2.388629913330078,
+            "spectralFluxV_sma3nz_amean": 0.19854263961315155,
+            "spectralFluxV_sma3nz_stddevNorm": 0.5406220555305481,
+            "mfcc1V_sma3nz_amean": 16.873849868774414,
+            "mfcc1V_sma3nz_stddevNorm": 0.6820878982543945,
+            "mfcc2V_sma3nz_amean": -4.985531330108643,
+            "mfcc2V_sma3nz_stddevNorm": -3.839380979537964,
+            "mfcc3V_sma3nz_amean": 13.233848571777344,
+            "mfcc3V_sma3nz_stddevNorm": 1.530966877937317,
+            "mfcc4V_sma3nz_amean": -13.351088523864746,
+            "mfcc4V_sma3nz_stddevNorm": -1.5788720846176147,
+            "alphaRatioUV_sma3nz_amean": -7.398818492889404,
+            "hammarbergIndexUV_sma3nz_amean": 19.02414321899414,
+            "slopeUV0-500_sma3nz_amean": 0.03336401656270027,
+            "slopeUV500-1500_sma3nz_amean": 0.033933915197849274,
+            "spectralFluxUV_sma3nz_amean": 0.03579213470220566,
+            "loudnessPeaksPerSec": 1.5957447290420532,
+            "VoicedSegmentsPerSec": 1.886792540550232,
+            "MeanVoicedSegmentLengthSec": 0.1128571406006813,
+            "StddevVoicedSegmentLengthSec": 0.047121208161115646,
+            "MeanUnvoicedSegmentLength": 0.3462499976158142,
+            "StddevUnvoicedSegmentLength": 0.4322018325328827,
+            "equivalentSoundLevel_dBp": -35.349342346191406
+          },
+          "prediction": {
+            "predicted_emotion_style": "angry",
+            "decision_scores": {
+              "angry": 9.609757482192478,
+              "calm": -8.931409427454795,
+              "disgust": 5.398871358896267,
+              "fearful": -2.840372205222057,
+              "happy": 1.680532007618948,
+              "neutral": -2.5964532970377308,
+              "sad": -8.250110538953003,
+              "surprised": 5.929184619959866
+            },
+            "score_type": "uncalibrated_multiclass_decision_scores_not_probabilities",
+            "probabilities": null,
+            "model_id": "c2-ravdess-egemaps-e70b6f14f1b9",
+            "baseline_model": "logistic_regression_C1",
+            "domain_status": "evaluated_on_heldout_RAVDESS_actors_only"
+          },
+          "ratings": null,
+          "request_self_report": true,
+          "evidence": {
+            "training_data_source": "public_dataset",
+            "training_dataset": "RAVDESS audio speech",
+            "emotion_labels_are_acted": true,
+            "clinical_validation": false,
+            "no_llm_used": true
+          },
+          "warnings": [
+            "Acted emotion-style classification is not evidence of the speaker's internal emotion, stress, burnout or mental-health state.",
+            "Signal quality uses provisional heuristics; noise, music and non-speech may pass. No speech-content or language detector is implemented.",
+            "Raw audio is not stored by this application; only features, its hash, metadata and results are persisted for check-ins."
+          ]
+        }
+      }
+    ],
+    "history_total": 3,
+    "note": "These three files are illustrative members of the public held-out test set; this demo is not a new evaluation."
+  },
+  "risk_synthetic_verification": {
+    "data_source": "synthetic_demo",
+    "warning": "All four profiles are constructed software scenarios; they have no real future outcomes or clinical meaning.",
+    "scenarios": {
+      "steady": {
+        "prediction_id": "a25c0e15-0041-41bd-b869-5eae3117e88a",
+        "participant_id": "C3-steady-7c6b21b3",
+        "client_prediction_id": "first-prediction",
+        "created_at": "2026-10-17T08:46:54.339000+00:00",
+        "as_of": "2026-10-17T08:46:54.322303+00:00",
+        "data_source": "synthetic_demo",
+        "status": "demo_only_prediction",
+        "snapshot": {
+          "feature_schema_version": "daily14-weekly28-exhaustion7-v1",
+          "study_timezone": "Asia/Colombo",
+          "as_of": "2026-10-17T08:46:54.322303+00:00",
+          "lookback_start": "2026-10-03",
+          "lookback_end": "2026-10-16",
+          "target_start": "2026-10-18",
+          "target_end": "2026-10-24",
+          "status": "sufficient_history",
+          "reasons": [],
+          "daily_report_count": 14,
+          "behavior_report_days": 14,
+          "weekly_report_available": true,
+          "features": {
+            "sleep_hours_mean": 7.799999999999999,
+            "sleep_hours_std": 8.881784197001252e-16,
+            "sleep_hours_slope": 0.0,
+            "study_minutes_mean": 160.0,
+            "study_minutes_std": 0.0,
+            "late_study_fraction": 0.0625,
+            "break_minutes_mean": 65.0,
+            "completion_ratio": 1.0,
+            "incomplete_task_days_fraction": 0.0,
+            "daily_coverage_fraction": 1.0,
+            "behavior_coverage_fraction": 1.0,
+            "fatigue_mean": 2.0,
+            "mental_strain_mean": 2.0,
+            "concentration_readiness_mean": 4.0,
+            "fatigue_slope": 0.0,
+            "latest_weekly_exhaustion": 2.0,
+            "latest_weekly_disengagement": 2.0,
+            "latest_weekly_academic_efficacy": 4.0,
+            "weekly_age_days": 1,
+            "weekly_missing": 0.0
+          },
+          "input_record_ids": {
+            "daily": [
+              "18c91080-eaa9-4268-aea6-7f27aaee34e6",
+              "642509bf-d091-4eb1-ae96-e1dbd88ff869",
+              "2a34b6e0-c0a2-4752-8b72-96aec51be9b6",
+              "0b715e28-a373-4cfc-8606-d4db6970c63d",
+              "0302824e-ea0b-491b-b088-ee5d8650f500",
+              "f2a2096a-c802-46d9-a76c-caf99d67565c",
+              "7f7dc40a-9135-4fba-b43e-180221940f65",
+              "3fbe673b-2717-42c7-8e5b-6cdc809af6a9",
+              "0f2a1b99-a695-4b6c-b5b5-de310333c4d0",
+              "cf4637d7-86dd-4c4d-b558-c98b88aed3a3",
+              "207181fd-c8dc-4bbb-b03a-8957378d64c8",
+              "23cdf7a2-d52a-42db-ae82-9cd1755b97ff",
+              "2a59f871-c1e4-4747-925f-e31cc3d3267a",
+              "0b6edb11-209c-4ac9-9634-ddecd80af769"
+            ],
+            "weekly": [
+              "8aaeed94-e181-4cfa-a32b-1c8394275106"
+            ]
+          },
+          "missing_feature_names": [],
+          "modality_context": {
+            "facial_accepted_sessions_in_window": 0,
+            "voice_accepted_sessions_in_window": 0,
+            "facial_or_voice_used_as_risk_predictors": false,
+            "reason": "Availability is reported; visual deviation/acted emotion are not validated exhaustion probabilities and are not fused in this baseline."
+          }
+        },
+        "snapshot_sha256": "e7a923987114f7b5ac41407eb3bd5f2ae0f34149e63b124685edede4f3b06f09",
+        "risk": {
+          "model_probability": 0.0951349818026266,
+          "probability_scope": "uncalibrated_simulation_probability",
+          "proxy_band": "lower_proxy_score",
+          "decision_threshold": 0.5,
+          "clinical_risk_probability": null,
+          "model_id": "c3-exhaustion-proxy-668bea7df567",
+          "target": "next_weekly_exhaustion_ge4_within_next7days"
+        },
+        "evidence": {
+          "model_status": {
+            "status": "ready",
+            "reason": null,
+            "model_id": "c3-exhaustion-proxy-668bea7df567",
+            "training_data_source": "synthetic_demo",
+            "validation_status": "synthetic_only_not_empirically_validated",
+            "trained_burnout_model": false,
+            "clinical_validation": false
+          },
+          "training_data_source": "synthetic_demo",
+          "model_applied": true,
+          "forecast_target": "next_weekly_exhaustion_ge4_within_next7days",
+          "clinical_validation": false,
+          "instrument_validated": false,
+          "knowledge_cutoff_enforced": true,
+          "features_use_prior_complete_days": true,
+          "no_llm_used": true
+        },
+        "warnings": [
+          "This estimates an exploratory self-reported exhaustion proxy, not burnout, diagnosis or a validated mental-health risk probability.",
+          "The single-item weekly exhaustion scale and the 0.5 display threshold are exploratory, not validated clinical instruments/cutoffs.",
+          "SYNTHETIC DEMO: observations/outcomes and trained risk probabilities are technical fixtures, not measured student evidence."
+        ]
+      },
+      "rising": {
+        "prediction_id": "e78fadd4-9239-45f8-b100-fb05dd62bcc8",
+        "participant_id": "C3-rising-0df0e42b",
+        "client_prediction_id": "first-prediction",
+        "created_at": "2026-10-17T08:46:54.406842+00:00",
+        "as_of": "2026-10-17T08:46:54.397240+00:00",
+        "data_source": "synthetic_demo",
+        "status": "demo_only_prediction",
+        "snapshot": {
+          "feature_schema_version": "daily14-weekly28-exhaustion7-v1",
+          "study_timezone": "Asia/Colombo",
+          "as_of": "2026-10-17T08:46:54.397240+00:00",
+          "lookback_start": "2026-10-03",
+          "lookback_end": "2026-10-16",
+          "target_start": "2026-10-18",
+          "target_end": "2026-10-24",
+          "status": "sufficient_history",
+          "reasons": [],
+          "daily_report_count": 14,
+          "behavior_report_days": 14,
+          "weekly_report_available": true,
+          "features": {
+            "sleep_hours_mean": 6.405,
+            "sleep_hours_std": 0.9271596410543333,
+            "sleep_hours_slope": -0.23000000000000004,
+            "study_minutes_mean": 284.0,
+            "study_minutes_std": 64.4980619863884,
+            "late_study_fraction": 0.3397887323943662,
+            "break_minutes_mean": 39.0,
+            "completion_ratio": 0.5238095238095238,
+            "incomplete_task_days_fraction": 1.0,
+            "daily_coverage_fraction": 1.0,
+            "behavior_coverage_fraction": 1.0,
+            "fatigue_mean": 3.7142857142857144,
+            "mental_strain_mean": 3.7142857142857144,
+            "concentration_readiness_mean": 2.2857142857142856,
+            "fatigue_slope": 0.27692307692307694,
+            "latest_weekly_exhaustion": 5.0,
+            "latest_weekly_disengagement": 4.0,
+            "latest_weekly_academic_efficacy": 2.0,
+            "weekly_age_days": 1,
+            "weekly_missing": 0.0
+          },
+          "input_record_ids": {
+            "daily": [
+              "82571f19-3e9f-4563-996a-db8eee30ad39",
+              "fc324d5c-732a-4c74-b846-7476c6cf784c",
+              "8c9e5bbe-146f-4ac1-969b-f5fd9c765493",
+              "e42401ba-6aad-439f-90b6-468b7e3c5d55",
+              "e58dae48-eca0-4f93-a659-e473f3bff098",
+              "ba5d5395-d27d-417b-bcf8-268fa70dfe91",
+              "b48258dd-d462-47e4-b512-b55dedf25046",
+              "ddf27755-4e60-499c-bcc0-d3636c88022f",
+              "79fb54ca-5ee8-466b-a0c2-61a45ef7acc2",
+              "8ab34efb-27a2-42b1-8a15-e6724c762578",
+              "31ca064e-de02-494c-b517-a4e23dd5352f",
+              "e3802ed2-1561-43ab-9f9b-37f642163006",
+              "afb6e6f5-b269-4e66-b858-d52571baaf2a",
+              "89f0013a-11f5-472b-abc2-5deefea6c451"
+            ],
+            "weekly": [
+              "0cb6f838-b182-4c37-bebe-7480e76f9474"
+            ]
+          },
+          "missing_feature_names": [],
+          "modality_context": {
+            "facial_accepted_sessions_in_window": 0,
+            "voice_accepted_sessions_in_window": 0,
+            "facial_or_voice_used_as_risk_predictors": false,
+            "reason": "Availability is reported; visual deviation/acted emotion are not validated exhaustion probabilities and are not fused in this baseline."
+          }
+        },
+        "snapshot_sha256": "d8bfe52f784da23195e99ad2bb8e8fb09abf714d8072dd29536ed6e1fd11fc3a",
+        "risk": {
+          "model_probability": 0.9098211268561085,
+          "probability_scope": "uncalibrated_simulation_probability",
+          "proxy_band": "higher_proxy_score",
+          "decision_threshold": 0.5,
+          "clinical_risk_probability": null,
+          "model_id": "c3-exhaustion-proxy-668bea7df567",
+          "target": "next_weekly_exhaustion_ge4_within_next7days"
+        },
+        "evidence": {
+          "model_status": {
+            "status": "ready",
+            "reason": null,
+            "model_id": "c3-exhaustion-proxy-668bea7df567",
+            "training_data_source": "synthetic_demo",
+            "validation_status": "synthetic_only_not_empirically_validated",
+            "trained_burnout_model": false,
+            "clinical_validation": false
+          },
+          "training_data_source": "synthetic_demo",
+          "model_applied": true,
+          "forecast_target": "next_weekly_exhaustion_ge4_within_next7days",
+          "clinical_validation": false,
+          "instrument_validated": false,
+          "knowledge_cutoff_enforced": true,
+          "features_use_prior_complete_days": true,
+          "no_llm_used": true
+        },
+        "warnings": [
+          "This estimates an exploratory self-reported exhaustion proxy, not burnout, diagnosis or a validated mental-health risk probability.",
+          "The single-item weekly exhaustion scale and the 0.5 display threshold are exploratory, not validated clinical instruments/cutoffs.",
+          "SYNTHETIC DEMO: observations/outcomes and trained risk probabilities are technical fixtures, not measured student evidence."
+        ]
+      },
+      "missing_weekly": {
+        "prediction_id": "723cb0c0-8df1-4a01-8dfc-d7096918bed2",
+        "participant_id": "C3-missing_weekly-8f31517e",
+        "client_prediction_id": "first-prediction",
+        "created_at": "2026-10-17T08:46:54.464020+00:00",
+        "as_of": "2026-10-17T08:46:54.450599+00:00",
+        "data_source": "synthetic_demo",
+        "status": "demo_only_prediction",
+        "snapshot": {
+          "feature_schema_version": "daily14-weekly28-exhaustion7-v1",
+          "study_timezone": "Asia/Colombo",
+          "as_of": "2026-10-17T08:46:54.450599+00:00",
+          "lookback_start": "2026-10-03",
+          "lookback_end": "2026-10-16",
+          "target_start": "2026-10-18",
+          "target_end": "2026-10-24",
+          "status": "sufficient_history",
+          "reasons": [],
+          "daily_report_count": 14,
+          "behavior_report_days": 14,
+          "weekly_report_available": false,
+          "features": {
+            "sleep_hours_mean": 7.799999999999999,
+            "sleep_hours_std": 8.881784197001252e-16,
+            "sleep_hours_slope": 0.0,
+            "study_minutes_mean": 160.0,
+            "study_minutes_std": 0.0,
+            "late_study_fraction": 0.0625,
+            "break_minutes_mean": 65.0,
+            "completion_ratio": 1.0,
+            "incomplete_task_days_fraction": 0.0,
+            "daily_coverage_fraction": 1.0,
+            "behavior_coverage_fraction": 1.0,
+            "fatigue_mean": 2.0,
+            "mental_strain_mean": 2.0,
+            "concentration_readiness_mean": 4.0,
+            "fatigue_slope": 0.0,
+            "latest_weekly_exhaustion": null,
+            "latest_weekly_disengagement": null,
+            "latest_weekly_academic_efficacy": null,
+            "weekly_age_days": null,
+            "weekly_missing": 1.0
+          },
+          "input_record_ids": {
+            "daily": [
+              "eb7a1b7b-7f39-4a18-89dc-f6357864dfca",
+              "a605667a-94bd-41fa-9aad-beff4980405b",
+              "431c9dc9-4907-4a25-b99a-b459ec26a1a7",
+              "57cf54c3-6c7e-41bc-89c9-c04dd5200d49",
+              "f2d4da4d-a30d-4354-baca-afc27b40fca4",
+              "715b010f-c50c-49a2-8cac-c65365d4dce4",
+              "91427f48-0eca-4bfe-8e09-0f44ea06c85b",
+              "ab45f34c-66b9-4a9e-9e70-f4c514c9d680",
+              "7921809b-5819-4026-9107-68ebdf3f4faf",
+              "b3310715-2d50-4304-8054-18a3610b8f31",
+              "bb3a5894-b149-4ad3-bc79-3da67c8ea7e4",
+              "ff01b362-97cb-43b5-80dd-69b4fde44923",
+              "db7dfdd0-fb22-4f4a-9393-0613403669fd",
+              "c6ef55d5-e996-4643-9253-7ed7ee94c2a7"
+            ],
+            "weekly": []
+          },
+          "missing_feature_names": [
+            "latest_weekly_exhaustion",
+            "latest_weekly_disengagement",
+            "latest_weekly_academic_efficacy",
+            "weekly_age_days"
+          ],
+          "modality_context": {
+            "facial_accepted_sessions_in_window": 0,
+            "voice_accepted_sessions_in_window": 0,
+            "facial_or_voice_used_as_risk_predictors": false,
+            "reason": "Availability is reported; visual deviation/acted emotion are not validated exhaustion probabilities and are not fused in this baseline."
+          }
+        },
+        "snapshot_sha256": "0655710f577f2f634e3102591bfa26d4a5eff5362a518bcfa3b4acebb4586c08",
+        "risk": {
+          "model_probability": 0.1083900483386146,
+          "probability_scope": "uncalibrated_simulation_probability",
+          "proxy_band": "lower_proxy_score",
+          "decision_threshold": 0.5,
+          "clinical_risk_probability": null,
+          "model_id": "c3-exhaustion-proxy-668bea7df567",
+          "target": "next_weekly_exhaustion_ge4_within_next7days"
+        },
+        "evidence": {
+          "model_status": {
+            "status": "ready",
+            "reason": null,
+            "model_id": "c3-exhaustion-proxy-668bea7df567",
+            "training_data_source": "synthetic_demo",
+            "validation_status": "synthetic_only_not_empirically_validated",
+            "trained_burnout_model": false,
+            "clinical_validation": false
+          },
+          "training_data_source": "synthetic_demo",
+          "model_applied": true,
+          "forecast_target": "next_weekly_exhaustion_ge4_within_next7days",
+          "clinical_validation": false,
+          "instrument_validated": false,
+          "knowledge_cutoff_enforced": true,
+          "features_use_prior_complete_days": true,
+          "no_llm_used": true
+        },
+        "warnings": [
+          "This estimates an exploratory self-reported exhaustion proxy, not burnout, diagnosis or a validated mental-health risk probability.",
+          "The single-item weekly exhaustion scale and the 0.5 display threshold are exploratory, not validated clinical instruments/cutoffs.",
+          "SYNTHETIC DEMO: observations/outcomes and trained risk probabilities are technical fixtures, not measured student evidence."
+        ]
+      },
+      "sparse": {
+        "prediction_id": "49b1a6e8-07e8-4bf0-83d6-f280d3656505",
+        "participant_id": "C3-sparse-174589d2",
+        "client_prediction_id": "first-prediction",
+        "created_at": "2026-10-17T08:46:54.501618+00:00",
+        "as_of": "2026-10-17T08:46:54.499309+00:00",
+        "data_source": "synthetic_demo",
+        "status": "insufficient_history",
+        "snapshot": {
+          "feature_schema_version": "daily14-weekly28-exhaustion7-v1",
+          "study_timezone": "Asia/Colombo",
+          "as_of": "2026-10-17T08:46:54.499309+00:00",
+          "lookback_start": "2026-10-03",
+          "lookback_end": "2026-10-16",
+          "target_start": "2026-10-18",
+          "target_end": "2026-10-24",
+          "status": "insufficient_history",
+          "reasons": [
+            "require_at_least_7_distinct_daily_reports_in_prior_14_days",
+            "require_at_least_7_days_with_sleep_study_or_task_observations"
+          ],
+          "daily_report_count": 3,
+          "behavior_report_days": 3,
+          "weekly_report_available": false,
+          "features": {
+            "sleep_hours_mean": 7.8,
+            "sleep_hours_std": 0.0,
+            "sleep_hours_slope": null,
+            "study_minutes_mean": 160.0,
+            "study_minutes_std": 0.0,
+            "late_study_fraction": 0.0625,
+            "break_minutes_mean": 65.0,
+            "completion_ratio": 1.0,
+            "incomplete_task_days_fraction": 0.0,
+            "daily_coverage_fraction": 0.21428571428571427,
+            "behavior_coverage_fraction": 0.21428571428571427,
+            "fatigue_mean": 2.0,
+            "mental_strain_mean": 2.0,
+            "concentration_readiness_mean": 4.0,
+            "fatigue_slope": null,
+            "latest_weekly_exhaustion": null,
+            "latest_weekly_disengagement": null,
+            "latest_weekly_academic_efficacy": null,
+            "weekly_age_days": null,
+            "weekly_missing": 1.0
+          },
+          "input_record_ids": {
+            "daily": [
+              "7834967b-ddf3-4472-a54f-8df89748cc81",
+              "ab4c0fe4-8f84-41f1-bf13-7058273a4b15",
+              "cb2a95b9-c7da-4440-a23a-1ff4cfdcd49e"
+            ],
+            "weekly": []
+          },
+          "missing_feature_names": [
+            "sleep_hours_slope",
+            "fatigue_slope",
+            "latest_weekly_exhaustion",
+            "latest_weekly_disengagement",
+            "latest_weekly_academic_efficacy",
+            "weekly_age_days"
+          ],
+          "modality_context": {
+            "facial_accepted_sessions_in_window": 0,
+            "voice_accepted_sessions_in_window": 0,
+            "facial_or_voice_used_as_risk_predictors": false,
+            "reason": "Availability is reported; visual deviation/acted emotion are not validated exhaustion probabilities and are not fused in this baseline."
+          }
+        },
+        "snapshot_sha256": "6d2affec9e75a391a3ea208d588d31c95ddad81edca1fefbcff5012af759fb94",
+        "risk": null,
+        "evidence": {
+          "model_status": {
+            "status": "ready",
+            "reason": null,
+            "model_id": "c3-exhaustion-proxy-668bea7df567",
+            "training_data_source": "synthetic_demo",
+            "validation_status": "synthetic_only_not_empirically_validated",
+            "trained_burnout_model": false,
+            "clinical_validation": false
+          },
+          "training_data_source": "synthetic_demo",
+          "model_applied": false,
+          "forecast_target": "next_weekly_exhaustion_ge4_within_next7days",
+          "clinical_validation": false,
+          "instrument_validated": false,
+          "knowledge_cutoff_enforced": true,
+          "features_use_prior_complete_days": true,
+          "no_llm_used": true
+        },
+        "warnings": [
+          "This estimates an exploratory self-reported exhaustion proxy, not burnout, diagnosis or a validated mental-health risk probability.",
+          "The single-item weekly exhaustion scale and the 0.5 display threshold are exploratory, not validated clinical instruments/cutoffs.",
+          "SYNTHETIC DEMO: observations/outcomes and trained risk probabilities are technical fixtures, not measured student evidence."
+        ]
+      }
+    }
+  },
+  "interventions_synthetic_verification": {
+    "data_source": "synthetic_demo",
+    "participant_id": "C4-DEMO-69169b70",
+    "preferences": {
+      "preference_id": "de48e21e-e075-4e12-b7c2-8d4f224ae4e8",
+      "participant_id": "C4-DEMO-69169b70",
+      "data_source": "synthetic_demo",
+      "version": 1,
+      "created_at": "2026-10-17T08:46:54.526486+00:00",
+      "preferences": {
+        "category_ratings": {
+          "pause": 2,
+          "movement": 1,
+          "planning": 5,
+          "reflection": 4,
+          "audio": 1
+        },
+        "excluded_activity_ids": [],
+        "allow_movement": false,
+        "allow_audio": false,
+        "max_duration_seconds": 600
+      }
+    },
+    "comparison": {
+      "generic": {
+        "recommendation_id": "296adcc2-4599-451c-899e-808f362af75c",
+        "participant_id": "C4-DEMO-69169b70",
+        "data_source": "synthetic_demo",
+        "client_request_id": "initial-generic",
+        "created_at": "2026-10-17T08:46:54.538229+00:00",
+        "expires_at": "2026-10-18T08:46:54.538229+00:00",
+        "status": "offered",
+        "strategy": "generic",
+        "policy_version": "preference-feedback-rules-v1",
+        "catalog_version": "student-activities-v1",
+        "context": {
+          "goal": "refocus",
+          "available_seconds": 300
+        },
+        "references": [],
+        "preference_snapshot": {
+          "preference_id": "de48e21e-e075-4e12-b7c2-8d4f224ae4e8",
+          "participant_id": "C4-DEMO-69169b70",
+          "data_source": "synthetic_demo",
+          "version": 1,
+          "created_at": "2026-10-17T08:46:54.526486+00:00",
+          "preferences": {
+            "category_ratings": {
+              "pause": 2,
+              "movement": 1,
+              "planning": 5,
+              "reflection": 4,
+              "audio": 1
+            },
+            "excluded_activity_ids": [],
+            "allow_movement": false,
+            "allow_audio": false,
+            "max_duration_seconds": 600
+          }
+        },
+        "options": [
+          {
+            "activity": {
+              "activity_id": "quiet_pause",
+              "title": "A quiet pause",
+              "category": "pause",
+              "duration_seconds": 90,
+              "goals": [
+                "rest",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "Pause your current task and sit comfortably.",
+                "Let your attention settle on your surroundings; breathe in your usual comfortable way.",
+                "Stop whenever you choose and decide what you would like to do next."
+              ]
+            },
+            "score": 0.91,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.7,
+              "category_preference": 0.25,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": false,
+              "preference_used": false,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          },
+          {
+            "activity": {
+              "activity_id": "screen_break",
+              "title": "Step away from the screen",
+              "category": "pause",
+              "duration_seconds": 120,
+              "goals": [
+                "rest",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "Set your screen aside if practical.",
+                "Look around the room or at a comfortable distant point.",
+                "Return when you choose; you can remain seated throughout."
+              ]
+            },
+            "score": 0.88,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.6,
+              "category_preference": 0.25,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": false,
+              "preference_used": false,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          },
+          {
+            "activity": {
+              "activity_id": "next_small_step",
+              "title": "Choose one small next step",
+              "category": "planning",
+              "duration_seconds": 180,
+              "goals": [
+                "organize",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "List the tasks currently competing for your attention.",
+                "Choose one manageable next action; set the rest aside for now.",
+                "Decide when to begin or choose to rest first."
+              ]
+            },
+            "score": 0.82,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.4,
+              "category_preference": 1.0,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": false,
+              "preference_used": false,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          }
+        ],
+        "eligible_count": 4,
+        "excluded": [
+          {
+            "activity_id": "comfortable_walk",
+            "reasons": [
+              "movement_disabled"
+            ]
+          },
+          {
+            "activity_id": "chosen_audio",
+            "reasons": [
+              "audio_disabled"
+            ]
+          }
+        ],
+        "evidence": {
+          "clinical_validation": false,
+          "clinical_risk_used": false,
+          "trained_model": false,
+          "score_semantics": "engineering_ranking_score_not_health_benefit_probability",
+          "logging_policy": "deterministic_ranking_user_selects_from_options",
+          "action_propensity": null,
+          "feedback_scope": "same_participant_same_source_last90days_last20_per_activity",
+          "preference_defaulted": false
+        },
+        "notice": "Optional everyday activities, not treatment or emergency support. Ranking scores describe policy preferences, not expected health benefit."
+      },
+      "preference": {
+        "recommendation_id": "a5b088da-4568-4c51-b6b5-55cc897e8320",
+        "participant_id": "C4-DEMO-69169b70",
+        "data_source": "synthetic_demo",
+        "client_request_id": "initial-preference",
+        "created_at": "2026-10-17T08:46:54.550371+00:00",
+        "expires_at": "2026-10-18T08:46:54.550371+00:00",
+        "status": "offered",
+        "strategy": "preference",
+        "policy_version": "preference-feedback-rules-v1",
+        "catalog_version": "student-activities-v1",
+        "context": {
+          "goal": "refocus",
+          "available_seconds": 300
+        },
+        "references": [],
+        "preference_snapshot": {
+          "preference_id": "de48e21e-e075-4e12-b7c2-8d4f224ae4e8",
+          "participant_id": "C4-DEMO-69169b70",
+          "data_source": "synthetic_demo",
+          "version": 1,
+          "created_at": "2026-10-17T08:46:54.526486+00:00",
+          "preferences": {
+            "category_ratings": {
+              "pause": 2,
+              "movement": 1,
+              "planning": 5,
+              "reflection": 4,
+              "audio": 1
+            },
+            "excluded_activity_ids": [],
+            "allow_movement": false,
+            "allow_audio": false,
+            "max_duration_seconds": 600
+          }
+        },
+        "options": [
+          {
+            "activity": {
+              "activity_id": "next_small_step",
+              "title": "Choose one small next step",
+              "category": "planning",
+              "duration_seconds": 180,
+              "goals": [
+                "organize",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "List the tasks currently competing for your attention.",
+                "Choose one manageable next action; set the rest aside for now.",
+                "Decide when to begin or choose to rest first."
+              ]
+            },
+            "score": 0.901,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.4,
+              "category_preference": 1.0,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": false,
+              "preference_used": true,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          },
+          {
+            "activity": {
+              "activity_id": "quiet_pause",
+              "title": "A quiet pause",
+              "category": "pause",
+              "duration_seconds": 90,
+              "goals": [
+                "rest",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "Pause your current task and sit comfortably.",
+                "Let your attention settle on your surroundings; breathe in your usual comfortable way.",
+                "Stop whenever you choose and decide what you would like to do next."
+              ]
+            },
+            "score": 0.613,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.7,
+              "category_preference": 0.25,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": false,
+              "preference_used": true,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          },
+          {
+            "activity": {
+              "activity_id": "screen_break",
+              "title": "Step away from the screen",
+              "category": "pause",
+              "duration_seconds": 120,
+              "goals": [
+                "rest",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "Set your screen aside if practical.",
+                "Look around the room or at a comfortable distant point.",
+                "Return when you choose; you can remain seated throughout."
+              ]
+            },
+            "score": 0.5965,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.6,
+              "category_preference": 0.25,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": false,
+              "preference_used": true,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          }
+        ],
+        "eligible_count": 4,
+        "excluded": [
+          {
+            "activity_id": "comfortable_walk",
+            "reasons": [
+              "movement_disabled"
+            ]
+          },
+          {
+            "activity_id": "chosen_audio",
+            "reasons": [
+              "audio_disabled"
+            ]
+          }
+        ],
+        "evidence": {
+          "clinical_validation": false,
+          "clinical_risk_used": false,
+          "trained_model": false,
+          "score_semantics": "engineering_ranking_score_not_health_benefit_probability",
+          "logging_policy": "deterministic_ranking_user_selects_from_options",
+          "action_propensity": null,
+          "feedback_scope": "same_participant_same_source_last90days_last20_per_activity",
+          "preference_defaulted": false
+        },
+        "notice": "Optional everyday activities, not treatment or emergency support. Ranking scores describe policy preferences, not expected health benefit."
+      },
+      "adaptive": {
+        "recommendation_id": "23b5f611-02e3-49af-9743-4b9df9bf972d",
+        "participant_id": "C4-DEMO-69169b70",
+        "data_source": "synthetic_demo",
+        "client_request_id": "initial-adaptive",
+        "created_at": "2026-10-17T08:46:54.561231+00:00",
+        "expires_at": "2026-10-18T08:46:54.561231+00:00",
+        "status": "offered",
+        "strategy": "adaptive",
+        "policy_version": "preference-feedback-rules-v1",
+        "catalog_version": "student-activities-v1",
+        "context": {
+          "goal": "refocus",
+          "available_seconds": 300
+        },
+        "references": [],
+        "preference_snapshot": {
+          "preference_id": "de48e21e-e075-4e12-b7c2-8d4f224ae4e8",
+          "participant_id": "C4-DEMO-69169b70",
+          "data_source": "synthetic_demo",
+          "version": 1,
+          "created_at": "2026-10-17T08:46:54.526486+00:00",
+          "preferences": {
+            "category_ratings": {
+              "pause": 2,
+              "movement": 1,
+              "planning": 5,
+              "reflection": 4,
+              "audio": 1
+            },
+            "excluded_activity_ids": [],
+            "allow_movement": false,
+            "allow_audio": false,
+            "max_duration_seconds": 600
+          }
+        },
+        "options": [
+          {
+            "activity": {
+              "activity_id": "next_small_step",
+              "title": "Choose one small next step",
+              "category": "planning",
+              "duration_seconds": 180,
+              "goals": [
+                "organize",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "List the tasks currently competing for your attention.",
+                "Choose one manageable next action; set the rest aside for now.",
+                "Decide when to begin or choose to rest first."
+              ]
+            },
+            "score": 0.801,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.4,
+              "category_preference": 1.0,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": true,
+              "preference_used": true,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          },
+          {
+            "activity": {
+              "activity_id": "quiet_pause",
+              "title": "A quiet pause",
+              "category": "pause",
+              "duration_seconds": 90,
+              "goals": [
+                "rest",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "Pause your current task and sit comfortably.",
+                "Let your attention settle on your surroundings; breathe in your usual comfortable way.",
+                "Stop whenever you choose and decide what you would like to do next."
+              ]
+            },
+            "score": 0.663,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.7,
+              "category_preference": 0.25,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": true,
+              "preference_used": true,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          },
+          {
+            "activity": {
+              "activity_id": "screen_break",
+              "title": "Step away from the screen",
+              "category": "pause",
+              "duration_seconds": 120,
+              "goals": [
+                "rest",
+                "refocus"
+              ],
+              "movement": false,
+              "audio": false,
+              "instructions": [
+                "Set your screen aside if practical.",
+                "Look around the room or at a comfortable distant point.",
+                "Return when you choose; you can remain seated throughout."
+              ]
+            },
+            "score": 0.6465,
+            "explanation": {
+              "goal_match": 1.0,
+              "duration_fit": 0.6,
+              "category_preference": 0.25,
+              "feedback_posterior": 0.5,
+              "feedback_count": 0,
+              "feedback_used": true,
+              "preference_used": true,
+              "recent_repeat_penalty": 0.0,
+              "feedback_ids": []
+            }
+          }
+        ],
+        "eligible_count": 4,
+        "excluded": [
+          {
+            "activity_id": "comfortable_walk",
+            "reasons": [
+              "movement_disabled"
+            ]
+          },
+          {
+            "activity_id": "chosen_audio",
+            "reasons": [
+              "audio_disabled"
+            ]
+          }
+        ],
+        "evidence": {
+          "clinical_validation": false,
+          "clinical_risk_used": false,
+          "trained_model": false,
+          "score_semantics": "engineering_ranking_score_not_health_benefit_probability",
+          "logging_policy": "deterministic_ranking_user_selects_from_options",
+          "action_propensity": null,
+          "feedback_scope": "same_participant_same_source_last90days_last20_per_activity",
+          "preference_defaulted": false
+        },
+        "notice": "Optional everyday activities, not treatment or emergency support. Ranking scores describe policy preferences, not expected health benefit."
+      }
+    },
+    "started": {
+      "session_id": "52e0a4b8-fd9f-4bdc-877b-c31b21bd4cc8",
+      "participant_id": "C4-DEMO-69169b70",
+      "data_source": "synthetic_demo",
+      "recommendation_id": "23b5f611-02e3-49af-9743-4b9df9bf972d",
+      "activity_id": "next_small_step",
+      "status": "started",
+      "started_at": "2026-10-17T08:46:54.570789+00:00",
+      "ended_at": null,
+      "server_elapsed_seconds": null,
+      "activity": {
+        "activity_id": "next_small_step",
+        "title": "Choose one small next step",
+        "category": "planning",
+        "duration_seconds": 180,
+        "goals": [
+          "organize",
+          "refocus"
+        ],
+        "movement": false,
+        "audio": false,
+        "instructions": [
+          "List the tasks currently competing for your attention.",
+          "Choose one manageable next action; set the rest aside for now.",
+          "Decide when to begin or choose to rest first."
+        ]
+      },
+      "adherence_verified": false,
+      "note": "Completion is a user-reported event. Elapsed wall time does not establish participation or health improvement."
+    },
+    "terminal": {
+      "event_id": "3fe3b8b7-fae5-4afb-9985-e00040dc2318",
+      "created_at": "2026-10-17T08:46:54.584720+00:00",
+      "session": {
+        "session_id": "52e0a4b8-fd9f-4bdc-877b-c31b21bd4cc8",
+        "participant_id": "C4-DEMO-69169b70",
+        "data_source": "synthetic_demo",
+        "recommendation_id": "23b5f611-02e3-49af-9743-4b9df9bf972d",
+        "activity_id": "next_small_step",
+        "status": "completed",
+        "started_at": "2026-10-17T08:46:54.570789+00:00",
+        "ended_at": "2026-10-17T08:46:54.584720+00:00",
+        "server_elapsed_seconds": 0.013931,
+        "activity": {
+          "activity_id": "next_small_step",
+          "title": "Choose one small next step",
+          "category": "planning",
+          "duration_seconds": 180,
+          "goals": [
+            "organize",
+            "refocus"
+          ],
+          "movement": false,
+          "audio": false,
+          "instructions": [
+            "List the tasks currently competing for your attention.",
+            "Choose one manageable next action; set the rest aside for now.",
+            "Decide when to begin or choose to rest first."
+          ]
+        },
+        "adherence_verified": false,
+        "note": "Completion is a user-reported event. Elapsed wall time does not establish participation or health improvement."
+      }
+    },
+    "feedback": {
+      "feedback_id": "78afa386-78f1-4c7a-8b71-3fcf451eacd6",
+      "participant_id": "C4-DEMO-69169b70",
+      "session_id": "52e0a4b8-fd9f-4bdc-877b-c31b21bd4cc8",
+      "activity_id": "next_small_step",
+      "data_source": "synthetic_demo",
+      "created_at": "2026-10-17T08:46:54.597677+00:00",
+      "helpfulness": 1,
+      "would_repeat": false,
+      "normalized_helpfulness": 0.0,
+      "clinical_outcome": false
+    },
+    "after_feedback": {
+      "recommendation_id": "937dea52-c634-4417-af96-6837268839fe",
+      "participant_id": "C4-DEMO-69169b70",
+      "data_source": "synthetic_demo",
+      "client_request_id": "after-feedback",
+      "created_at": "2026-10-17T08:46:54.605249+00:00",
+      "expires_at": "2026-10-18T08:46:54.605249+00:00",
+      "status": "offered",
+      "strategy": "adaptive",
+      "policy_version": "preference-feedback-rules-v1",
+      "catalog_version": "student-activities-v1",
+      "context": {
+        "goal": "refocus",
+        "available_seconds": 300
+      },
+      "references": [],
+      "preference_snapshot": {
+        "preference_id": "de48e21e-e075-4e12-b7c2-8d4f224ae4e8",
+        "participant_id": "C4-DEMO-69169b70",
+        "data_source": "synthetic_demo",
+        "version": 1,
+        "created_at": "2026-10-17T08:46:54.526486+00:00",
+        "preferences": {
+          "category_ratings": {
+            "pause": 2,
+            "movement": 1,
+            "planning": 5,
+            "reflection": 4,
+            "audio": 1
+          },
+          "excluded_activity_ids": [],
+          "allow_movement": false,
+          "allow_audio": false,
+          "max_duration_seconds": 600
+        }
+      },
+      "options": [
+        {
+          "activity": {
+            "activity_id": "next_small_step",
+            "title": "Choose one small next step",
+            "category": "planning",
+            "duration_seconds": 180,
+            "goals": [
+              "organize",
+              "refocus"
+            ],
+            "movement": false,
+            "audio": false,
+            "instructions": [
+              "List the tasks currently competing for your attention.",
+              "Choose one manageable next action; set the rest aside for now.",
+              "Decide when to begin or choose to rest first."
+            ]
+          },
+          "score": 0.726,
+          "explanation": {
+            "goal_match": 1.0,
+            "duration_fit": 0.4,
+            "category_preference": 1.0,
+            "feedback_posterior": 0.375,
+            "feedback_count": 1,
+            "feedback_used": true,
+            "preference_used": true,
+            "recent_repeat_penalty": 0.05,
+            "feedback_ids": [
+              "78afa386-78f1-4c7a-8b71-3fcf451eacd6"
+            ]
+          }
+        },
+        {
+          "activity": {
+            "activity_id": "quiet_pause",
+            "title": "A quiet pause",
+            "category": "pause",
+            "duration_seconds": 90,
+            "goals": [
+              "rest",
+              "refocus"
+            ],
+            "movement": false,
+            "audio": false,
+            "instructions": [
+              "Pause your current task and sit comfortably.",
+              "Let your attention settle on your surroundings; breathe in your usual comfortable way.",
+              "Stop whenever you choose and decide what you would like to do next."
+            ]
+          },
+          "score": 0.663,
+          "explanation": {
+            "goal_match": 1.0,
+            "duration_fit": 0.7,
+            "category_preference": 0.25,
+            "feedback_posterior": 0.5,
+            "feedback_count": 0,
+            "feedback_used": true,
+            "preference_used": true,
+            "recent_repeat_penalty": 0.0,
+            "feedback_ids": []
+          }
+        },
+        {
+          "activity": {
+            "activity_id": "screen_break",
+            "title": "Step away from the screen",
+            "category": "pause",
+            "duration_seconds": 120,
+            "goals": [
+              "rest",
+              "refocus"
+            ],
+            "movement": false,
+            "audio": false,
+            "instructions": [
+              "Set your screen aside if practical.",
+              "Look around the room or at a comfortable distant point.",
+              "Return when you choose; you can remain seated throughout."
+            ]
+          },
+          "score": 0.6465,
+          "explanation": {
+            "goal_match": 1.0,
+            "duration_fit": 0.6,
+            "category_preference": 0.25,
+            "feedback_posterior": 0.5,
+            "feedback_count": 0,
+            "feedback_used": true,
+            "preference_used": true,
+            "recent_repeat_penalty": 0.0,
+            "feedback_ids": []
+          }
+        }
+      ],
+      "eligible_count": 4,
+      "excluded": [
+        {
+          "activity_id": "comfortable_walk",
+          "reasons": [
+            "movement_disabled"
+          ]
+        },
+        {
+          "activity_id": "chosen_audio",
+          "reasons": [
+            "audio_disabled"
+          ]
+        }
+      ],
+      "evidence": {
+        "clinical_validation": false,
+        "clinical_risk_used": false,
+        "trained_model": false,
+        "score_semantics": "engineering_ranking_score_not_health_benefit_probability",
+        "logging_policy": "deterministic_ranking_user_selects_from_options",
+        "action_propensity": null,
+        "feedback_scope": "same_participant_same_source_last90days_last20_per_activity",
+        "preference_defaulted": false
+      },
+      "notice": "Optional everyday activities, not treatment or emergency support. Ranking scores describe policy preferences, not expected health benefit."
+    },
+    "current_session": {
+      "session_id": "52e0a4b8-fd9f-4bdc-877b-c31b21bd4cc8",
+      "participant_id": "C4-DEMO-69169b70",
+      "data_source": "synthetic_demo",
+      "recommendation_id": "23b5f611-02e3-49af-9743-4b9df9bf972d",
+      "activity_id": "next_small_step",
+      "status": "completed",
+      "started_at": "2026-10-17T08:46:54.570789+00:00",
+      "ended_at": "2026-10-17T08:46:54.584720+00:00",
+      "server_elapsed_seconds": 0.013931,
+      "activity": {
+        "activity_id": "next_small_step",
+        "title": "Choose one small next step",
+        "category": "planning",
+        "duration_seconds": 180,
+        "goals": [
+          "organize",
+          "refocus"
+        ],
+        "movement": false,
+        "audio": false,
+        "instructions": [
+          "List the tasks currently competing for your attention.",
+          "Choose one manageable next action; set the rest aside for now.",
+          "Decide when to begin or choose to rest first."
+        ]
+      },
+      "adherence_verified": false,
+      "note": "Completion is a user-reported event. Elapsed wall time does not establish participation or health improvement."
+    },
+    "metrics": {
+      "participant_id": "C4-DEMO-69169b70",
+      "data_source": "synthetic_demo",
+      "strategies": [
+        {
+          "strategy": "generic",
+          "offered_recommendations": 1,
+          "started_sessions": 0,
+          "completed_sessions": 0,
+          "abandoned_sessions": 0,
+          "unfinished_sessions": 0,
+          "feedback_count": 0,
+          "start_rate": 0.0,
+          "completion_rate_among_started": null,
+          "feedback_response_rate_among_completed": null,
+          "mean_helpfulness_among_responders": null,
+          "would_repeat_fraction_among_responders": null
+        },
+        {
+          "strategy": "preference",
+          "offered_recommendations": 1,
+          "started_sessions": 0,
+          "completed_sessions": 0,
+          "abandoned_sessions": 0,
+          "unfinished_sessions": 0,
+          "feedback_count": 0,
+          "start_rate": 0.0,
+          "completion_rate_among_started": null,
+          "feedback_response_rate_among_completed": null,
+          "mean_helpfulness_among_responders": null,
+          "would_repeat_fraction_among_responders": null
+        },
+        {
+          "strategy": "adaptive",
+          "offered_recommendations": 2,
+          "started_sessions": 1,
+          "completed_sessions": 1,
+          "abandoned_sessions": 0,
+          "unfinished_sessions": 0,
+          "feedback_count": 1,
+          "start_rate": 0.5,
+          "completion_rate_among_started": 1.0,
+          "feedback_response_rate_among_completed": 1.0,
+          "mean_helpfulness_among_responders": 1.0,
+          "would_repeat_fraction_among_responders": 0.0
+        }
+      ],
+      "causal_policy_comparison": false,
+      "clinical_effectiveness": false,
+      "note": "Descriptive counts only. Nonresponse is missing, not a zero rating. User choices, unmatched contexts and deterministic ranking confound comparisons."
+    },
+    "warning": "Constructed software scenario with a simulated rating; completion and elapsed time are not adherence or benefit evidence."
+  }
+}

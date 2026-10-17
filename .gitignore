@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.venv-extractor/
+
+# Local configuration and secrets
+.env
+
+# Runtime data: SQLite database (participant records), downloaded datasets,
+# generated synthetic data and demo outputs. Never commit these.
+data/
+
+# Local participant recordings for the optional video adapter
+recordings/
+
+# MediaPipe task assets downloaded for the optional video adapter
+*.task
+
+# Mobile app dependencies and build output
+node_modules/
+.expo/
+build/
+.dart_tool/
+Pods/
+
+# Editors and OS
+.DS_Store
+.vscode/
+.idea/
