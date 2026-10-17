@@ -1,0 +1,37 @@
+{
+  "dataset": "RAVDESS",
+  "source": "https://zenodo.org/records/1188976",
+  "license": "CC-BY-NC-SA-4.0",
+  "citation": "Livingstone SR, Russo FA (2018). RAVDESS. PLoS ONE 13(5): e0196391. https://doi.org/10.1371/journal.pone.0196391",
+  "modifications": "None; original WAV files copied unchanged.",
+  "purpose": "public-acted-audio technical demo; not independent evaluation",
+  "samples": [
+    {
+      "filename": "03-01-01-01-01-01-19.wav",
+      "dataset_recording_id": "03-01-01-01-01-01-19",
+      "actor": 19,
+      "dataset_label": "neutral",
+      "sha256": "1a48046495796d742987711910f507e1c373b42d779b25f031285e27e5ee80ed",
+      "training_member": false,
+      "test_member": true
+    },
+    {
+      "filename": "03-01-03-01-01-01-19.wav",
+      "dataset_recording_id": "03-01-03-01-01-01-19",
+      "actor": 19,
+      "dataset_label": "happy",
+      "sha256": "490ebea9bfcbf193abf2d0efea014f0a63f0bc35c15fa0f71a09c7d5d04a2576",
+      "training_member": false,
+      "test_member": true
+    },
+    {
+      "filename": "03-01-05-01-01-01-19.wav",
+      "dataset_recording_id": "03-01-05-01-01-01-19",
+      "actor": 19,
+      "dataset_label": "angry",
+      "sha256": "47f1536a1fa2b80db7b5e6d0fdfe2bd1b3ee513ddef14eeed043be9143ceef3f",
+      "training_member": false,
+      "test_member": true
+    }
+  ]
+}
