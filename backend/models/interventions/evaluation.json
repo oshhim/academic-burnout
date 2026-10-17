@@ -1,0 +1,62 @@
+{
+  "policy_version": "preference-feedback-rules-v1",
+  "catalog_version": "student-activities-v1",
+  "data_source": "synthetic_demo",
+  "synthetic_only": true,
+  "human_participants": 0,
+  "seed": 418,
+  "simulated_people": 120,
+  "rounds_per_person": 28,
+  "strategy_comparison": [
+    {
+      "strategy": "generic",
+      "decision_contexts": 3360,
+      "no_eligible_contexts": 642,
+      "started": 2718,
+      "completed": 2378,
+      "observed_feedback": 1944,
+      "hard_constraint_violations": 0,
+      "distinct_activities_chosen": 5,
+      "completion_rate_among_started": 0.8749080206033848,
+      "mean_observed_helpfulness": 3.2757201646090537,
+      "mean_simulator_utility_per_person_among_completed": 0.5657140233904856
+    },
+    {
+      "strategy": "preference",
+      "decision_contexts": 3360,
+      "no_eligible_contexts": 642,
+      "started": 2718,
+      "completed": 2393,
+      "observed_feedback": 1959,
+      "hard_constraint_violations": 0,
+      "distinct_activities_chosen": 6,
+      "completion_rate_among_started": 0.8804267844002943,
+      "mean_observed_helpfulness": 3.42572741194487,
+      "mean_simulator_utility_per_person_among_completed": 0.6028150713073986
+    },
+    {
+      "strategy": "adaptive",
+      "decision_contexts": 3360,
+      "no_eligible_contexts": 642,
+      "started": 2718,
+      "completed": 2375,
+      "observed_feedback": 1939,
+      "hard_constraint_violations": 0,
+      "distinct_activities_chosen": 6,
+      "completion_rate_among_started": 0.8738042678440029,
+      "mean_observed_helpfulness": 3.406910778751934,
+      "mean_simulator_utility_per_person_among_completed": 0.5993679919101472
+    }
+  ],
+  "clinical_validation": false,
+  "weight_optimization_performed": false,
+  "real_world_off_policy_evaluation": false,
+  "protocol": "Fixed policy weights, common synthetic person/context/potential responses across strategies. Each strategy receives only its own observed earlier feedback. First option always started; missing ratings stay missing.",
+  "reward_generator": "Hidden random category likes + goal term + independent noise; noisy/partly neutral declared preferences. Completion and feedback sampling separate. This environment rewards category fit by construction.",
+  "limitations": [
+    "No human dataset or health outcomes. Results describe one engineered simulator only.",
+    "Selection always chooses first offer; human choices, adherence and preferences can differ.",
+    "Weights are not learned or clinically calibrated; simulator utility is not wellbeing improvement.",
+    "Deterministic real logs have no full action support or valid propensity estimates for unbiased counterfactual comparisons."
+  ]
+}

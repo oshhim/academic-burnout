@@ -1,0 +1,37 @@
+{
+  "policy_version": "preference-feedback-rules-v1",
+  "catalog_version": "student-activities-v1",
+  "component": 4,
+  "implementation": "deterministic_constraint_filter_and_weighted_ranker",
+  "strategies": [
+    "generic",
+    "preference",
+    "adaptive"
+  ],
+  "training_dataset": null,
+  "requires_trained_artifact": false,
+  "training_data_source": "not_applicable_fixed_policy",
+  "evaluation_data_source": "synthetic_demo",
+  "clinical_validation": false,
+  "contextual_bandit": false,
+  "weight_status": "provisional_fixed_engineering_settings",
+  "inputs": [
+    "chosen_goal",
+    "available_seconds",
+    "explicit_preferences",
+    "same_participant_source_matched_prior_helpfulness"
+  ],
+  "modalities_used_for_ranking": {
+    "face": false,
+    "voice": false,
+    "risk": false
+  },
+  "limits": [
+    "No clinical benefit model or treatment claim.",
+    "No unbiased causal comparison from deterministic self-selected logs.",
+    "Response scores are not health probabilities.",
+    "Completion is unverified self-report."
+  ],
+  "entrypoint": "app.interventions.policy.rank",
+  "report": "models/interventions/evaluation.json"
+}
