@@ -1,0 +1,2387 @@
+{
+  "data_source": "synthetic_demo",
+  "synthetic_only": true,
+  "target": "next_weekly_exhaustion_ge4_within_next7days",
+  "source_participants": 240,
+  "eligible_windows": 2741,
+  "insufficient_history_windows": 464,
+  "train_samples": 1276,
+  "test_samples": 183,
+  "train_participants": [
+    "SIM-0002",
+    "SIM-0003",
+    "SIM-0004",
+    "SIM-0005",
+    "SIM-0006",
+    "SIM-0008",
+    "SIM-0009",
+    "SIM-0010",
+    "SIM-0011",
+    "SIM-0012",
+    "SIM-0013",
+    "SIM-0014",
+    "SIM-0015",
+    "SIM-0016",
+    "SIM-0017",
+    "SIM-0018",
+    "SIM-0020",
+    "SIM-0021",
+    "SIM-0022",
+    "SIM-0023",
+    "SIM-0025",
+    "SIM-0027",
+    "SIM-0028",
+    "SIM-0031",
+    "SIM-0032",
+    "SIM-0033",
+    "SIM-0034",
+    "SIM-0035",
+    "SIM-0036",
+    "SIM-0037",
+    "SIM-0039",
+    "SIM-0041",
+    "SIM-0042",
+    "SIM-0043",
+    "SIM-0044",
+    "SIM-0045",
+    "SIM-0046",
+    "SIM-0047",
+    "SIM-0048",
+    "SIM-0049",
+    "SIM-0050",
+    "SIM-0052",
+    "SIM-0053",
+    "SIM-0055",
+    "SIM-0056",
+    "SIM-0057",
+    "SIM-0058",
+    "SIM-0060",
+    "SIM-0063",
+    "SIM-0064",
+    "SIM-0065",
+    "SIM-0066",
+    "SIM-0068",
+    "SIM-0069",
+    "SIM-0070",
+    "SIM-0071",
+    "SIM-0073",
+    "SIM-0075",
+    "SIM-0076",
+    "SIM-0079",
+    "SIM-0080",
+    "SIM-0082",
+    "SIM-0083",
+    "SIM-0084",
+    "SIM-0085",
+    "SIM-0087",
+    "SIM-0088",
+    "SIM-0090",
+    "SIM-0091",
+    "SIM-0092",
+    "SIM-0093",
+    "SIM-0094",
+    "SIM-0095",
+    "SIM-0096",
+    "SIM-0097",
+    "SIM-0098",
+    "SIM-0099",
+    "SIM-0100",
+    "SIM-0101",
+    "SIM-0103",
+    "SIM-0104",
+    "SIM-0105",
+    "SIM-0106",
+    "SIM-0107",
+    "SIM-0109",
+    "SIM-0110",
+    "SIM-0111",
+    "SIM-0112",
+    "SIM-0113",
+    "SIM-0114",
+    "SIM-0115",
+    "SIM-0116",
+    "SIM-0117",
+    "SIM-0118",
+    "SIM-0119",
+    "SIM-0120",
+    "SIM-0123",
+    "SIM-0124",
+    "SIM-0125",
+    "SIM-0126",
+    "SIM-0127",
+    "SIM-0129",
+    "SIM-0130",
+    "SIM-0131",
+    "SIM-0132",
+    "SIM-0133",
+    "SIM-0134",
+    "SIM-0135",
+    "SIM-0136",
+    "SIM-0137",
+    "SIM-0138",
+    "SIM-0139",
+    "SIM-0140",
+    "SIM-0142",
+    "SIM-0146",
+    "SIM-0148",
+    "SIM-0149",
+    "SIM-0151",
+    "SIM-0152",
+    "SIM-0153",
+    "SIM-0155",
+    "SIM-0156",
+    "SIM-0157",
+    "SIM-0158",
+    "SIM-0159",
+    "SIM-0160",
+    "SIM-0163",
+    "SIM-0164",
+    "SIM-0165",
+    "SIM-0166",
+    "SIM-0168",
+    "SIM-0170",
+    "SIM-0171",
+    "SIM-0172",
+    "SIM-0173",
+    "SIM-0175",
+    "SIM-0176",
+    "SIM-0177",
+    "SIM-0178",
+    "SIM-0179",
+    "SIM-0180",
+    "SIM-0181",
+    "SIM-0182",
+    "SIM-0183",
+    "SIM-0184",
+    "SIM-0185",
+    "SIM-0186",
+    "SIM-0187",
+    "SIM-0188",
+    "SIM-0189",
+    "SIM-0190",
+    "SIM-0193",
+    "SIM-0194",
+    "SIM-0195",
+    "SIM-0196",
+    "SIM-0197",
+    "SIM-0198",
+    "SIM-0199",
+    "SIM-0200",
+    "SIM-0201",
+    "SIM-0202",
+    "SIM-0203",
+    "SIM-0205",
+    "SIM-0207",
+    "SIM-0208",
+    "SIM-0209",
+    "SIM-0210",
+    "SIM-0211",
+    "SIM-0212",
+    "SIM-0213",
+    "SIM-0214",
+    "SIM-0215",
+    "SIM-0216",
+    "SIM-0217",
+    "SIM-0218",
+    "SIM-0219",
+    "SIM-0220",
+    "SIM-0221",
+    "SIM-0224",
+    "SIM-0226",
+    "SIM-0227",
+    "SIM-0228",
+    "SIM-0229",
+    "SIM-0231",
+    "SIM-0232",
+    "SIM-0233",
+    "SIM-0234",
+    "SIM-0235",
+    "SIM-0236",
+    "SIM-0237",
+    "SIM-0238",
+    "SIM-0239"
+  ],
+  "test_participants": [
+    "SIM-0000",
+    "SIM-0001",
+    "SIM-0007",
+    "SIM-0019",
+    "SIM-0024",
+    "SIM-0026",
+    "SIM-0029",
+    "SIM-0030",
+    "SIM-0038",
+    "SIM-0040",
+    "SIM-0051",
+    "SIM-0054",
+    "SIM-0059",
+    "SIM-0061",
+    "SIM-0062",
+    "SIM-0067",
+    "SIM-0072",
+    "SIM-0074",
+    "SIM-0077",
+    "SIM-0078",
+    "SIM-0081",
+    "SIM-0086",
+    "SIM-0089",
+    "SIM-0102",
+    "SIM-0108",
+    "SIM-0121",
+    "SIM-0122",
+    "SIM-0128",
+    "SIM-0141",
+    "SIM-0143",
+    "SIM-0144",
+    "SIM-0145",
+    "SIM-0147",
+    "SIM-0150",
+    "SIM-0154",
+    "SIM-0161",
+    "SIM-0162",
+    "SIM-0167",
+    "SIM-0169",
+    "SIM-0174",
+    "SIM-0191",
+    "SIM-0192",
+    "SIM-0204",
+    "SIM-0206",
+    "SIM-0222",
+    "SIM-0223",
+    "SIM-0225",
+    "SIM-0230"
+  ],
+  "global_training_label_cutoff": "2025-03-10T18:29:59.999999+00:00",
+  "cv_folds": [
+    {
+      "fold": 0,
+      "training_labels_available_by": "2025-01-29T18:29:59.999999+00:00",
+      "train_participants": [
+        "SIM-0085",
+        "SIM-0087",
+        "SIM-0088",
+        "SIM-0090",
+        "SIM-0091",
+        "SIM-0092",
+        "SIM-0093",
+        "SIM-0094",
+        "SIM-0095",
+        "SIM-0096",
+        "SIM-0097",
+        "SIM-0098",
+        "SIM-0099",
+        "SIM-0100",
+        "SIM-0101",
+        "SIM-0103",
+        "SIM-0104",
+        "SIM-0105",
+        "SIM-0106",
+        "SIM-0107",
+        "SIM-0109",
+        "SIM-0110",
+        "SIM-0111",
+        "SIM-0112",
+        "SIM-0113",
+        "SIM-0114",
+        "SIM-0115",
+        "SIM-0116",
+        "SIM-0117",
+        "SIM-0118",
+        "SIM-0119",
+        "SIM-0120",
+        "SIM-0123",
+        "SIM-0124",
+        "SIM-0125",
+        "SIM-0126",
+        "SIM-0127",
+        "SIM-0129",
+        "SIM-0130",
+        "SIM-0131",
+        "SIM-0132",
+        "SIM-0133",
+        "SIM-0134",
+        "SIM-0135",
+        "SIM-0136",
+        "SIM-0137",
+        "SIM-0138",
+        "SIM-0139",
+        "SIM-0140",
+        "SIM-0142",
+        "SIM-0146",
+        "SIM-0148",
+        "SIM-0149",
+        "SIM-0151",
+        "SIM-0152",
+        "SIM-0153",
+        "SIM-0155",
+        "SIM-0156",
+        "SIM-0157",
+        "SIM-0158",
+        "SIM-0160",
+        "SIM-0163",
+        "SIM-0164",
+        "SIM-0165",
+        "SIM-0166",
+        "SIM-0168",
+        "SIM-0170",
+        "SIM-0171",
+        "SIM-0172",
+        "SIM-0173",
+        "SIM-0175",
+        "SIM-0176",
+        "SIM-0177",
+        "SIM-0178",
+        "SIM-0179",
+        "SIM-0180",
+        "SIM-0181",
+        "SIM-0182",
+        "SIM-0183",
+        "SIM-0184",
+        "SIM-0185",
+        "SIM-0186",
+        "SIM-0187",
+        "SIM-0188",
+        "SIM-0189",
+        "SIM-0190",
+        "SIM-0193",
+        "SIM-0194",
+        "SIM-0195",
+        "SIM-0196",
+        "SIM-0197",
+        "SIM-0198",
+        "SIM-0199",
+        "SIM-0200",
+        "SIM-0201",
+        "SIM-0202",
+        "SIM-0203",
+        "SIM-0205",
+        "SIM-0207",
+        "SIM-0208",
+        "SIM-0209",
+        "SIM-0210",
+        "SIM-0211",
+        "SIM-0212",
+        "SIM-0213",
+        "SIM-0214",
+        "SIM-0215",
+        "SIM-0216",
+        "SIM-0217",
+        "SIM-0218",
+        "SIM-0219",
+        "SIM-0220",
+        "SIM-0221",
+        "SIM-0224",
+        "SIM-0226",
+        "SIM-0227",
+        "SIM-0228",
+        "SIM-0229",
+        "SIM-0231",
+        "SIM-0232",
+        "SIM-0233",
+        "SIM-0234",
+        "SIM-0235",
+        "SIM-0236",
+        "SIM-0237",
+        "SIM-0238",
+        "SIM-0239"
+      ],
+      "validation_participants": [
+        "SIM-0002",
+        "SIM-0003",
+        "SIM-0004",
+        "SIM-0005",
+        "SIM-0006",
+        "SIM-0008",
+        "SIM-0009",
+        "SIM-0010",
+        "SIM-0011",
+        "SIM-0012",
+        "SIM-0013",
+        "SIM-0014",
+        "SIM-0015",
+        "SIM-0016",
+        "SIM-0017",
+        "SIM-0018",
+        "SIM-0020",
+        "SIM-0021",
+        "SIM-0022",
+        "SIM-0023",
+        "SIM-0025",
+        "SIM-0027",
+        "SIM-0028",
+        "SIM-0031",
+        "SIM-0032",
+        "SIM-0033",
+        "SIM-0034",
+        "SIM-0035",
+        "SIM-0036",
+        "SIM-0037",
+        "SIM-0039",
+        "SIM-0041",
+        "SIM-0042",
+        "SIM-0043",
+        "SIM-0044",
+        "SIM-0045",
+        "SIM-0046",
+        "SIM-0047",
+        "SIM-0048",
+        "SIM-0049",
+        "SIM-0050",
+        "SIM-0052",
+        "SIM-0053",
+        "SIM-0055",
+        "SIM-0056",
+        "SIM-0057",
+        "SIM-0058",
+        "SIM-0060",
+        "SIM-0063",
+        "SIM-0064",
+        "SIM-0065",
+        "SIM-0066",
+        "SIM-0068",
+        "SIM-0069",
+        "SIM-0070",
+        "SIM-0071",
+        "SIM-0073",
+        "SIM-0075",
+        "SIM-0076",
+        "SIM-0079",
+        "SIM-0080",
+        "SIM-0082",
+        "SIM-0083",
+        "SIM-0084"
+      ],
+      "train_count": 227,
+      "validation_count": 122,
+      "max_train_label_time": "2025-01-29T15:58:00+00:00",
+      "min_validation_issue_date": "2025-02-04"
+    },
+    {
+      "fold": 1,
+      "training_labels_available_by": "2025-02-05T18:29:59.999999+00:00",
+      "train_participants": [
+        "SIM-0002",
+        "SIM-0003",
+        "SIM-0004",
+        "SIM-0005",
+        "SIM-0006",
+        "SIM-0008",
+        "SIM-0009",
+        "SIM-0010",
+        "SIM-0011",
+        "SIM-0012",
+        "SIM-0013",
+        "SIM-0014",
+        "SIM-0015",
+        "SIM-0016",
+        "SIM-0017",
+        "SIM-0018",
+        "SIM-0020",
+        "SIM-0021",
+        "SIM-0022",
+        "SIM-0023",
+        "SIM-0025",
+        "SIM-0027",
+        "SIM-0028",
+        "SIM-0031",
+        "SIM-0032",
+        "SIM-0033",
+        "SIM-0034",
+        "SIM-0035",
+        "SIM-0036",
+        "SIM-0037",
+        "SIM-0039",
+        "SIM-0041",
+        "SIM-0042",
+        "SIM-0043",
+        "SIM-0044",
+        "SIM-0045",
+        "SIM-0046",
+        "SIM-0047",
+        "SIM-0048",
+        "SIM-0049",
+        "SIM-0050",
+        "SIM-0052",
+        "SIM-0053",
+        "SIM-0055",
+        "SIM-0057",
+        "SIM-0058",
+        "SIM-0060",
+        "SIM-0063",
+        "SIM-0064",
+        "SIM-0065",
+        "SIM-0066",
+        "SIM-0068",
+        "SIM-0069",
+        "SIM-0070",
+        "SIM-0071",
+        "SIM-0073",
+        "SIM-0075",
+        "SIM-0076",
+        "SIM-0079",
+        "SIM-0080",
+        "SIM-0082",
+        "SIM-0083",
+        "SIM-0084",
+        "SIM-0165",
+        "SIM-0166",
+        "SIM-0168",
+        "SIM-0170",
+        "SIM-0171",
+        "SIM-0172",
+        "SIM-0173",
+        "SIM-0175",
+        "SIM-0176",
+        "SIM-0177",
+        "SIM-0178",
+        "SIM-0179",
+        "SIM-0180",
+        "SIM-0181",
+        "SIM-0182",
+        "SIM-0183",
+        "SIM-0184",
+        "SIM-0185",
+        "SIM-0186",
+        "SIM-0187",
+        "SIM-0188",
+        "SIM-0189",
+        "SIM-0190",
+        "SIM-0193",
+        "SIM-0194",
+        "SIM-0195",
+        "SIM-0196",
+        "SIM-0197",
+        "SIM-0198",
+        "SIM-0199",
+        "SIM-0200",
+        "SIM-0201",
+        "SIM-0202",
+        "SIM-0203",
+        "SIM-0205",
+        "SIM-0207",
+        "SIM-0208",
+        "SIM-0209",
+        "SIM-0210",
+        "SIM-0211",
+        "SIM-0212",
+        "SIM-0213",
+        "SIM-0214",
+        "SIM-0215",
+        "SIM-0216",
+        "SIM-0217",
+        "SIM-0218",
+        "SIM-0219",
+        "SIM-0220",
+        "SIM-0221",
+        "SIM-0224",
+        "SIM-0226",
+        "SIM-0227",
+        "SIM-0228",
+        "SIM-0229",
+        "SIM-0231",
+        "SIM-0232",
+        "SIM-0233",
+        "SIM-0234",
+        "SIM-0235",
+        "SIM-0236",
+        "SIM-0237",
+        "SIM-0238",
+        "SIM-0239"
+      ],
+      "validation_participants": [
+        "SIM-0085",
+        "SIM-0087",
+        "SIM-0088",
+        "SIM-0090",
+        "SIM-0091",
+        "SIM-0092",
+        "SIM-0093",
+        "SIM-0094",
+        "SIM-0095",
+        "SIM-0096",
+        "SIM-0097",
+        "SIM-0098",
+        "SIM-0099",
+        "SIM-0100",
+        "SIM-0101",
+        "SIM-0103",
+        "SIM-0104",
+        "SIM-0105",
+        "SIM-0106",
+        "SIM-0107",
+        "SIM-0109",
+        "SIM-0110",
+        "SIM-0111",
+        "SIM-0112",
+        "SIM-0113",
+        "SIM-0114",
+        "SIM-0115",
+        "SIM-0116",
+        "SIM-0117",
+        "SIM-0118",
+        "SIM-0119",
+        "SIM-0120",
+        "SIM-0123",
+        "SIM-0124",
+        "SIM-0125",
+        "SIM-0126",
+        "SIM-0127",
+        "SIM-0129",
+        "SIM-0130",
+        "SIM-0131",
+        "SIM-0132",
+        "SIM-0133",
+        "SIM-0134",
+        "SIM-0135",
+        "SIM-0136",
+        "SIM-0137",
+        "SIM-0138",
+        "SIM-0139",
+        "SIM-0140",
+        "SIM-0142",
+        "SIM-0146",
+        "SIM-0148",
+        "SIM-0149",
+        "SIM-0151",
+        "SIM-0152",
+        "SIM-0153",
+        "SIM-0155",
+        "SIM-0156",
+        "SIM-0157",
+        "SIM-0158",
+        "SIM-0159",
+        "SIM-0160",
+        "SIM-0163",
+        "SIM-0164"
+      ],
+      "train_count": 340,
+      "validation_count": 120,
+      "max_train_label_time": "2025-02-05T15:56:00+00:00",
+      "min_validation_issue_date": "2025-02-11"
+    },
+    {
+      "fold": 2,
+      "training_labels_available_by": "2025-02-12T18:29:59.999999+00:00",
+      "train_participants": [
+        "SIM-0002",
+        "SIM-0003",
+        "SIM-0004",
+        "SIM-0005",
+        "SIM-0006",
+        "SIM-0008",
+        "SIM-0009",
+        "SIM-0010",
+        "SIM-0011",
+        "SIM-0012",
+        "SIM-0013",
+        "SIM-0014",
+        "SIM-0015",
+        "SIM-0016",
+        "SIM-0017",
+        "SIM-0018",
+        "SIM-0020",
+        "SIM-0021",
+        "SIM-0022",
+        "SIM-0023",
+        "SIM-0025",
+        "SIM-0027",
+        "SIM-0028",
+        "SIM-0031",
+        "SIM-0032",
+        "SIM-0033",
+        "SIM-0034",
+        "SIM-0035",
+        "SIM-0036",
+        "SIM-0037",
+        "SIM-0039",
+        "SIM-0041",
+        "SIM-0042",
+        "SIM-0043",
+        "SIM-0044",
+        "SIM-0045",
+        "SIM-0046",
+        "SIM-0047",
+        "SIM-0048",
+        "SIM-0049",
+        "SIM-0050",
+        "SIM-0052",
+        "SIM-0053",
+        "SIM-0055",
+        "SIM-0056",
+        "SIM-0057",
+        "SIM-0058",
+        "SIM-0060",
+        "SIM-0063",
+        "SIM-0064",
+        "SIM-0065",
+        "SIM-0066",
+        "SIM-0068",
+        "SIM-0069",
+        "SIM-0070",
+        "SIM-0071",
+        "SIM-0073",
+        "SIM-0075",
+        "SIM-0076",
+        "SIM-0079",
+        "SIM-0080",
+        "SIM-0082",
+        "SIM-0083",
+        "SIM-0084",
+        "SIM-0085",
+        "SIM-0087",
+        "SIM-0088",
+        "SIM-0090",
+        "SIM-0091",
+        "SIM-0092",
+        "SIM-0093",
+        "SIM-0094",
+        "SIM-0095",
+        "SIM-0096",
+        "SIM-0097",
+        "SIM-0098",
+        "SIM-0099",
+        "SIM-0100",
+        "SIM-0101",
+        "SIM-0103",
+        "SIM-0104",
+        "SIM-0105",
+        "SIM-0106",
+        "SIM-0107",
+        "SIM-0109",
+        "SIM-0110",
+        "SIM-0111",
+        "SIM-0112",
+        "SIM-0113",
+        "SIM-0114",
+        "SIM-0115",
+        "SIM-0116",
+        "SIM-0117",
+        "SIM-0118",
+        "SIM-0119",
+        "SIM-0120",
+        "SIM-0123",
+        "SIM-0124",
+        "SIM-0125",
+        "SIM-0126",
+        "SIM-0127",
+        "SIM-0129",
+        "SIM-0130",
+        "SIM-0131",
+        "SIM-0132",
+        "SIM-0133",
+        "SIM-0134",
+        "SIM-0135",
+        "SIM-0136",
+        "SIM-0137",
+        "SIM-0138",
+        "SIM-0139",
+        "SIM-0140",
+        "SIM-0142",
+        "SIM-0146",
+        "SIM-0148",
+        "SIM-0149",
+        "SIM-0151",
+        "SIM-0152",
+        "SIM-0153",
+        "SIM-0155",
+        "SIM-0156",
+        "SIM-0157",
+        "SIM-0158",
+        "SIM-0159",
+        "SIM-0160",
+        "SIM-0163",
+        "SIM-0164"
+      ],
+      "validation_participants": [
+        "SIM-0165",
+        "SIM-0166",
+        "SIM-0168",
+        "SIM-0170",
+        "SIM-0171",
+        "SIM-0172",
+        "SIM-0173",
+        "SIM-0175",
+        "SIM-0176",
+        "SIM-0177",
+        "SIM-0178",
+        "SIM-0179",
+        "SIM-0180",
+        "SIM-0181",
+        "SIM-0182",
+        "SIM-0183",
+        "SIM-0184",
+        "SIM-0185",
+        "SIM-0186",
+        "SIM-0187",
+        "SIM-0188",
+        "SIM-0189",
+        "SIM-0190",
+        "SIM-0193",
+        "SIM-0194",
+        "SIM-0195",
+        "SIM-0196",
+        "SIM-0197",
+        "SIM-0198",
+        "SIM-0199",
+        "SIM-0200",
+        "SIM-0201",
+        "SIM-0202",
+        "SIM-0203",
+        "SIM-0205",
+        "SIM-0207",
+        "SIM-0208",
+        "SIM-0209",
+        "SIM-0210",
+        "SIM-0211",
+        "SIM-0212",
+        "SIM-0213",
+        "SIM-0214",
+        "SIM-0215",
+        "SIM-0216",
+        "SIM-0217",
+        "SIM-0218",
+        "SIM-0219",
+        "SIM-0220",
+        "SIM-0221",
+        "SIM-0224",
+        "SIM-0226",
+        "SIM-0227",
+        "SIM-0228",
+        "SIM-0229",
+        "SIM-0231",
+        "SIM-0232",
+        "SIM-0233",
+        "SIM-0234",
+        "SIM-0235",
+        "SIM-0236",
+        "SIM-0237",
+        "SIM-0238",
+        "SIM-0239"
+      ],
+      "train_count": 473,
+      "validation_count": 125,
+      "max_train_label_time": "2025-02-12T16:00:00+00:00",
+      "min_validation_issue_date": "2025-02-18"
+    }
+  ],
+  "selection_rule": "highest purged participant/time CV ROC AUC among learned models; heldout metrics never select model",
+  "selected_model": "combined_random_forest",
+  "comparisons": {
+    "dummy_prior": {
+      "cv_roc_auc_mean": 0.5,
+      "cv_roc_auc_by_fold": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "heldout_test": {
+        "sample_count": 183,
+        "positive_count": 39,
+        "positive_fraction": 0.21311475409836064,
+        "roc_auc": 0.5,
+        "average_precision": 0.21311475409836064,
+        "brier_score": 0.16783625800473334,
+        "accuracy": 0.7868852459016393,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "confusion_matrix_0_1": [
+          [
+            144,
+            0
+          ],
+          [
+            39,
+            0
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    "weekly_persistence": {
+      "cv_roc_auc_mean": 0.7671669080609202,
+      "cv_roc_auc_by_fold": [
+        0.8324468085106382,
+        0.7332421340629275,
+        0.7358117816091954
+      ],
+      "heldout_test": {
+        "sample_count": 183,
+        "positive_count": 39,
+        "positive_fraction": 0.21311475409836064,
+        "roc_auc": 0.5878739316239316,
+        "average_precision": 0.26664768335841843,
+        "brier_score": 0.25136612021857924,
+        "accuracy": 0.7486338797814208,
+        "balanced_accuracy": 0.5878739316239316,
+        "f1": 0.34285714285714286,
+        "confusion_matrix_0_1": [
+          [
+            125,
+            19
+          ],
+          [
+            27,
+            12
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    "behavior_only_logistic": {
+      "cv_roc_auc_mean": 0.8330233182838446,
+      "cv_roc_auc_by_fold": [
+        0.8332066869300911,
+        0.8731190150478796,
+        0.7927442528735632
+      ],
+      "heldout_test": {
+        "sample_count": 183,
+        "positive_count": 39,
+        "positive_fraction": 0.21311475409836064,
+        "roc_auc": 0.8157051282051282,
+        "average_precision": 0.5843426164323192,
+        "brier_score": 0.19567865527253234,
+        "accuracy": 0.6994535519125683,
+        "balanced_accuracy": 0.7342414529914529,
+        "f1": 0.5299145299145299,
+        "confusion_matrix_0_1": [
+          [
+            97,
+            47
+          ],
+          [
+            8,
+            31
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    "combined_logistic": {
+      "cv_roc_auc_mean": 0.8244210748703696,
+      "cv_roc_auc_by_fold": [
+        0.8096504559270516,
+        0.8464432284541723,
+        0.8171695402298851
+      ],
+      "heldout_test": {
+        "sample_count": 183,
+        "positive_count": 39,
+        "positive_fraction": 0.21311475409836064,
+        "roc_auc": 0.8108974358974359,
+        "average_precision": 0.5524108740938646,
+        "brier_score": 0.19664232484047284,
+        "accuracy": 0.6775956284153005,
+        "balanced_accuracy": 0.6923076923076923,
+        "f1": 0.48695652173913045,
+        "confusion_matrix_0_1": [
+          [
+            96,
+            48
+          ],
+          [
+            11,
+            28
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    "combined_random_forest": {
+      "cv_roc_auc_mean": 0.8348267719675243,
+      "cv_roc_auc_by_fold": [
+        0.8343465045592706,
+        0.8310533515731875,
+        0.8390804597701149
+      ],
+      "heldout_test": {
+        "sample_count": 183,
+        "positive_count": 39,
+        "positive_fraction": 0.21311475409836064,
+        "roc_auc": 0.8076923076923077,
+        "average_precision": 0.5476323760054442,
+        "brier_score": 0.1966208985381751,
+        "accuracy": 0.6721311475409836,
+        "balanced_accuracy": 0.6888354700854701,
+        "f1": 0.4827586206896552,
+        "confusion_matrix_0_1": [
+          [
+            95,
+            49
+          ],
+          [
+            11,
+            28
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    "combined_gradient_boosting": {
+      "cv_roc_auc_mean": 0.816090126923047,
+      "cv_roc_auc_by_fold": [
+        0.8183890577507599,
+        0.7886456908344733,
+        0.841235632183908
+      ],
+      "heldout_test": {
+        "sample_count": 183,
+        "positive_count": 39,
+        "positive_fraction": 0.21311475409836064,
+        "roc_auc": 0.7873931623931624,
+        "average_precision": 0.5129063299215537,
+        "brier_score": 0.19235558888404344,
+        "accuracy": 0.7049180327868853,
+        "balanced_accuracy": 0.6909722222222222,
+        "f1": 0.49056603773584906,
+        "confusion_matrix_0_1": [
+          [
+            103,
+            41
+          ],
+          [
+            13,
+            26
+          ]
+        ],
+        "threshold": 0.5
+      }
+    }
+  },
+  "feature_names": [
+    "sleep_hours_mean",
+    "sleep_hours_std",
+    "sleep_hours_slope",
+    "study_minutes_mean",
+    "study_minutes_std",
+    "late_study_fraction",
+    "break_minutes_mean",
+    "completion_ratio",
+    "incomplete_task_days_fraction",
+    "daily_coverage_fraction",
+    "behavior_coverage_fraction",
+    "fatigue_mean",
+    "mental_strain_mean",
+    "concentration_readiness_mean",
+    "fatigue_slope",
+    "latest_weekly_exhaustion",
+    "latest_weekly_disengagement",
+    "latest_weekly_academic_efficacy",
+    "weekly_age_days",
+    "weekly_missing"
+  ],
+  "dataset_sha256": "c481b65e14d136ea0332edfa1a3ea5c833821a53b1943d7c06dc3a2f568d1b97",
+  "generator_version": "latent-ar-exhaustion-simulator-v1",
+  "random_seed": 73,
+  "warning": "Synthetic performance only tests this simulator; it cannot estimate real-student predictive performance.",
+  "test_predictions": [
+    {
+      "participant_id": "SIM-0000",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.027113533562715175
+    },
+    {
+      "participant_id": "SIM-0000",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.07048783035119617
+    },
+    {
+      "participant_id": "SIM-0000",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.16548525939839775
+    },
+    {
+      "participant_id": "SIM-0000",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.12707455632539902
+    },
+    {
+      "participant_id": "SIM-0001",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.47647082579150696
+    },
+    {
+      "participant_id": "SIM-0001",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.3967418403471095
+    },
+    {
+      "participant_id": "SIM-0001",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.4640269375544879
+    },
+    {
+      "participant_id": "SIM-0001",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.7109606998983845
+    },
+    {
+      "participant_id": "SIM-0007",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.6489277183495618
+    },
+    {
+      "participant_id": "SIM-0007",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.8709756348162149
+    },
+    {
+      "participant_id": "SIM-0007",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.7091024174213036
+    },
+    {
+      "participant_id": "SIM-0007",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.7753875424257844
+    },
+    {
+      "participant_id": "SIM-0019",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.17124373569547038
+    },
+    {
+      "participant_id": "SIM-0019",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.261714292272179
+    },
+    {
+      "participant_id": "SIM-0019",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.3092170668592434
+    },
+    {
+      "participant_id": "SIM-0019",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.3028653956090586
+    },
+    {
+      "participant_id": "SIM-0024",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.37700826299361784
+    },
+    {
+      "participant_id": "SIM-0024",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.4329419056417897
+    },
+    {
+      "participant_id": "SIM-0024",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.6090067224582482
+    },
+    {
+      "participant_id": "SIM-0024",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.7742335835063884
+    },
+    {
+      "participant_id": "SIM-0026",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.2553026375207004
+    },
+    {
+      "participant_id": "SIM-0026",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.449117263290723
+    },
+    {
+      "participant_id": "SIM-0026",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.6536078171797701
+    },
+    {
+      "participant_id": "SIM-0026",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.7785446780168367
+    },
+    {
+      "participant_id": "SIM-0029",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.8955434517089156
+    },
+    {
+      "participant_id": "SIM-0029",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.8817552167635736
+    },
+    {
+      "participant_id": "SIM-0029",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.8549678370673514
+    },
+    {
+      "participant_id": "SIM-0029",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.8490301419033296
+    },
+    {
+      "participant_id": "SIM-0030",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.17147775787313882
+    },
+    {
+      "participant_id": "SIM-0030",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.3329143338467083
+    },
+    {
+      "participant_id": "SIM-0030",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.3907863515353939
+    },
+    {
+      "participant_id": "SIM-0030",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.18203047066871178
+    },
+    {
+      "participant_id": "SIM-0038",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.3803449827005332
+    },
+    {
+      "participant_id": "SIM-0038",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.3289071909511919
+    },
+    {
+      "participant_id": "SIM-0038",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.22473744463985826
+    },
+    {
+      "participant_id": "SIM-0040",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.18697722074901116
+    },
+    {
+      "participant_id": "SIM-0040",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.44132607027014803
+    },
+    {
+      "participant_id": "SIM-0040",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.42332410438290247
+    },
+    {
+      "participant_id": "SIM-0040",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.6847251786249777
+    },
+    {
+      "participant_id": "SIM-0051",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.8607808923849406
+    },
+    {
+      "participant_id": "SIM-0051",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.7544900610062991
+    },
+    {
+      "participant_id": "SIM-0051",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.5866011082121054
+    },
+    {
+      "participant_id": "SIM-0051",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.49556543305374806
+    },
+    {
+      "participant_id": "SIM-0054",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.7859052713734284
+    },
+    {
+      "participant_id": "SIM-0054",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.8945690239058542
+    },
+    {
+      "participant_id": "SIM-0054",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.6467457907374355
+    },
+    {
+      "participant_id": "SIM-0059",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.5059779909280238
+    },
+    {
+      "participant_id": "SIM-0059",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.5051857601860923
+    },
+    {
+      "participant_id": "SIM-0059",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.32529586299163266
+    },
+    {
+      "participant_id": "SIM-0059",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.10791749013477171
+    },
+    {
+      "participant_id": "SIM-0061",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.6806532033772418
+    },
+    {
+      "participant_id": "SIM-0061",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.6480948738683578
+    },
+    {
+      "participant_id": "SIM-0061",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.48172074839178014
+    },
+    {
+      "participant_id": "SIM-0061",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.6440285890350189
+    },
+    {
+      "participant_id": "SIM-0062",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.1384656343705782
+    },
+    {
+      "participant_id": "SIM-0062",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.07156169436917482
+    },
+    {
+      "participant_id": "SIM-0062",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.22771476258650017
+    },
+    {
+      "participant_id": "SIM-0062",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.29258060450900486
+    },
+    {
+      "participant_id": "SIM-0067",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.8956446741017506
+    },
+    {
+      "participant_id": "SIM-0067",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.8389119522116958
+    },
+    {
+      "participant_id": "SIM-0067",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.8565026877107695
+    },
+    {
+      "participant_id": "SIM-0067",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.7116939360271425
+    },
+    {
+      "participant_id": "SIM-0072",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.3795361501863851
+    },
+    {
+      "participant_id": "SIM-0072",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.6695296246611794
+    },
+    {
+      "participant_id": "SIM-0072",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.7672664986429506
+    },
+    {
+      "participant_id": "SIM-0072",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.7851136170773103
+    },
+    {
+      "participant_id": "SIM-0074",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.34527829874166277
+    },
+    {
+      "participant_id": "SIM-0074",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.3738950373173589
+    },
+    {
+      "participant_id": "SIM-0074",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.5794837578267376
+    },
+    {
+      "participant_id": "SIM-0074",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.5460654064933322
+    },
+    {
+      "participant_id": "SIM-0077",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.03652491725842063
+    },
+    {
+      "participant_id": "SIM-0077",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.05680708850813074
+    },
+    {
+      "participant_id": "SIM-0077",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.04794384927380024
+    },
+    {
+      "participant_id": "SIM-0078",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.0442122466303293
+    },
+    {
+      "participant_id": "SIM-0078",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.06161966708601603
+    },
+    {
+      "participant_id": "SIM-0078",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.029865853456913324
+    },
+    {
+      "participant_id": "SIM-0078",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.05033736780248155
+    },
+    {
+      "participant_id": "SIM-0081",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.8729511647045732
+    },
+    {
+      "participant_id": "SIM-0081",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.8017435846890313
+    },
+    {
+      "participant_id": "SIM-0081",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.8978105180262026
+    },
+    {
+      "participant_id": "SIM-0081",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.6988946681212503
+    },
+    {
+      "participant_id": "SIM-0086",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.2799812649862132
+    },
+    {
+      "participant_id": "SIM-0086",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.22487469911758323
+    },
+    {
+      "participant_id": "SIM-0086",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.17183725979105371
+    },
+    {
+      "participant_id": "SIM-0086",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.20638346178842915
+    },
+    {
+      "participant_id": "SIM-0089",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.8914639796086272
+    },
+    {
+      "participant_id": "SIM-0089",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.9060566960493565
+    },
+    {
+      "participant_id": "SIM-0089",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.9164975082846022
+    },
+    {
+      "participant_id": "SIM-0089",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.9074066344129945
+    },
+    {
+      "participant_id": "SIM-0102",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.49206184140371995
+    },
+    {
+      "participant_id": "SIM-0102",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.5364933050653382
+    },
+    {
+      "participant_id": "SIM-0102",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.48331525294782035
+    },
+    {
+      "participant_id": "SIM-0102",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.44445971355141534
+    },
+    {
+      "participant_id": "SIM-0108",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.22142410836270093
+    },
+    {
+      "participant_id": "SIM-0108",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.3952633947838358
+    },
+    {
+      "participant_id": "SIM-0108",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.3486935081079488
+    },
+    {
+      "participant_id": "SIM-0121",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.5443221408572373
+    },
+    {
+      "participant_id": "SIM-0121",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.6514442987259211
+    },
+    {
+      "participant_id": "SIM-0121",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.36416264793674386
+    },
+    {
+      "participant_id": "SIM-0121",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.09372380609637078
+    },
+    {
+      "participant_id": "SIM-0122",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.32754745807774494
+    },
+    {
+      "participant_id": "SIM-0122",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.5382324737773644
+    },
+    {
+      "participant_id": "SIM-0122",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.6082076570357309
+    },
+    {
+      "participant_id": "SIM-0122",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.37393721320854784
+    },
+    {
+      "participant_id": "SIM-0128",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.32915778931305145
+    },
+    {
+      "participant_id": "SIM-0128",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.38839214325724747
+    },
+    {
+      "participant_id": "SIM-0128",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.6517319498278256
+    },
+    {
+      "participant_id": "SIM-0128",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.5419182882041744
+    },
+    {
+      "participant_id": "SIM-0141",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.7294650699600402
+    },
+    {
+      "participant_id": "SIM-0141",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.8316858988025099
+    },
+    {
+      "participant_id": "SIM-0141",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.8289364539440408
+    },
+    {
+      "participant_id": "SIM-0141",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.8560242978441637
+    },
+    {
+      "participant_id": "SIM-0143",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.6915753717101113
+    },
+    {
+      "participant_id": "SIM-0143",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.7935305952192793
+    },
+    {
+      "participant_id": "SIM-0143",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.8747265488639911
+    },
+    {
+      "participant_id": "SIM-0143",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.9100025829510421
+    },
+    {
+      "participant_id": "SIM-0144",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.4225444966124886
+    },
+    {
+      "participant_id": "SIM-0144",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.10862415852227296
+    },
+    {
+      "participant_id": "SIM-0144",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.052478664768029204
+    },
+    {
+      "participant_id": "SIM-0144",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.05255241371826418
+    },
+    {
+      "participant_id": "SIM-0145",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.17190311274154427
+    },
+    {
+      "participant_id": "SIM-0145",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.2846832577684905
+    },
+    {
+      "participant_id": "SIM-0145",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 1,
+      "model_probability": 0.5268607228780642
+    },
+    {
+      "participant_id": "SIM-0145",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.6827833707338062
+    },
+    {
+      "participant_id": "SIM-0147",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.31403293327488424
+    },
+    {
+      "participant_id": "SIM-0147",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.051665842192195215
+    },
+    {
+      "participant_id": "SIM-0147",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.048841110823540826
+    },
+    {
+      "participant_id": "SIM-0150",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.021132270143458073
+    },
+    {
+      "participant_id": "SIM-0150",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.04928789350354904
+    },
+    {
+      "participant_id": "SIM-0150",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.04092903818439359
+    },
+    {
+      "participant_id": "SIM-0150",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.06593443151848292
+    },
+    {
+      "participant_id": "SIM-0154",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.17787351029132153
+    },
+    {
+      "participant_id": "SIM-0154",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.3144276924591493
+    },
+    {
+      "participant_id": "SIM-0154",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.3912009213389623
+    },
+    {
+      "participant_id": "SIM-0154",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.5510863141150492
+    },
+    {
+      "participant_id": "SIM-0161",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.07736285026358157
+    },
+    {
+      "participant_id": "SIM-0161",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.11662148724243707
+    },
+    {
+      "participant_id": "SIM-0161",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.12339991343213695
+    },
+    {
+      "participant_id": "SIM-0161",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.0838830311779191
+    },
+    {
+      "participant_id": "SIM-0162",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.5678303234190477
+    },
+    {
+      "participant_id": "SIM-0162",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.21882292399471984
+    },
+    {
+      "participant_id": "SIM-0162",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.4004570759201347
+    },
+    {
+      "participant_id": "SIM-0162",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.4616594784840307
+    },
+    {
+      "participant_id": "SIM-0167",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.06866616865937503
+    },
+    {
+      "participant_id": "SIM-0167",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.054340340805844344
+    },
+    {
+      "participant_id": "SIM-0167",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.03808666428240814
+    },
+    {
+      "participant_id": "SIM-0167",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.0716130873795683
+    },
+    {
+      "participant_id": "SIM-0169",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.43871646838259676
+    },
+    {
+      "participant_id": "SIM-0169",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.36096004950960836
+    },
+    {
+      "participant_id": "SIM-0169",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.4875380188140378
+    },
+    {
+      "participant_id": "SIM-0174",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.5316541648372772
+    },
+    {
+      "participant_id": "SIM-0174",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.04124382329266214
+    },
+    {
+      "participant_id": "SIM-0191",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.5691536647184735
+    },
+    {
+      "participant_id": "SIM-0191",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.28317564007774537
+    },
+    {
+      "participant_id": "SIM-0191",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.17729661435256322
+    },
+    {
+      "participant_id": "SIM-0191",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.3036322232907413
+    },
+    {
+      "participant_id": "SIM-0192",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.226611304490871
+    },
+    {
+      "participant_id": "SIM-0192",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.2093706027998482
+    },
+    {
+      "participant_id": "SIM-0192",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.20421136474476095
+    },
+    {
+      "participant_id": "SIM-0192",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.05101682916060099
+    },
+    {
+      "participant_id": "SIM-0204",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.8236082768518819
+    },
+    {
+      "participant_id": "SIM-0204",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.6322448851176425
+    },
+    {
+      "participant_id": "SIM-0204",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.3795562872728505
+    },
+    {
+      "participant_id": "SIM-0204",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.36084917333936706
+    },
+    {
+      "participant_id": "SIM-0206",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 1,
+      "model_probability": 0.7270594838435847
+    },
+    {
+      "participant_id": "SIM-0206",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.7663557534140196
+    },
+    {
+      "participant_id": "SIM-0206",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.8154291433556111
+    },
+    {
+      "participant_id": "SIM-0206",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.6569224573665573
+    },
+    {
+      "participant_id": "SIM-0222",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.18401209884512248
+    },
+    {
+      "participant_id": "SIM-0222",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.5273641638818575
+    },
+    {
+      "participant_id": "SIM-0222",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.8657240951873317
+    },
+    {
+      "participant_id": "SIM-0223",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.5494808270149868
+    },
+    {
+      "participant_id": "SIM-0223",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.6613620374779609
+    },
+    {
+      "participant_id": "SIM-0223",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.7266789320515119
+    },
+    {
+      "participant_id": "SIM-0223",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 1,
+      "model_probability": 0.8322779490910721
+    },
+    {
+      "participant_id": "SIM-0225",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.07753645987626578
+    },
+    {
+      "participant_id": "SIM-0225",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 0,
+      "model_probability": 0.09656482031708707
+    },
+    {
+      "participant_id": "SIM-0225",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.34512528041380747
+    },
+    {
+      "participant_id": "SIM-0225",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.4790459193405099
+    },
+    {
+      "participant_id": "SIM-0230",
+      "as_of": "2025-03-11T18:29:00.000000+00:00",
+      "target_date": "2025-03-18",
+      "label": 0,
+      "model_probability": 0.5668077816305251
+    },
+    {
+      "participant_id": "SIM-0230",
+      "as_of": "2025-03-18T18:29:00.000000+00:00",
+      "target_date": "2025-03-25",
+      "label": 1,
+      "model_probability": 0.43330119734286454
+    },
+    {
+      "participant_id": "SIM-0230",
+      "as_of": "2025-03-25T18:29:00.000000+00:00",
+      "target_date": "2025-04-01",
+      "label": 0,
+      "model_probability": 0.48098435765361225
+    },
+    {
+      "participant_id": "SIM-0230",
+      "as_of": "2025-04-01T18:29:00.000000+00:00",
+      "target_date": "2025-04-08",
+      "label": 0,
+      "model_probability": 0.5065761463430338
+    }
+  ],
+  "independent_shifted_simulation": {
+    "seed": 947,
+    "participants": 80,
+    "metrics": {
+      "sample_count": 830,
+      "positive_count": 247,
+      "positive_fraction": 0.29759036144578316,
+      "roc_auc": 0.792536162943313,
+      "average_precision": 0.6254714950098623,
+      "brier_score": 0.20084348888857606,
+      "accuracy": 0.6783132530120481,
+      "balanced_accuracy": 0.7045124686634121,
+      "f1": 0.5873261205564142,
+      "confusion_matrix_0_1": [
+        [
+          373,
+          210
+        ],
+        [
+          57,
+          190
+        ]
+      ],
+      "threshold": 0.5
+    },
+    "not_real_world_validation": true
+  }
+}

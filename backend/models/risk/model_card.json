@@ -1,0 +1,81 @@
+{
+  "model_id": "c3-exhaustion-proxy-668bea7df567",
+  "created_at": "2026-10-17T08:27:20.617240+00:00",
+  "training_data_source": "synthetic_demo",
+  "synthetic_only": true,
+  "validation_status": "synthetic_only_not_empirically_validated",
+  "feature_schema_version": "daily14-weekly28-exhaustion7-v1",
+  "feature_names": [
+    "sleep_hours_mean",
+    "sleep_hours_std",
+    "sleep_hours_slope",
+    "study_minutes_mean",
+    "study_minutes_std",
+    "late_study_fraction",
+    "break_minutes_mean",
+    "completion_ratio",
+    "incomplete_task_days_fraction",
+    "daily_coverage_fraction",
+    "behavior_coverage_fraction",
+    "fatigue_mean",
+    "mental_strain_mean",
+    "concentration_readiness_mean",
+    "fatigue_slope",
+    "latest_weekly_exhaustion",
+    "latest_weekly_disengagement",
+    "latest_weekly_academic_efficacy",
+    "weekly_age_days",
+    "weekly_missing"
+  ],
+  "selected_model": "combined_random_forest",
+  "model_sha256": "668bea7df567a4e5470e648a601adb532a6b7062692aff77dbd827319929a567",
+  "target": "next_weekly_exhaustion_ge4_within_next7days",
+  "lookback_complete_days": 14,
+  "horizon_days": 7,
+  "study_timezone": "Asia/Colombo",
+  "decision_threshold": 0.5,
+  "threshold_status": "engineering_demo_setting_not_clinical_cutoff",
+  "clinical_validation": false,
+  "weekly_instrument": "exploratory-exhaustion-item-v1",
+  "instrument_validated": false,
+  "test_metrics": {
+    "sample_count": 183,
+    "positive_count": 39,
+    "positive_fraction": 0.21311475409836064,
+    "roc_auc": 0.8076923076923077,
+    "average_precision": 0.5476323760054442,
+    "brier_score": 0.1966208985381751,
+    "accuracy": 0.6721311475409836,
+    "balanced_accuracy": 0.6888354700854701,
+    "f1": 0.4827586206896552,
+    "confusion_matrix_0_1": [
+      [
+        95,
+        49
+      ],
+      [
+        11,
+        28
+      ]
+    ],
+    "threshold": 0.5
+  },
+  "dataset_sha256": "c481b65e14d136ea0332edfa1a3ea5c833821a53b1943d7c06dc3a2f568d1b97",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "modalities_used": [
+    "daily_behavior",
+    "daily_self_report",
+    "prior_weekly_self_report"
+  ],
+  "facial_or_voice_scores_used_as_risk_predictors": false,
+  "limitations": [
+    "Exhaustion >=4 is an exploratory single-item proxy, not a validated burnout diagnosis.",
+    "Synthetic metrics do not validate local student accuracy or probability calibration.",
+    "Missing daily values are imputed using training-only medians; no zero-filling of missing days.",
+    "Raw facial deviation/acted voice emotion are not converted into clinical risk."
+  ]
+}
