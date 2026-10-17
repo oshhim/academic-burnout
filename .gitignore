@@ -30,3 +30,6 @@ Pods/
 .DS_Store
 .vscode/
 .idea/
+
+# Local design references and guides (not part of the repository)
+stuff/
