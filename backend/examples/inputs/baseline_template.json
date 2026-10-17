@@ -1,0 +1,8 @@
+{
+  "participant_id": "EXAMPLE-01",
+  "session_ids": [
+    "REPLACE_WITH_RETURNED_SESSION_ID_0",
+    "REPLACE_WITH_RETURNED_SESSION_ID_1",
+    "REPLACE_WITH_RETURNED_SESSION_ID_2"
+  ]
+}

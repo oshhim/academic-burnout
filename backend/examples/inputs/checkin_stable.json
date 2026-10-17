@@ -1,0 +1,373 @@
+{
+  "participant_id": "EXAMPLE-01",
+  "client_session_id": "stable",
+  "data_source": "synthetic_demo",
+  "feature_schema_version": "facial-window-v1",
+  "extractor_version": "synthetic-v1",
+  "recorded_at": "2026-10-11T03:58:50.391629+00:00",
+  "consent": true,
+  "baseline_condition_confirmed": false,
+  "protocol": "neutral_task_recovery",
+  "windows": [
+    {
+      "t_start_sec": 0.0,
+      "duration_sec": 2.5,
+      "phase": "neutral",
+      "features": {
+        "eye_aspect_ratio": 0.299,
+        "brow_lowering": 0.101,
+        "lip_press": 0.081,
+        "jaw_open": 0.041,
+        "head_motion_deg": 1.01
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 2.5,
+      "duration_sec": 2.5,
+      "phase": "neutral",
+      "features": {
+        "eye_aspect_ratio": 0.301,
+        "brow_lowering": 0.099,
+        "lip_press": 0.079,
+        "jaw_open": 0.039,
+        "head_motion_deg": 0.99
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 5.0,
+      "duration_sec": 2.5,
+      "phase": "neutral",
+      "features": {
+        "eye_aspect_ratio": 0.299,
+        "brow_lowering": 0.101,
+        "lip_press": 0.081,
+        "jaw_open": 0.041,
+        "head_motion_deg": 1.01
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 7.5,
+      "duration_sec": 2.5,
+      "phase": "neutral",
+      "features": {
+        "eye_aspect_ratio": 0.301,
+        "brow_lowering": 0.099,
+        "lip_press": 0.079,
+        "jaw_open": 0.039,
+        "head_motion_deg": 0.99
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 10.0,
+      "duration_sec": 2.5,
+      "phase": "neutral",
+      "features": {
+        "eye_aspect_ratio": 0.299,
+        "brow_lowering": 0.101,
+        "lip_press": 0.081,
+        "jaw_open": 0.041,
+        "head_motion_deg": 1.01
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 12.5,
+      "duration_sec": 2.5,
+      "phase": "neutral",
+      "features": {
+        "eye_aspect_ratio": 0.301,
+        "brow_lowering": 0.099,
+        "lip_press": 0.079,
+        "jaw_open": 0.039,
+        "head_motion_deg": 0.99
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 15.0,
+      "duration_sec": 2.5,
+      "phase": "task",
+      "features": {
+        "eye_aspect_ratio": 0.294,
+        "brow_lowering": 0.10600000000000001,
+        "lip_press": 0.08600000000000001,
+        "jaw_open": 0.046,
+        "head_motion_deg": 1.06
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 17.5,
+      "duration_sec": 2.5,
+      "phase": "task",
+      "features": {
+        "eye_aspect_ratio": 0.296,
+        "brow_lowering": 0.10400000000000001,
+        "lip_press": 0.084,
+        "jaw_open": 0.044,
+        "head_motion_deg": 1.04
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 20.0,
+      "duration_sec": 2.5,
+      "phase": "task",
+      "features": {
+        "eye_aspect_ratio": 0.294,
+        "brow_lowering": 0.10600000000000001,
+        "lip_press": 0.08600000000000001,
+        "jaw_open": 0.046,
+        "head_motion_deg": 1.06
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 22.5,
+      "duration_sec": 2.5,
+      "phase": "task",
+      "features": {
+        "eye_aspect_ratio": 0.296,
+        "brow_lowering": 0.10400000000000001,
+        "lip_press": 0.084,
+        "jaw_open": 0.044,
+        "head_motion_deg": 1.04
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 25.0,
+      "duration_sec": 2.5,
+      "phase": "task",
+      "features": {
+        "eye_aspect_ratio": 0.294,
+        "brow_lowering": 0.10600000000000001,
+        "lip_press": 0.08600000000000001,
+        "jaw_open": 0.046,
+        "head_motion_deg": 1.06
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 27.5,
+      "duration_sec": 2.5,
+      "phase": "task",
+      "features": {
+        "eye_aspect_ratio": 0.296,
+        "brow_lowering": 0.10400000000000001,
+        "lip_press": 0.084,
+        "jaw_open": 0.044,
+        "head_motion_deg": 1.04
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 30.0,
+      "duration_sec": 2.5,
+      "phase": "recovery",
+      "features": {
+        "eye_aspect_ratio": 0.299,
+        "brow_lowering": 0.101,
+        "lip_press": 0.081,
+        "jaw_open": 0.041,
+        "head_motion_deg": 1.01
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 32.5,
+      "duration_sec": 2.5,
+      "phase": "recovery",
+      "features": {
+        "eye_aspect_ratio": 0.301,
+        "brow_lowering": 0.099,
+        "lip_press": 0.079,
+        "jaw_open": 0.039,
+        "head_motion_deg": 0.99
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 35.0,
+      "duration_sec": 2.5,
+      "phase": "recovery",
+      "features": {
+        "eye_aspect_ratio": 0.299,
+        "brow_lowering": 0.101,
+        "lip_press": 0.081,
+        "jaw_open": 0.041,
+        "head_motion_deg": 1.01
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 37.5,
+      "duration_sec": 2.5,
+      "phase": "recovery",
+      "features": {
+        "eye_aspect_ratio": 0.301,
+        "brow_lowering": 0.099,
+        "lip_press": 0.079,
+        "jaw_open": 0.039,
+        "head_motion_deg": 0.99
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 40.0,
+      "duration_sec": 2.5,
+      "phase": "recovery",
+      "features": {
+        "eye_aspect_ratio": 0.299,
+        "brow_lowering": 0.101,
+        "lip_press": 0.081,
+        "jaw_open": 0.041,
+        "head_motion_deg": 1.01
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    },
+    {
+      "t_start_sec": 42.5,
+      "duration_sec": 2.5,
+      "phase": "recovery",
+      "features": {
+        "eye_aspect_ratio": 0.301,
+        "brow_lowering": 0.099,
+        "lip_press": 0.079,
+        "jaw_open": 0.039,
+        "head_motion_deg": 0.99
+      },
+      "quality": {
+        "face_count": 1,
+        "tracking_score": 0.95,
+        "brightness": 0.55,
+        "sharpness": 0.85,
+        "yaw_deg": 2.0,
+        "pitch_deg": 1.0
+      }
+    }
+  ]
+}

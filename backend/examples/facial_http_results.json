@@ -1,0 +1,316 @@
+{
+  "data_source": "synthetic_demo",
+  "participant_id": "DEMO-HTTP-VERIFIED",
+  "baseline": {
+    "baseline_id": "7e3689e1-a016-453e-a7ea-dd6c623d4231",
+    "participant_id": "DEMO-HTTP-VERIFIED",
+    "data_source": "synthetic_demo",
+    "version": 1,
+    "created_at": "2026-10-11T05:05:38.363143+00:00",
+    "effective_at": "2026-10-08T07:05:53.331952+00:00",
+    "session_ids": [
+      "3d9bb38e-b5a2-48b7-a648-02c2e6051494",
+      "acc819c4-016b-4d8d-873e-1c3489487fd9",
+      "b7b971f3-6eaf-4020-8693-0fa1fb22a873"
+    ],
+    "center": {
+      "eye_aspect_ratio": 0.3,
+      "brow_lowering": 0.1,
+      "lip_press": 0.08,
+      "jaw_open": 0.04000000000000001,
+      "head_motion_deg": 1.0
+    },
+    "scale": {
+      "eye_aspect_ratio": 0.025,
+      "brow_lowering": 0.025,
+      "lip_press": 0.025,
+      "jaw_open": 0.025,
+      "head_motion_deg": 1.0
+    },
+    "scale_floors": {
+      "eye_aspect_ratio": 0.025,
+      "brow_lowering": 0.025,
+      "lip_press": 0.025,
+      "jaw_open": 0.025,
+      "head_motion_deg": 1.0
+    },
+    "extractor_version": "synthetic-v1",
+    "evidence": {
+      "model_version": "c1-statistical-v1.0.0",
+      "method": "robust_personal_baseline_deviation",
+      "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+      "validation_status": "software_verified_not_wellbeing_validated",
+      "feature_schema_version": "facial-window-v1"
+    },
+    "warnings": [
+      "Reference conditions are participant-confirmed, not proof of a healthy or unstressed state.",
+      "Three sessions are a technical minimum; collect several days of calibration and inspect stability.",
+      "Synthetic demonstration baseline."
+    ]
+  },
+  "scenarios": {
+    "stable": {
+      "session_id": "316cc526-153a-40d1-86b2-9bf14813a16f",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "stable",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-11T04:05:38.365865+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "accepted",
+      "quality": {
+        "status": "accepted",
+        "usable_duration_sec": 45.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 1.0,
+        "quality_score": 0.95,
+        "rejected_window_count": 0,
+        "reasons": []
+      },
+      "session_features": {
+        "eye_aspect_ratio": 0.2983333333333333,
+        "brow_lowering": 0.1016666666666667,
+        "lip_press": 0.08166666666666668,
+        "jaw_open": 0.041666666666666664,
+        "head_motion_deg": 1.0166666666666666
+      },
+      "baseline_id": "7e3689e1-a016-453e-a7ea-dd6c623d4231",
+      "deviation": {
+        "mean_absolute_standardized_deviation": 0.056667,
+        "level": "within_reference_range",
+        "per_feature_signed_z": {
+          "eye_aspect_ratio": -0.066667,
+          "brow_lowering": 0.066667,
+          "lip_press": 0.066667,
+          "jaw_open": 0.066667,
+          "head_motion_deg": 0.016667
+        },
+        "top_changed_features": [
+          "eye_aspect_ratio",
+          "brow_lowering",
+          "lip_press"
+        ]
+      },
+      "temporal": {
+        "status": "not_measurable",
+        "reason": "no_observed_task_increase_over_neutral",
+        "phase_deviations": {
+          "neutral": 0.0,
+          "task": 0.17,
+          "recovery": 0.0
+        },
+        "task_to_recovery_change": null,
+        "return_fraction": null,
+        "return_rate_z_per_sec": null,
+        "interpretation": "No psychological recovery inference is made."
+      },
+      "request_self_report": true,
+      "self_report_reason": "Research-stage labels are requested for EVERY session, not only uncertain predictions.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student."
+      ]
+    },
+    "return": {
+      "session_id": "e0f2425a-9d3c-43a4-bdc3-b97ca35665a1",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "return",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-11T04:05:38.372557+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "accepted",
+      "quality": {
+        "status": "accepted",
+        "usable_duration_sec": 45.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 1.0,
+        "quality_score": 0.95,
+        "rejected_window_count": 0,
+        "reasons": []
+      },
+      "session_features": {
+        "eye_aspect_ratio": 0.265,
+        "brow_lowering": 0.135,
+        "lip_press": 0.11500000000000002,
+        "jaw_open": 0.07500000000000002,
+        "head_motion_deg": 1.35
+      },
+      "baseline_id": "7e3689e1-a016-453e-a7ea-dd6c623d4231",
+      "deviation": {
+        "mean_absolute_standardized_deviation": 1.19,
+        "level": "moderate_visual_change",
+        "per_feature_signed_z": {
+          "eye_aspect_ratio": -1.4,
+          "brow_lowering": 1.4,
+          "lip_press": 1.4,
+          "jaw_open": 1.4,
+          "head_motion_deg": 0.35
+        },
+        "top_changed_features": [
+          "lip_press",
+          "jaw_open",
+          "brow_lowering"
+        ]
+      },
+      "temporal": {
+        "status": "measured",
+        "reason": null,
+        "phase_deviations": {
+          "neutral": 0.0,
+          "task": 3.06,
+          "recovery": 0.51
+        },
+        "task_to_recovery_change": 2.55,
+        "return_fraction": 0.833333,
+        "return_rate_z_per_sec": 0.17,
+        "interpretation": "positive: closer to baseline; negative: farther from baseline. This is a visual measurement only."
+      },
+      "request_self_report": true,
+      "self_report_reason": "Research-stage labels are requested for EVERY session, not only uncertain predictions.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student."
+      ]
+    },
+    "persistent": {
+      "session_id": "ad10e401-4bcb-43b7-b3c9-bf086b797556",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "persistent",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-11T04:05:38.377380+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "accepted",
+      "quality": {
+        "status": "accepted",
+        "usable_duration_sec": 45.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 1.0,
+        "quality_score": 0.95,
+        "rejected_window_count": 0,
+        "reasons": []
+      },
+      "session_features": {
+        "eye_aspect_ratio": 0.235,
+        "brow_lowering": 0.165,
+        "lip_press": 0.145,
+        "jaw_open": 0.10500000000000001,
+        "head_motion_deg": 1.65
+      },
+      "baseline_id": "7e3689e1-a016-453e-a7ea-dd6c623d4231",
+      "deviation": {
+        "mean_absolute_standardized_deviation": 2.21,
+        "level": "large_visual_change",
+        "per_feature_signed_z": {
+          "eye_aspect_ratio": -2.6,
+          "brow_lowering": 2.6,
+          "lip_press": 2.6,
+          "jaw_open": 2.6,
+          "head_motion_deg": 0.65
+        },
+        "top_changed_features": [
+          "eye_aspect_ratio",
+          "brow_lowering",
+          "jaw_open"
+        ]
+      },
+      "temporal": {
+        "status": "measured",
+        "reason": null,
+        "phase_deviations": {
+          "neutral": 0.0,
+          "task": 3.06,
+          "recovery": 3.57
+        },
+        "task_to_recovery_change": -0.51,
+        "return_fraction": -0.166667,
+        "return_rate_z_per_sec": -0.034,
+        "interpretation": "positive: closer to baseline; negative: farther from baseline. This is a visual measurement only."
+      },
+      "request_self_report": true,
+      "self_report_reason": "Research-stage labels are requested for EVERY session, not only uncertain predictions.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student."
+      ]
+    },
+    "poor_quality": {
+      "session_id": "c293b4ac-e60b-40be-8744-5b0fba549c8a",
+      "participant_id": "DEMO-HTTP-VERIFIED",
+      "client_session_id": "poor_quality",
+      "data_source": "synthetic_demo",
+      "recorded_at": "2026-10-11T04:05:38.381920+00:00",
+      "extractor_version": "synthetic-v1",
+      "protocol": "neutral_task_recovery",
+      "baseline_condition_confirmed": false,
+      "status": "insufficient_quality",
+      "quality": {
+        "status": "insufficient_quality",
+        "usable_duration_sec": 0.0,
+        "elapsed_duration_sec": 45.0,
+        "usable_fraction": 0.0,
+        "quality_score": 0.0,
+        "rejected_window_count": 18,
+        "reasons": [
+          "less_than_80_percent_usable_coverage",
+          "less_than_8_usable_seconds",
+          "low_tracking_score",
+          "poor_brightness",
+          "require_exactly_one_face"
+        ]
+      },
+      "session_features": null,
+      "baseline_id": "7e3689e1-a016-453e-a7ea-dd6c623d4231",
+      "deviation": null,
+      "temporal": null,
+      "request_self_report": true,
+      "self_report_reason": "Use self-report as fallback; no visual conclusion is available.",
+      "evidence": {
+        "model_version": "c1-statistical-v1.0.0",
+        "method": "robust_personal_baseline_deviation",
+        "training_data_source": "not_applicable_no_trained_wellbeing_classifier",
+        "validation_status": "software_verified_not_wellbeing_validated",
+        "feature_schema_version": "facial-window-v1"
+      },
+      "warnings": [
+        "Visual deviation is not evidence of stress, burnout, fatigue or psychological recovery.",
+        "Quality and deviation thresholds are provisional engineering settings, not clinically validated thresholds.",
+        "SYNTHETIC DEMO: this record is not an observation from a real student.",
+        "Insufficient quality: no facial deviation or temporal result was computed."
+      ]
+    }
+  },
+  "verification": {
+    "transport": "real_http_tcp",
+    "history_count": 4,
+    "temporary_database": true
+  }
+}

@@ -1,0 +1,4 @@
+# Optional: not required to run the backend or synthetic demo.
+-r requirements.txt
+mediapipe>=0.10.21,<0.11
+opencv-contrib-python>=4.10,<6
