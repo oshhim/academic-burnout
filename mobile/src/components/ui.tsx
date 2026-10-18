@@ -1,11 +1,12 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState, type ComponentProps, type ReactNode } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View, type TextInputProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ApiError } from '@/lib/api';
+
+import { Logo } from './logo';
 import { colors, fonts, gradient, radius, space, type } from '@/theme';
 
 export type IconName = ComponentProps<typeof MaterialIcons>['name'];
@@ -18,9 +19,7 @@ export function Screen({ title, subtitle, badge, children }: { title: string; su
     <SafeAreaView style={styles.screen} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.header}>
-          <View style={styles.logoTile}>
-            <Image source={require('@/assets/images/logo.png')} style={styles.logo} contentFit="contain" accessibilityLabel="EMPath+" />
-          </View>
+          <Logo size={40} />
           <Text style={styles.headerTitle} numberOfLines={1}>
             {title}
           </Text>
@@ -350,8 +349,6 @@ export const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.base },
   scroll: { paddingHorizontal: space.gutter, paddingTop: space.base, paddingBottom: space.xl * 2, gap: space.lg },
   header: { flexDirection: 'row', alignItems: 'center', gap: space.sm, minHeight: 48 },
-  logoTile: { width: 40, height: 40, borderRadius: 8, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
-  logo: { width: 34, height: 34 },
   headerTitle: { ...type.headline, color: colors.text, flex: 1 },
   section: { gap: space.sm },
   sectionHead: { flexDirection: 'row', alignItems: 'center', gap: space.base },

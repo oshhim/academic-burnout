@@ -4,6 +4,12 @@ Expo (React Native, SDK 57) app for testing the four backend components from a p
 
 ## Screens
 
+<p align="center">
+  <img src="docs/screenshots/welcome-screens.png" width="100%" alt="Launch screen: four onboarding slides">
+  <br>
+  <sub>Launch screen: welcome · quick check-ins · spotting patterns · small breaks</sub>
+</p>
+
 On first open a **launch screen** (four onboarding slides) explains the app; after **Get started** the app opens Profile until it is connected, then Facial.
 
 | Tab | Component | Demo data mode | Real capture mode |
@@ -91,6 +97,8 @@ src/
     capture-view.tsx        WebView host for the camera/microphone pages
     mode-badge.tsx          Header DEMO/REAL badge and avatar
     needs-setup.tsx         "Not connected yet" card
+    logo.tsx                EMPath+ logo (vector; gradient or single colour)
+    sanctuary-background.tsx  Dot-grid and soft-glow backdrop for the launch screen
   lib/
     api.ts                  HTTP client, error mapping, native file upload
     session.tsx             Connection, participants, data mode, profile name, retry-safe operation IDs
@@ -99,14 +107,27 @@ src/
     use-action.ts           Busy/error state for buttons
     capture/face-math.ts    Port of backend/app/facial/extraction.py
     capture/pages.ts        Camera (MediaPipe) and microphone (WAV) capture pages
+  brand/logo.ts             Vector EMPath+ mark: source for the in-app logo and all icons
   theme.ts                  Colours, spacing and type from the design system
-assets/images/logo.png      EMPath+ logo used in headers and the launch screen
+assets/images/              App icon, Android adaptive icon layers, splash and favicon (generated)
+scripts/generate-icons.mjs  Regenerates assets/images from src/brand/logo.ts
+docs/screenshots/           README screenshots
 ```
 
 ## Notes for iOS
 
 - Text inputs are deliberately stateless (no focus glow) and have no `lineHeight`: re-rendering the input box on focus made the iOS keyboard open and immediately close.
 - Labels next to switches have no `lineHeight`, so Inter does not sit low beside the switch.
+
+## Logo and icons
+
+The EMPath+ mark is drawn as vector in `src/brand/logo.ts` (redrawn from the original brand logo). The in-app logo renders it live; the app icon, Android adaptive icon, splash and favicon PNGs are generated from it. After changing the mark, regenerate them (uses your local Google Chrome):
+
+```bash
+npx tsx scripts/generate-icons.mjs
+```
+
+Expo Go always shows its own home-screen icon; the EMPath+ icon and splash appear in a development or store build.
 
 ## Checks
 

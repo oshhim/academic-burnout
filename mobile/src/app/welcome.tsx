@@ -1,12 +1,12 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Image } from 'expo-image';
-import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useRef, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient as SvgGradient, Path, Stop } from 'react-native-svg';
 
+import { Logo } from '@/components/logo';
+import { SanctuaryBackground } from '@/components/sanctuary-background';
 import { Button } from '@/components/ui';
 import { useSession } from '@/lib/session';
 import { colors, fonts, radius, space, type } from '@/theme';
@@ -16,11 +16,9 @@ import { colors, fonts, radius, space, type } from '@/theme';
 
 function LogoHero() {
   return (
+    // Simple single-colour mark; the soft glow now comes from the background.
     <View style={styles.heroWrap}>
-      <LinearGradient colors={['rgba(99,102,241,0.35)', 'rgba(168,85,247,0.0)']} style={styles.glow} start={{ x: 0.5, y: 0.5 }} end={{ x: 1, y: 1 }} />
-      <View style={styles.logoBig}>
-        <Image source={require('@/assets/images/logo.png')} style={{ width: 120, height: 120 }} contentFit="contain" />
-      </View>
+      <Logo size={170} color={colors.primary} />
     </View>
   );
 }
@@ -156,10 +154,9 @@ export default function WelcomeScreen() {
 
   return (
     <SafeAreaView style={styles.screen}>
+      <SanctuaryBackground />
       <View style={styles.header}>
-        <View style={styles.logoTile}>
-          <Image source={require('@/assets/images/logo.png')} style={{ width: 34, height: 34 }} contentFit="contain" />
-        </View>
+        <Logo size={40} />
         <Text style={styles.brand}>EMPath+</Text>
         {!last ? (
           <Pressable onPress={finish} hitSlop={12} accessibilityRole="button">
@@ -193,7 +190,6 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.base },
   header: { flexDirection: 'row', alignItems: 'center', gap: space.sm, paddingHorizontal: space.gutter, paddingVertical: space.base },
-  logoTile: { width: 40, height: 40, borderRadius: 8, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
   brand: { ...type.title, color: colors.text, flex: 1 },
   skip: { fontFamily: fonts.label, fontSize: 15, color: colors.textMuted },
   slide: { paddingHorizontal: space.gutter, justifyContent: 'center', gap: space.md },
@@ -205,8 +201,6 @@ const styles = StyleSheet.create({
   dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.raised },
   dotActive: { width: 24, backgroundColor: colors.primary },
   heroWrap: { width: 240, height: 240, alignItems: 'center', justifyContent: 'center' },
-  glow: { position: 'absolute', width: 240, height: 240, borderRadius: 120 },
-  logoBig: { width: 150, height: 150, borderRadius: 32, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', shadowColor: colors.indigo, shadowOpacity: 0.5, shadowRadius: 30, shadowOffset: { width: 0, height: 0 }, elevation: 12 },
   artRow: { flexDirection: 'row', gap: space.md },
   artCard: { width: 150, height: 190, borderRadius: radius.card, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', gap: space.md },
   artIcon: { width: 64, height: 64, borderRadius: 32, backgroundColor: colors.raised, alignItems: 'center', justifyContent: 'center' },
