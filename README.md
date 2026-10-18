@@ -1,6 +1,10 @@
-# EMPath+
+<p align="center">
+  <img src="mobile/docs/logo.png" width="104" alt="EMPath+ logo">
+</p>
 
-Research prototype for student wellbeing support: a shared backend and a mobile app.
+<h1 align="center">EMPath+</h1>
+
+<p align="center"><b>New here?</b> Follow <a href="SETUP.md">SETUP.md</a> to run the backend and mobile app on Mac or Windows.</p>
 
 ## What's inside
 

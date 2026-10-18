@@ -21,6 +21,8 @@ const assets = [
   // Splash: glass mark on the dark splash background colour from app.json.
   ['splash-icon.png', 512, glassMarkSvg({ scale: 0.96 })],
   ['favicon.png', 48, appIconSvg({ radius: 22, scale: 0.7 })],
+  // Rounded app icon for the READMEs (GitHub can't round images itself).
+  ['../../docs/logo.png', 256, appIconSvg({ radius: 22, scale: 0.64 })],
 ];
 
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
@@ -30,6 +32,6 @@ for (const [name, size, svg] of assets) {
   const sized = svg.replace(/<svg([^>]*?)(\swidth="[^"]*")?(\sheight="[^"]*")?(\s|>)/, `<svg$1 width="${size}" height="${size}"$4`);
   await page.setContent(`<html><body style="margin:0;background:transparent">${sized}</body></html>`);
   await page.screenshot({ path: OUT + name, omitBackground: true, clip: { x: 0, y: 0, width: size, height: size } });
-  console.log(`wrote assets/images/${name} (${size}px)`);
+  console.log(`wrote ${name.startsWith('../') ? name.replace('../../', '') : 'assets/images/' + name} (${size}px)`);
 }
 await browser.close();
