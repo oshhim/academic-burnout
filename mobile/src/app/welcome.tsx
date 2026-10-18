@@ -6,21 +6,21 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient as SvgGradient, Path, Stop } from 'react-native-svg';
 
 import { Logo } from '@/components/logo';
-import { SanctuaryBackground } from '@/components/sanctuary-background';
-import { Button } from '@/components/ui';
+import { AuroraBackground } from '@/components/aurora-background';
 import { useSession } from '@/lib/session';
 import { colors, fonts, radius, space, type } from '@/theme';
 
-// Launch screen, modelled on the onboarding designs (logo header, Skip, illustration,
-// headline, body, page dots, gradient Continue). Copy stays within what the app actually does.
+// Launch screen, "editorial" style: segmented progress, left-aligned eyebrow, large
+// tight headline with a dimmed second line, short body, and a white pill call to
+// action. Colour is almost absent on purpose. Copy stays within what the app does.
 
+const INK = '#F4F5FA'; // headline and CTA
+const DIM = '#6E7184'; // dimmed second headline line
+const BODY = '#A6A4B5';
+
+/** First slide: the mark alone, small and left-aligned. */
 function LogoHero() {
-  return (
-    // Simple single-colour mark; the soft glow now comes from the background.
-    <View style={styles.heroWrap}>
-      <Logo size={170} color={colors.primary} />
-    </View>
-  );
+  return <Logo size={56} color={INK} />;
 }
 
 function CheckInsArt() {
@@ -88,7 +88,7 @@ function ActivitiesArt() {
       {items.map((item) => (
         <View key={item.title} style={[styles.miniCard, item.top && styles.miniTop]}>
           <View style={styles.miniIcon}>
-            <MaterialIcons name={item.icon} size={20} color={item.top ? colors.secondary : colors.tertiary} />
+            <MaterialIcons name={item.icon} size={20} color={colors.tertiary} />
           </View>
           <View style={{ flex: 1 }}>
             <Text style={styles.miniTitle}>{item.title}</Text>
@@ -101,32 +101,40 @@ function ActivitiesArt() {
   );
 }
 
-type Slide = { key: string; art: (width: number) => ReactNode; title: string; body: string };
+type Slide = { key: string; art: (width: number) => ReactNode; eyebrow: string; title: string; dim: string; body: string };
 
 const SLIDES: Slide[] = [
   {
     key: 'welcome',
     art: () => <LogoHero />,
-    title: 'Understand how you’re doing. Work better. Feel better.',
-    body: 'EMPath+ is a research prototype for university students: short check-ins, a study diary and small breaks, with your data kept private.',
+    eyebrow: 'WELCOME TO EMPATH+',
+    title: 'Understand how you’re doing.',
+    dim: 'Work better. Feel better.',
+    body: 'Short check-ins, a study diary and small breaks for university life. Private by design.',
   },
   {
     key: 'checkins',
     art: () => <CheckInsArt />,
-    title: 'Quick check-ins',
-    body: 'A short camera or voice check-in compares you with your own normal. Facial video never leaves your phone; only measurements are sent.',
+    eyebrow: 'QUICK CHECK-INS',
+    title: 'Check in with your face or voice.',
+    dim: 'Compared with your own normal.',
+    body: 'Facial video never leaves your phone; only measurements are sent.',
   },
   {
     key: 'patterns',
     art: (width) => <TrendArt width={width} />,
-    title: 'Spot patterns early',
-    body: 'A one-minute daily diary and a weekly check show how your sleep, study load and fatigue change. Forecasts are research estimates, not a diagnosis.',
+    eyebrow: 'SPOT PATTERNS EARLY',
+    title: 'See how your weeks change.',
+    dim: 'Sleep, study and fatigue.',
+    body: 'A one-minute daily diary and a weekly check. Forecasts are research estimates, not a diagnosis.',
   },
   {
     key: 'breaks',
     art: () => <ActivitiesArt />,
-    title: 'Small breaks that fit',
-    body: 'Get short, optional activities that match your goal and the time you have. Your ratings make the next suggestions better.',
+    eyebrow: 'SMALL BREAKS',
+    title: 'Breaks that fit your day.',
+    dim: 'Better with every rating.',
+    body: 'Short, optional activities matched to your goal and the time you have.',
   },
 ];
 
@@ -138,6 +146,8 @@ export default function WelcomeScreen() {
   // Horizontal pages don't stretch vertically; measure the pager so each slide can centre itself.
   const [pageHeight, setPageHeight] = useState(0);
   const last = index === SLIDES.length - 1;
+  // Same top offset on every slide, so the eyebrow and headline don't move while swiping.
+  const topPad = Math.max(8, (pageHeight - 640) / 2);
 
   const finish = () => {
     setOnboarded(true);
@@ -154,34 +164,42 @@ export default function WelcomeScreen() {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <SanctuaryBackground />
-      <View style={styles.header}>
-        <Logo size={40} />
-        <Text style={styles.brand}>EMPath+</Text>
-        {!last ? (
-          <Pressable onPress={finish} hitSlop={12} accessibilityRole="button">
-            <Text style={styles.skip}>Skip</Text>
-          </Pressable>
-        ) : null}
+      <AuroraBackground />
+      <View style={styles.top}>
+        <View style={styles.progress} accessibilityRole="progressbar" accessibilityValue={{ min: 1, max: SLIDES.length, now: index + 1 }}>
+          {SLIDES.map((s, i) => (
+            <View key={s.key} style={[styles.segment, i <= index && styles.segmentOn]} />
+          ))}
+        </View>
+        <View style={styles.skipRow}>
+          {!last ? (
+            <Pressable onPress={finish} hitSlop={12} accessibilityRole="button">
+              <Text style={styles.skip}>Skip</Text>
+            </Pressable>
+          ) : null}
+        </View>
       </View>
 
       <ScrollView ref={scroller} horizontal pagingEnabled showsHorizontalScrollIndicator={false} onMomentumScrollEnd={onScrollEnd} style={{ flex: 1 }} onLayout={(e) => setPageHeight(e.nativeEvent.layout.height)}>
         {SLIDES.map((slide) => (
-          <View key={slide.key} style={[styles.slide, { width, height: pageHeight || undefined }]}>
+          <View key={slide.key} style={[styles.slide, { width, height: pageHeight || undefined, paddingTop: topPad }]}>
             <View style={styles.artArea}>{slide.art(width)}</View>
-            <Text style={styles.title}>{slide.title}</Text>
+            <Text style={styles.eyebrow}>{slide.eyebrow}</Text>
+            <Text style={styles.title}>
+              {slide.title}
+              {'\n'}
+              <Text style={styles.titleDim}>{slide.dim}</Text>
+            </Text>
             <Text style={styles.body}>{slide.body}</Text>
           </View>
         ))}
       </ScrollView>
 
       <View style={styles.footer}>
-        <View style={styles.dots}>
-          {SLIDES.map((s, i) => (
-            <View key={s.key} style={[styles.dot, i === index && styles.dotActive]} />
-          ))}
-        </View>
-        <Button label={last ? 'Get started' : 'Continue'} icon={last ? 'arrow-forward' : undefined} onPress={next} />
+        <Pressable onPress={next} accessibilityRole="button" style={({ pressed }) => [styles.cta, pressed && { opacity: 0.85, transform: [{ scale: 0.98 }] }]}>
+          <Text style={styles.ctaText}>{last ? 'Get started' : 'Continue'}</Text>
+          {last ? <MaterialIcons name="arrow-forward" size={20} color={colors.base} /> : null}
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -189,18 +207,21 @@ export default function WelcomeScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.base },
-  header: { flexDirection: 'row', alignItems: 'center', gap: space.sm, paddingHorizontal: space.gutter, paddingVertical: space.base },
-  brand: { ...type.title, color: colors.text, flex: 1 },
-  skip: { fontFamily: fonts.label, fontSize: 15, color: colors.textMuted },
-  slide: { paddingHorizontal: space.gutter, justifyContent: 'center', gap: space.md },
-  artArea: { minHeight: 260, alignItems: 'center', justifyContent: 'center', marginBottom: space.base },
-  title: { fontFamily: fonts.bold, fontSize: 28, lineHeight: 34, color: colors.text, textAlign: 'center', letterSpacing: -0.3 },
-  body: { ...type.body, color: colors.textMuted, textAlign: 'center' },
-  footer: { paddingHorizontal: space.gutter, paddingBottom: space.md, gap: space.lg },
-  dots: { flexDirection: 'row', justifyContent: 'center', gap: space.base },
-  dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.raised },
-  dotActive: { width: 24, backgroundColor: colors.primary },
-  heroWrap: { width: 240, height: 240, alignItems: 'center', justifyContent: 'center' },
+  top: { paddingHorizontal: space.gutter + 4, paddingTop: space.sm, gap: space.sm },
+  progress: { flexDirection: 'row', gap: 6 },
+  segment: { flex: 1, height: 3, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.14)' },
+  segmentOn: { backgroundColor: INK },
+  skipRow: { flexDirection: 'row', justifyContent: 'flex-end', minHeight: 24 },
+  skip: { fontFamily: fonts.regular, fontSize: 15, color: colors.textFaint },
+  slide: { paddingHorizontal: space.gutter + 4, justifyContent: 'flex-start' },
+  artArea: { height: 250, justifyContent: 'flex-end', alignItems: 'flex-start', marginBottom: space.xl - 8 },
+  eyebrow: { fontFamily: fonts.semibold, fontSize: 11, letterSpacing: 2.2, color: colors.textFaint, marginBottom: space.sm },
+  title: { fontFamily: fonts.bold, fontSize: 34, lineHeight: 39, letterSpacing: -1, color: INK },
+  titleDim: { color: DIM },
+  body: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 23, color: BODY, marginTop: space.md },
+  footer: { paddingHorizontal: space.gutter + 4, paddingBottom: space.md },
+  cta: { height: 54, borderRadius: 27, backgroundColor: INK, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: space.base },
+  ctaText: { fontFamily: fonts.semibold, fontSize: 16, color: colors.base },
   artRow: { flexDirection: 'row', gap: space.md },
   artCard: { width: 150, height: 190, borderRadius: radius.card, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', gap: space.md },
   artIcon: { width: 64, height: 64, borderRadius: 32, backgroundColor: colors.raised, alignItems: 'center', justifyContent: 'center' },
@@ -218,9 +239,9 @@ const styles = StyleSheet.create({
   legendLine: { width: 16, height: 3, borderRadius: 2 },
   legendText: { ...type.caption, color: colors.textMuted },
   miniCard: { flexDirection: 'row', alignItems: 'center', gap: space.sm, padding: space.md, borderRadius: radius.card, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
-  miniTop: { backgroundColor: 'rgba(168,85,247,0.14)', borderColor: 'rgba(168,85,247,0.35)' },
+  miniTop: { borderColor: colors.borderStrong },
   miniIcon: { width: 40, height: 40, borderRadius: 20, backgroundColor: colors.raised, alignItems: 'center', justifyContent: 'center' },
   miniTitle: { fontFamily: fonts.semibold, fontSize: 15, color: colors.text },
   miniMeta: { ...type.caption, color: colors.textMuted },
-  topPick: { fontFamily: fonts.label, fontSize: 11, color: colors.secondary, letterSpacing: 0.6 },
+  topPick: { fontFamily: fonts.label, fontSize: 11, color: colors.textMuted, letterSpacing: 0.6 },
 });

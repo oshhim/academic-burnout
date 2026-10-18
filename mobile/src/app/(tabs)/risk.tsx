@@ -58,7 +58,7 @@ function RiskScreenContent() {
   const [profile, setProfile] = useState<RiskProfile>('rising');
   const [prediction, setPrediction] = useState<any>(null);
 
-  if (!active) return <Screen title="Risk"><NeedsSetup /></Screen>;
+  if (!active) return <Screen eyebrow="Component 3 · Risk" title="Risk"><NeedsSetup /></Screen>;
   const pid = samplePid ?? active.id;
   const common = { participant_id: active.id, data_source: active.source, consent: true };
   const reportedAt = (recordId: string) => (pendingReportedAt.current[recordId] ??= new Date().toISOString());
@@ -111,7 +111,7 @@ function RiskScreenContent() {
   const pairs = [NUMBER_FIELDS.slice(0, 2), NUMBER_FIELDS.slice(2, 4), NUMBER_FIELDS.slice(4, 6)];
 
   return (
-    <Screen title="Risk" badge={<ModeBadge />} subtitle="A quick daily diary and weekly check, then a next-week forecast.">
+    <Screen eyebrow="Component 3 · Risk" title="Your weeks," dim="and where they’re heading." badge={<ModeBadge />}>
       <Section label="Daily diary">
         <Card>
           <Chips options={DAYS} value={dailyDay} onChange={setDailyDay} format={dayLabel} />

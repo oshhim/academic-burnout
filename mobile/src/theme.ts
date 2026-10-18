@@ -9,6 +9,7 @@ export const colors = {
   inset: '#0E1118', // explanation panels inside cards
   border: 'rgba(255, 255, 255, 0.08)',
   borderStrong: 'rgba(255, 255, 255, 0.15)',
+  ink: '#F4F5FA', // brightest text, white pill buttons, logo
   text: '#E1E2EB',
   textMuted: '#C7C4D7',
   textFaint: '#908FA0',

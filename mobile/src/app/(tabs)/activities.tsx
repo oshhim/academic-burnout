@@ -67,7 +67,7 @@ function ActivitiesScreenContent() {
   const [wouldRepeat, setWouldRepeat] = useState<boolean | null>(null);
   const [feedbackSaved, setFeedbackSaved] = useState(false);
 
-  if (!active) return <Screen title="Activities"><NeedsSetup /></Screen>;
+  if (!active) return <Screen eyebrow="Component 4 · Activities" title="Activities"><NeedsSetup /></Screen>;
   const common = { participant_id: active.id, data_source: active.source, consent: true };
   const prefChanged = () => setPrefsSaved(false);
 
@@ -118,7 +118,7 @@ function ActivitiesScreenContent() {
   if (session && !outcome) {
     const a = session.activity;
     return (
-      <Screen title="Activity" badge={<ModeBadge />}>
+      <Screen eyebrow="Activity in progress" title="Take your time." badge={<ModeBadge />}>
         <Card tint="violet">
           <View style={{ alignItems: 'center', gap: space.sm }}>
             <IconWell icon={CATEGORY_ICON[a.category as keyof typeof CATEGORY_ICON] ?? 'spa'} color={colors.secondary} size={64} />
@@ -149,7 +149,7 @@ function ActivitiesScreenContent() {
   }
 
   return (
-    <Screen title="Activities" badge={<ModeBadge />} subtitle="Short, optional activities that fit your time and preferences.">
+    <Screen eyebrow="Component 4 · Activities" title="Small breaks," dim="that fit your time." badge={<ModeBadge />}>
       {outcome === 'completed' && !feedbackSaved ? (
         <Section label="How was it?">
           <Card>

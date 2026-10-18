@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 
@@ -12,7 +13,7 @@ import { LEVEL, qualityTips, temporalText } from '@/lib/explain';
 import { facialSession, type FacialScenario } from '@/lib/fixtures';
 import { useActiveParticipant, usePendingId, useSession } from '@/lib/session';
 import { useAction } from '@/lib/use-action';
-import { colors, radius, space } from '@/theme';
+import { colors, gradient, radius, space } from '@/theme';
 
 const SCENARIOS: FacialScenario[] = ['stable', 'return', 'persistent', 'poor_quality'];
 
@@ -23,7 +24,12 @@ function Progress({ value, total }: { value: number; total: number }) {
   return (
     <View style={{ flexDirection: 'row', gap: space.xs }}>
       {Array.from({ length: total }, (_, i) => (
-        <View key={i} style={{ flex: 1, height: 6, borderRadius: radius.chip, backgroundColor: i < value ? colors.tertiary : colors.raised }} />
+        // Purple accent for progress, as in the editorial design.
+        i < value ? (
+          <LinearGradient key={i} colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ flex: 1, height: 6, borderRadius: radius.chip }} />
+        ) : (
+          <View key={i} style={{ flex: 1, height: 6, borderRadius: radius.chip, backgroundColor: colors.raised }} />
+        )
       ))}
     </View>
   );
@@ -60,7 +66,7 @@ function FacialScreenContent() {
     run('load', refresh);
   }, [refresh, run]);
 
-  if (!active || !pid) return <Screen title="Facial"><NeedsSetup /></Screen>;
+  if (!active || !pid) return <Screen eyebrow="Component 1 · Facial" title="Facial"><NeedsSetup /></Screen>;
 
   const accepted = calibrations.filter((s) => s.status === 'accepted');
   // References not yet in the current baseline: the progress bar counts these, so it starts
@@ -141,7 +147,7 @@ function FacialScreenContent() {
   if (capture) {
     const reference = capture === 'neutral_only';
     return (
-      <Screen title={reference ? 'Reference' : 'Check-in'} badge={<ModeBadge />} subtitle={reference ? '15 seconds with a relaxed, neutral face.' : '45 seconds: neutral, task, then quiet observation.'}>
+      <Screen eyebrow={reference ? 'Facial · Reference' : 'Facial · Check-in'} title={reference ? '15 seconds,' : '45 seconds,'} dim={reference ? 'relaxed and neutral.' : 'neutral, task, then quiet.'} badge={<ModeBadge />}>
         <CaptureView
           kind="face"
           protocol={capture}
@@ -160,7 +166,7 @@ function FacialScreenContent() {
   const level = result?.deviation ? LEVEL[result.deviation.level] : null;
 
   return (
-    <Screen title="Facial" badge={<ModeBadge />} subtitle="How your facial movement compares with your own reference.">
+    <Screen eyebrow="Component 1 · Facial" title="Your face," dim="compared with your normal." badge={<ModeBadge />}>
       <Section label="Reference" step={1} done={Boolean(baseline)}>
         <Card>
           {baseline ? <Body>{`Baseline ready (version ${baseline.version}, from ${baseline.session_ids.length} references)`}</Body> : null}

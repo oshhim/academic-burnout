@@ -1,16 +1,6 @@
-<h1 align="center">
-  <img src="mobile/docs/wordmark.png" height="64" alt="EMPath+">
-</h1>
+# EMPath+
 
-<p align="center">
-  Research prototype for student wellbeing support: a shared backend and a mobile app.
-</p>
-
-<p align="center">
-  <img src="mobile/docs/screenshots/welcome-screens.png" width="100%" alt="EMPath+ mobile app launch screens">
-  <br>
-  <sub>Mobile app launch screens: welcome · quick check-ins · spotting patterns · small breaks</sub>
-</p>
+Research prototype for student wellbeing support: a shared backend and a mobile app.
 
 ## What's inside
 
@@ -53,6 +43,3 @@ npx expo start -c
 ```
 
 Scan the QR code, go through the launch screen, then connect on the **Profile** tab. Details: [mobile/README.md](mobile/README.md).
-
-> [!IMPORTANT]
-> Research prototype. No component is a validated burnout, stress or clinical model, and the repository contains no real student data.

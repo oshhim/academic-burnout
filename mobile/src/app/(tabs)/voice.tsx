@@ -41,7 +41,7 @@ function VoiceScreenContent() {
     if (pid) run('load', load);
   }, [pid, load, run]);
 
-  if (!pid) return <Screen title="Voice"><NeedsSetup /></Screen>;
+  if (!pid) return <Screen eyebrow="Component 2 · Voice" title="Voice"><NeedsSetup /></Screen>;
 
   const sample = samples.find((s) => s.dataset_recording_id === selected);
 
@@ -96,7 +96,7 @@ function VoiceScreenContent() {
   const scores = prediction ? (Object.entries(prediction.decision_scores) as [string, number][]).sort((a, b) => b[1] - a[1]) : [];
 
   return (
-    <Screen title="Voice" badge={<ModeBadge />} subtitle="Acoustic features from a short speech sample.">
+    <Screen eyebrow="Component 2 · Voice" title="Your voice," dim="as acoustic features." badge={<ModeBadge />}>
       {real ? (
         <Section label="Record">
           <CaptureView kind="voice" onVoice={onVoice} onError={setCaptureError} />

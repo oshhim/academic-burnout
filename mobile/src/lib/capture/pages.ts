@@ -20,10 +20,10 @@ const BASE_STYLE = `
   .prompt { font: 600 20px/27px -apple-system, system-ui; margin-top: 4px; text-shadow: 0 1px 6px #000; }
   .status { font: 13px/18px -apple-system, system-ui; color: #C7C4D7; text-shadow: 0 1px 4px #000; }
   .ok { color: #4CD7F6; } .bad { color: #FFB4AB; }
-  button { pointer-events: auto; width: 100%; min-height: 48px; border: 0; border-radius: 12px; color: #fff; font: 600 16px -apple-system, system-ui;
-           background: linear-gradient(135deg, #6366F1, #A855F7); margin-top: 10px; }
+  button { pointer-events: auto; width: 100%; min-height: 50px; border: 0; border-radius: 25px; color: #0B0E14; font: 600 16px -apple-system, system-ui;
+           background: #F4F5FA; margin-top: 10px; }
   button:disabled { opacity: .45; }
-  .ghost { background: transparent; border: 1px solid rgba(255,255,255,.15); }
+  .ghost { background: transparent; color: #F4F5FA; border: 1px solid rgba(255,255,255,.15); }
 `;
 
 const BRIDGE = `const post = (m) => window.ReactNativeWebView && window.ReactNativeWebView.postMessage(JSON.stringify(m));
@@ -67,10 +67,10 @@ export function facePage(protocol: FaceProtocol) {
           background: rgba(11,14,20,.72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
   .pill:empty { display: none; }
   .bar { height: 6px; border-radius: 3px; background: #272A31; overflow: hidden; }
-  .bar > div { height: 100%; width: 0; background: linear-gradient(90deg, #4CD7F6, #A855F7); transition: width .2s linear; }
+  .bar > div { height: 100%; width: 0; background: linear-gradient(90deg, #6366F1, #A855F7); transition: width .2s linear; }
   .controls { display: flex; flex-direction: column; gap: 8px; padding-bottom: 4px; }
   .controls button { margin-top: 0; }
-  .secondary { background: #272A31; }
+  .secondary { background: #272A31; color: #F4F5FA; }
 </style></head><body><div class="page">
   <div class="head">
     <div class="chips"><span class="chip" id="phase">Preparing</span><span class="chip count" id="count"></span></div>

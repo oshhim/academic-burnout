@@ -26,8 +26,8 @@ export function ModeBadge({ showAvatar = true }: { showAvatar?: boolean }) {
           hitSlop={6}
           accessibilityRole="button"
           accessibilityLabel="Open profile"
-          style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center' }}>
-          {letters ? <Text style={{ fontFamily: fonts.semibold, fontSize: 14, color: '#1000A9' }}>{letters}</Text> : <MaterialIcons name="person-outline" size={20} color="#1000A9" />}
+          style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(99,102,241,0.18)', borderWidth: 1, borderColor: 'rgba(128,131,255,0.5)', alignItems: 'center', justifyContent: 'center' }}>
+          {letters ? <Text style={{ fontFamily: fonts.semibold, fontSize: 14, color: colors.primary }}>{letters}</Text> : <MaterialIcons name="person-outline" size={20} color={colors.primary} />}
         </Pressable>
       ) : null}
     </View>

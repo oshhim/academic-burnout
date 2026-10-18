@@ -4,12 +4,6 @@ Expo (React Native, SDK 57) app for testing the four backend components from a p
 
 ## Screens
 
-<p align="center">
-  <img src="docs/screenshots/welcome-screens.png" width="100%" alt="Launch screen: four onboarding slides">
-  <br>
-  <sub>Launch screen: welcome · quick check-ins · spotting patterns · small breaks</sub>
-</p>
-
 On first open a **launch screen** (four onboarding slides) explains the app; after **Get started** the app opens Profile until it is connected, then Facial.
 
 | Tab | Component | Demo data mode | Real capture mode |
@@ -98,7 +92,7 @@ src/
     mode-badge.tsx          Header DEMO/REAL badge and avatar
     needs-setup.tsx         "Not connected yet" card
     logo.tsx                EMPath+ logo (vector; gradient or single colour)
-    sanctuary-background.tsx  Dot-grid and soft-glow backdrop for the launch screen
+    aurora-background.tsx   Soft aurora glow backdrop for the launch screen
   lib/
     api.ts                  HTTP client, error mapping, native file upload
     session.tsx             Connection, participants, data mode, profile name, retry-safe operation IDs
@@ -111,7 +105,6 @@ src/
   theme.ts                  Colours, spacing and type from the design system
 assets/images/              App icon, Android adaptive icon layers, splash and favicon (generated)
 scripts/generate-icons.mjs  Regenerates assets/images from src/brand/logo.ts
-docs/screenshots/           README screenshots
 ```
 
 ## Notes for iOS
@@ -126,6 +119,8 @@ The EMPath+ mark is drawn as vector in `src/brand/logo.ts` (redrawn from the ori
 ```bash
 npx tsx scripts/generate-icons.mjs
 ```
+
+The app icon is a twilight navy background with the purple and cyan aurora glow and the logo as frosted glass (`appIconSvg` in `src/brand/logo.ts`); the splash uses the same glass logo on the dark background.
 
 Expo Go always shows its own home-screen icon; the EMPath+ icon and splash appear in a development or store build.
 

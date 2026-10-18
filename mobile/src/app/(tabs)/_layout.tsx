@@ -34,7 +34,7 @@ export default function TabLayout() {
             title: tab.title,
             // Active tab sits in a soft indigo pill, as in the reference designs.
             tabBarIcon: ({ color, focused }) => (
-              <View style={{ width: 48, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? colors.chipBg : 'transparent' }}>
+              <View style={{ width: 48, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? 'rgba(99,102,241,0.18)' : 'transparent' }}>
                 <MaterialIcons name={tab.icon} color={String(color)} size={22} />
               </View>
             ),

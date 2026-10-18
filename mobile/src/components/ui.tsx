@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ApiError } from '@/lib/api';
 
+import { AuroraBackground } from './aurora-background';
 import { Logo } from './logo';
 import { colors, fonts, gradient, radius, space, type } from '@/theme';
 
@@ -13,19 +14,35 @@ export type IconName = ComponentProps<typeof MaterialIcons>['name'];
 
 // ---------- Layout ----------
 
-/** Screen shell: branded header (logo tile + title), optional subtitle, scrolling body. */
-export function Screen({ title, subtitle, badge, children }: { title: string; subtitle?: string; badge?: ReactNode; children: ReactNode }) {
+/**
+ * Screen shell in the launch-screen ("editorial") style: white logo and badge row,
+ * a small spaced eyebrow label, then a large tight headline with an optional dimmed tail.
+ */
+export function Screen({ eyebrow, title, dim, subtitle, badge, children }: {
+  eyebrow?: string;
+  title: string;
+  dim?: string;
+  subtitle?: string;
+  badge?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <SafeAreaView style={styles.screen} edges={['top']}>
+      <AuroraBackground intensity={0.55} />
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.header}>
-          <Logo size={40} />
-          <Text style={styles.headerTitle} numberOfLines={1}>
-            {title}
-          </Text>
+          <Logo size={34} color={colors.ink} />
+          <View style={{ flex: 1 }} />
           {badge}
         </View>
-        {subtitle ? <Text style={[styles.body, styles.muted]}>{subtitle}</Text> : null}
+        <View style={styles.titleBlock}>
+          {eyebrow ? <Text style={styles.eyebrow}>{eyebrow.toUpperCase()}</Text> : null}
+          <Text style={styles.headerTitle}>
+            {title}
+            {dim ? <Text style={styles.headerDim}>{` ${dim}`}</Text> : null}
+          </Text>
+          {subtitle ? <Text style={[styles.body, styles.muted]}>{subtitle}</Text> : null}
+        </View>
         {children}
       </ScrollView>
     </SafeAreaView>
@@ -38,9 +55,15 @@ export function Section({ label, step, done, children }: { label: string; step?:
     <View style={styles.section}>
       <View style={styles.sectionHead}>
         {step !== undefined ? (
-          <View style={[styles.stepDot, done && styles.stepDotDone]}>
-            {done ? <MaterialIcons name="check" size={14} color={colors.base} /> : <Text style={styles.stepText}>{step}</Text>}
-          </View>
+          done ? (
+            <LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.stepDot, styles.stepDotDone]}>
+              <MaterialIcons name="check" size={14} color="#FFFFFF" />
+            </LinearGradient>
+          ) : (
+            <View style={styles.stepDot}>
+              <Text style={styles.stepText}>{step}</Text>
+            </View>
+          )
         ) : null}
         <Text style={styles.sectionLabel}>{label.toUpperCase()}</Text>
       </View>
@@ -52,9 +75,9 @@ export function Section({ label, step, done, children }: { label: string; step?:
 /** Luminous card: #12161F, 1px hairline border, faint top highlight. */
 export function Card({ children, accent, tint }: { children: ReactNode; accent?: string; tint?: 'violet' }) {
   return (
-    <View style={[styles.card, accent ? { borderColor: accent } : null]}>
+    <View style={[styles.card, tint === 'violet' && { borderColor: 'rgba(168,85,247,0.28)' }, accent ? { borderColor: accent } : null]}>
       <LinearGradient
-        colors={tint === 'violet' ? ['rgba(168,85,247,0.22)', 'rgba(99,102,241,0.06)'] : ['rgba(255,255,255,0.04)', 'transparent']}
+        colors={tint === 'violet' ? ['rgba(168,85,247,0.14)', 'rgba(99,102,241,0.03)'] : ['rgba(255,255,255,0.04)', 'transparent']}
         style={StyleSheet.absoluteFill}
         pointerEvents="none"
       />
@@ -88,7 +111,9 @@ export function Button({ label, onPress, loading, disabled, variant = 'primary',
   icon?: IconName;
 }) {
   const inactive = disabled || loading;
-  const textColor = variant === 'text' ? colors.tertiary : '#fff';
+  // Primary is the white pill from the launch screen; disabled turns it into a quiet grey.
+  // Purple is reserved for accents (progress, step badges, selections, badges, active tab).
+  const textColor = variant === 'text' ? colors.tertiary : variant === 'primary' ? (disabled ? colors.textFaint : colors.base) : colors.ink;
   const content = loading ? (
     <ActivityIndicator color={textColor} />
   ) : (
@@ -104,14 +129,8 @@ export function Button({ label, onPress, loading, disabled, variant = 'primary',
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityState={{ disabled: !!inactive, busy: !!loading }}
-      style={({ pressed }) => [{ opacity: disabled ? 0.4 : pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }, variant === 'primary' && !disabled && styles.glow]}>
-      {variant === 'primary' ? (
-        <LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.button}>
-          {content}
-        </LinearGradient>
-      ) : (
-        <View style={[styles.button, variant === 'secondary' ? styles.secondary : styles.textButton]}>{content}</View>
-      )}
+      style={({ pressed }) => [{ opacity: disabled && variant !== 'primary' ? 0.4 : pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }]}>
+      <View style={[styles.button, variant === 'primary' ? (disabled ? styles.primaryDisabled : styles.primary) : variant === 'secondary' ? styles.secondary : styles.textButton]}>{content}</View>
     </Pressable>
   );
 }
@@ -349,25 +368,29 @@ export const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.base },
   scroll: { paddingHorizontal: space.gutter, paddingTop: space.base, paddingBottom: space.xl * 2, gap: space.lg },
   header: { flexDirection: 'row', alignItems: 'center', gap: space.sm, minHeight: 48 },
-  headerTitle: { ...type.headline, color: colors.text, flex: 1 },
+  titleBlock: { gap: space.base, marginTop: space.xs },
+  eyebrow: { fontFamily: fonts.semibold, fontSize: 11, letterSpacing: 2.2, color: colors.textFaint },
+  headerTitle: { fontFamily: fonts.bold, fontSize: 32, lineHeight: 37, letterSpacing: -1, color: colors.ink },
+  headerDim: { color: '#6E7184' },
   section: { gap: space.sm },
   sectionHead: { flexDirection: 'row', alignItems: 'center', gap: space.base },
   sectionLabel: { ...type.label, color: colors.textMuted },
   stepDot: { width: 22, height: 22, borderRadius: 11, borderWidth: 1, borderColor: colors.borderStrong, alignItems: 'center', justifyContent: 'center' },
-  stepDotDone: { backgroundColor: colors.tertiary, borderColor: colors.tertiary },
+  stepDotDone: { borderWidth: 0 },
   stepText: { fontFamily: fonts.label, fontSize: 12, color: colors.textMuted },
-  title: { ...type.title, color: colors.text },
-  heroValue: { fontFamily: fonts.semibold, fontSize: 26, lineHeight: 32, textAlign: 'center' },
+  title: { ...type.title, fontFamily: fonts.bold, letterSpacing: -0.3, color: colors.ink },
+  heroValue: { fontFamily: fonts.bold, fontSize: 28, lineHeight: 34, letterSpacing: -0.6, textAlign: 'center' },
   body: { ...type.body, color: colors.text },
   caption: { ...type.caption, color: colors.text },
   muted: { color: colors.textMuted },
   faint: { color: colors.textFaint },
   card: { backgroundColor: colors.card, borderRadius: radius.card, borderWidth: 1, borderColor: colors.border, padding: space.md, gap: space.md, overflow: 'hidden' },
-  button: { minHeight: 52, borderRadius: radius.control, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.lg },
+  button: { minHeight: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.lg },
+  primary: { backgroundColor: colors.ink },
+  primaryDisabled: { backgroundColor: colors.raised },
   buttonRow: { flexDirection: 'row', alignItems: 'center', gap: space.base },
   secondary: { backgroundColor: colors.raised },
   textButton: { minHeight: 44 },
-  glow: { borderRadius: radius.control, shadowColor: colors.indigo, shadowOpacity: 0.35, shadowRadius: 20, shadowOffset: { width: 0, height: 6 }, elevation: 6 },
   buttonText: { fontFamily: fonts.semibold, fontSize: 16 },
   row: { flexDirection: 'row', flexWrap: 'wrap', gap: space.base },
   chip: { flexDirection: 'row', gap: 6, minHeight: 44, paddingHorizontal: space.md, borderRadius: radius.chip, backgroundColor: colors.raised, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: 'transparent' },

@@ -138,7 +138,7 @@ export default function ProfileScreen() {
   const shownName = displayName.trim() || 'Student';
 
   return (
-    <Screen title="Profile" badge={<ModeBadge showAvatar={false} />}>
+    <Screen eyebrow="Profile" title="You," dim="and your data." badge={<ModeBadge showAvatar={false} />}>
       <View style={styles.hero}>
         <LinearGradient colors={[colors.indigo, colors.violet]} style={styles.avatarRing}>
           <View style={styles.avatar}>
