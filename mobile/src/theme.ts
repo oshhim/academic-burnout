@@ -1,4 +1,4 @@
-// Design tokens from stuff/stitch_empath_student_wellbeing_companion/empath/DESIGN.md
+// Design tokens from design-references/screens/empath/DESIGN.md
 // ("Digital Sanctuary": dark-first, luminous cards, indigo/violet/cyan accents).
 
 export const colors = {

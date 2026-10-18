@@ -185,22 +185,26 @@ export function Rating({ label, value, onChange, required, low = 'Low', high = '
 }
 
 export function Field({ label, hint, unit, ...props }: TextInputProps & { label: string; hint?: string; unit?: string }) {
-  const [focused, setFocused] = useState(false);
+  // Deliberately stateless: re-rendering the box on focus (e.g. a focus glow) made the
+  // iOS keyboard open and immediately close. Fixed height, no lineHeight, for the same reason.
   return (
     <View style={styles.field}>
       <Text style={styles.fieldLabel}>{label}</Text>
-      <View style={[styles.inputWrap, focused && styles.inputFocused]}>
+      <View style={styles.inputBox}>
         <TextInput
           placeholderTextColor={colors.textFaint}
+          selectionColor={colors.indigo}
           autoCapitalize="none"
           autoCorrect={false}
-          style={styles.input}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+          style={[styles.input, unit ? { paddingRight: 44 } : null]}
           accessibilityLabel={label}
           {...props}
         />
-        {unit ? <Text style={[styles.caption, styles.faint]}>{unit}</Text> : null}
+        {unit ? (
+          <Text style={[styles.caption, styles.faint, styles.unit]} pointerEvents="none">
+            {unit}
+          </Text>
+        ) : null}
       </View>
       {hint ? <Text style={[styles.caption, styles.muted]}>{hint}</Text> : null}
     </View>
@@ -212,11 +216,18 @@ export function Toggle({ label, description, icon, value, onChange }: { label: s
   return (
     <Pressable onPress={() => onChange(!value)} style={styles.toggle} accessibilityRole="switch" accessibilityState={{ checked: value }} accessibilityLabel={label}>
       {icon ? <IconWell icon={icon} /> : null}
-      <View style={{ flex: 1, gap: 2 }}>
-        <Text style={styles.body}>{label}</Text>
+      <View style={styles.toggleText}>
+        <Text style={styles.toggleLabel}>{label}</Text>
         {description ? <Text style={[styles.caption, styles.muted]}>{description}</Text> : null}
       </View>
-      <Switch value={value} onValueChange={onChange} trackColor={{ true: colors.indigo, false: colors.raised }} thumbColor="#fff" />
+      <Switch
+        value={value}
+        onValueChange={onChange}
+        trackColor={{ true: colors.indigo, false: colors.raised }}
+        ios_backgroundColor={colors.raised}
+        thumbColor="#fff"
+        style={styles.switch}
+      />
     </Pressable>
   );
 }
@@ -372,10 +383,14 @@ export const styles = StyleSheet.create({
   anchors: { flexDirection: 'row', justifyContent: 'space-between' },
   field: { gap: 6 },
   fieldLabel: { ...type.label, color: colors.textMuted },
-  inputWrap: { flexDirection: 'row', alignItems: 'center', gap: space.base, backgroundColor: colors.input, borderRadius: radius.control, borderWidth: 1, borderColor: colors.border, paddingHorizontal: space.sm },
-  inputFocused: { borderColor: colors.indigo, shadowColor: colors.indigo, shadowOpacity: 0.4, shadowRadius: 4, shadowOffset: { width: 0, height: 0 } },
-  input: { ...type.body, color: colors.text, minHeight: 48, flex: 1 },
+  inputBox: { justifyContent: 'center', backgroundColor: colors.input, borderRadius: radius.control, borderWidth: 1, borderColor: colors.border },
+  input: { fontFamily: fonts.regular, fontSize: 16, color: colors.text, height: 48, width: '100%', paddingHorizontal: space.sm },
+  unit: { position: 'absolute', right: space.sm },
   toggle: { flexDirection: 'row', alignItems: 'center', gap: space.sm, minHeight: 56 },
+  toggleText: { flex: 1, gap: 2, justifyContent: 'center' },
+  // No lineHeight: on iOS, Inter with a lineHeight sits low in its box and looks misaligned with the switch.
+  toggleLabel: { fontFamily: fonts.regular, fontSize: 16, color: colors.text },
+  switch: { alignSelf: 'center' },
   iconWell: { backgroundColor: colors.raised, alignItems: 'center', justifyContent: 'center' },
   kv: { flexDirection: 'row', gap: space.sm, alignItems: 'center' },
   kvValue: { fontFamily: fonts.label, flexShrink: 1, textAlign: 'right', color: colors.text },

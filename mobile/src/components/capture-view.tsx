@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
 import { facePage, voicePage, type FaceProtocol } from '@/lib/capture/pages';
@@ -18,6 +18,9 @@ type Props =
  */
 export function CaptureView(props: Props) {
   const isFace = props.kind === 'face';
+  // The face page fills most of the screen below the header; the voice recorder is compact.
+  const { height: windowHeight } = useWindowDimensions();
+  const height = isFace ? Math.max(440, windowHeight - 330) : 230;
   const protocol = isFace ? props.protocol : null;
   const html = useMemo(() => (protocol ? facePage(protocol) : voicePage()), [protocol]);
 
@@ -35,7 +38,7 @@ export function CaptureView(props: Props) {
   };
 
   return (
-    <View style={[styles.frame, { height: isFace ? 520 : 230 }]}>
+    <View style={[styles.frame, isFace && styles.bare, { height }]}>
       <WebView
         source={{ html, baseUrl: 'https://localhost' }}
         originWhitelist={['*']}
@@ -53,5 +56,6 @@ export function CaptureView(props: Props) {
 
 const styles = StyleSheet.create({
   frame: { borderRadius: radius.card, overflow: 'hidden', borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card },
-  webview: { flex: 1, backgroundColor: colors.card },
+  bare: { borderWidth: 0, backgroundColor: colors.base, borderRadius: 0 },
+  webview: { flex: 1, backgroundColor: 'transparent' },
 });

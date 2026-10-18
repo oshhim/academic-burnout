@@ -22,6 +22,13 @@ type SessionState = {
   enableReal: () => Promise<void>;
   setMode: (m: Mode) => void;
   resetParticipants: () => void;
+  /** Launch screen seen; and a display name kept only on this phone (never sent to the backend). */
+  onboarded: boolean;
+  setOnboarded: (v: boolean) => void;
+  displayName: string;
+  setDisplayName: (v: string) => void;
+  forgetLocal: () => void;
+  resetApp: () => void;
 };
 
 const STORAGE_KEY = 'empath.session.v1';
@@ -40,6 +47,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [connection, setConnectionState] = useState<Connection>({ baseUrl: defaultBaseUrl(), apiKey: DEFAULT_KEY });
   const [participants, setParticipants] = useState<Participants | null>(null);
   const [mode, setMode] = useState<Mode>('demo');
+  const [onboarded, setOnboarded] = useState(false);
+  const [displayName, setDisplayName] = useState('');
 
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY)
@@ -49,14 +58,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         if (saved.connection) setConnectionState(saved.connection);
         if (saved.participants) setParticipants(saved.participants);
         if (saved.mode === 'real' && saved.participants?.local) setMode('real');
+        if (saved.onboarded) setOnboarded(true);
+        if (typeof saved.displayName === 'string') setDisplayName(saved.displayName);
       })
       .catch(() => {})
       .finally(() => setLoaded(true));
   }, []);
 
   useEffect(() => {
-    if (loaded) AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ connection, participants, mode })).catch(() => {});
-  }, [loaded, connection, participants, mode]);
+    if (loaded) AsyncStorage.setItem(STORAGE_KEY, JSON.stringify({ connection, participants, mode, onboarded, displayName })).catch(() => {});
+  }, [loaded, connection, participants, mode, onboarded, displayName]);
 
   const register = useCallback(async (next: Connection) => {
     setConnectionState(next);
@@ -91,8 +102,24 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setParticipants(null);
         setMode('demo');
       },
+      onboarded,
+      setOnboarded,
+      displayName,
+      setDisplayName,
+      // After deleting real data on the backend: drop the local participant, back to demo.
+      forgetLocal: () => {
+        setParticipants((p) => (p ? { synthetic: p.synthetic, publicAudio: p.publicAudio } : p));
+        setMode('demo');
+      },
+      // "Sign out" equivalent without authentication: forget everything on this phone.
+      resetApp: () => {
+        setParticipants(null);
+        setMode('demo');
+        setDisplayName('');
+        setOnboarded(false);
+      },
     }),
-    [loaded, connection, participants, mode, register, enableReal],
+    [loaded, connection, participants, mode, register, enableReal, onboarded, displayName],
   );
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
 }

@@ -52,7 +52,8 @@ function FacialScreenContent() {
     const history = await api(connection, `/facial/history/${pid}?kind=calibration&limit=100`);
     setCalibrations(history.sessions);
     const baselines = await api<any[]>(connection, `/facial/baselines/${pid}`);
-    setBaseline(baselines.length ? baselines[baselines.length - 1] : null);
+    // The API lists newest first; pick the highest version rather than relying on order.
+    setBaseline(baselines.reduce<any>((latest, b) => (!latest || b.version > latest.version ? b : latest), null));
   }, [connection, pid]);
 
   useEffect(() => {
@@ -62,6 +63,13 @@ function FacialScreenContent() {
   if (!active || !pid) return <Screen title="Facial"><NeedsSetup /></Screen>;
 
   const accepted = calibrations.filter((s) => s.status === 'accepted');
+  // References not yet in the current baseline: the progress bar counts these, so it starts
+  // empty again after each baseline and a fresh set of 3 can replace it.
+  // "New" means recorded after the newest reference in the current baseline.
+  const inBaseline = new Set<string>(baseline?.session_ids ?? []);
+  const newestInBaseline = Math.max(0, ...accepted.filter((s) => inBaseline.has(s.session_id)).map((s) => Date.parse(s.recorded_at)));
+  const fresh = accepted.filter((s) => !inBaseline.has(s.session_id) && Date.parse(s.recorded_at) > newestInBaseline);
+  const freshCount = Math.min(fresh.length, 3);
 
   const showResult = (response: any) => {
     setResult(response);
@@ -120,7 +128,7 @@ function FacialScreenContent() {
 
   const createBaseline = () =>
     run('baseline', async () => {
-      await api(connection, '/facial/baselines', { body: { participant_id: pid, session_ids: accepted.slice(-10).map((s) => s.session_id) } });
+      await api(connection, '/facial/baselines', { body: { participant_id: pid, session_ids: fresh.slice(-10).map((s) => s.session_id) } });
       await refresh();
     });
 
@@ -150,34 +158,36 @@ function FacialScreenContent() {
   }
 
   const level = result?.deviation ? LEVEL[result.deviation.level] : null;
-  const referencesDone = Math.min(accepted.length, 3);
 
   return (
     <Screen title="Facial" badge={<ModeBadge />} subtitle="How your facial movement compares with your own reference.">
       <Section label="Reference" step={1} done={Boolean(baseline)}>
         <Card>
+          {baseline ? <Body>{`Baseline ready (version ${baseline.version}, from ${baseline.session_ids.length} references)`}</Body> : null}
           <View style={{ gap: space.base }}>
-            <Body>{baseline ? `Baseline ready · built from ${baseline.session_ids.length} references` : `${referencesDone} of 3 references recorded`}</Body>
-            <Progress value={baseline ? 3 : referencesDone} total={3} />
+            <Body small muted>{baseline ? `New references: ${freshCount} of 3` : `${freshCount} of 3 references recorded`}</Body>
+            <Progress value={freshCount} total={3} />
+            {baseline && fresh.length === 0 ? <Body small muted>To update your baseline, record 3 new references.</Body> : null}
           </View>
           {active.real ? (
             <>
               <Body small muted>Record each in good light, at different times, when you feel normal and calm.</Body>
               <Toggle icon="self-improvement" label="I feel normal and calm now" value={calmConfirmed} onChange={setCalmConfirmed} />
               <Button
-                label={accepted.length >= 3 ? 'Record another reference' : 'Record reference'}
+                label={baseline ? 'Record new reference' : 'Record reference'}
                 icon="videocam"
-                variant={accepted.length >= 3 ? 'secondary' : 'primary'}
+                variant={freshCount >= 3 ? 'secondary' : 'primary'}
                 onPress={() => { setCaptureError(null); setCapture('neutral_only'); }}
                 loading={busy === 'calibration'}
                 disabled={!calmConfirmed}
               />
             </>
           ) : (
-            <Button label="Add synthetic reference" icon="add" variant={accepted.length >= 3 ? 'secondary' : 'primary'} onPress={addSyntheticCalibration} loading={busy === 'calibration'} />
+            <Button label="Add synthetic reference" icon="add" variant={freshCount >= 3 ? 'secondary' : 'primary'} onPress={addSyntheticCalibration} loading={busy === 'calibration'} />
           )}
-          {accepted.length >= 3 && !baseline ? <Button label="Create baseline" icon="done-all" onPress={createBaseline} loading={busy === 'baseline'} /> : null}
-          {baseline && accepted.length > baseline.session_ids.length ? <Button label="Rebuild baseline with new references" variant="secondary" onPress={createBaseline} loading={busy === 'baseline'} /> : null}
+          {fresh.length >= 3 ? (
+            <Button label={baseline ? 'Replace baseline with new references' : 'Create baseline'} icon="done-all" onPress={createBaseline} loading={busy === 'baseline'} />
+          ) : null}
         </Card>
       </Section>
 
@@ -264,7 +274,7 @@ function FacialScreenContent() {
       <Notice icon={active.real ? 'shield' : 'science'} tone={active.real ? 'cyan' : 'violet'}>
         {active.real
           ? `Measured on this phone with MediaPipe; only numbers are sent. Thresholds are provisional.`
-          : 'Demo data: synthetic numbers. Switch to Real capture on Setup to use the camera.'}
+          : 'Demo data: synthetic numbers. Switch to Real capture on Profile to use the camera.'}
       </Notice>
     </Screen>
   );

@@ -7,11 +7,11 @@ import type { IconName } from '@/components/ui';
 import { colors, fonts } from '@/theme';
 
 const TABS: { name: string; title: string; icon: IconName }[] = [
-  { name: 'index', title: 'Setup', icon: 'tune' },
   { name: 'facial', title: 'Facial', icon: 'face' },
   { name: 'voice', title: 'Voice', icon: 'graphic-eq' },
   { name: 'risk', title: 'Risk', icon: 'insights' },
   { name: 'activities', title: 'Activities', icon: 'self-improvement' },
+  { name: 'profile', title: 'Profile', icon: 'person-outline' },
 ];
 
 export default function TabLayout() {
@@ -41,6 +41,8 @@ export default function TabLayout() {
           }}
         />
       ))}
+      {/* Entry redirect, not a tab. */}
+      <Tabs.Screen name="index" options={{ href: null }} />
     </Tabs>
   );
 }

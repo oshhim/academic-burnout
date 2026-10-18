@@ -5,7 +5,7 @@ Research prototype for student wellbeing support, with a shared backend and a mo
 | Folder | Contents | Status |
 |---|---|---|
 | [backend/](backend/) | FastAPI + SQLite REST API with four components: C1 facial reference, C2 voice, C3 longitudinal risk, C4 interventions | Implemented (0.4.0) — see [backend/README.md](backend/README.md) |
-| [mobile/](mobile/) | Expo (React Native) app that calls the backend API | Step 01: test console for all four components — see [mobile/README.md](mobile/README.md) |
+| [mobile/](mobile/) | Expo (React Native) app that calls the backend API | Test app for all four components with demo data or real camera/microphone capture — see [mobile/README.md](mobile/README.md) |
 
 ## Quick start (backend)
 

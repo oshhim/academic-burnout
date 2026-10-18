@@ -20,7 +20,7 @@ export class ApiError extends Error {
 const STATUS_HINTS: Record<number, string> = {
   401: 'API key does not match the backend .env.',
   403: 'Blocked by consent or research-mode settings.',
-  404: 'Participant or record not found. Register on the Setup tab.',
+  404: 'Participant or record not found. Register on the Profile tab.',
   409: 'Conflicts with an existing record or lifecycle state.',
   413: 'Request or file is too large.',
   422: 'The backend rejected a field value.',

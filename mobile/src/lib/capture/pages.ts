@@ -45,17 +45,48 @@ export function facePage(protocol: FaceProtocol) {
   return `<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <style>${BASE_STYLE}
+  /* Stacked layout: instruction, camera panel, progress, controls. Nothing overlaps the controls. */
+  .page { height: 100%; display: flex; flex-direction: column; gap: 12px; padding: 4px 0 0; }
+  .head { display: flex; flex-direction: column; gap: 6px; min-height: 76px; }
+  .chips { display: flex; justify-content: space-between; align-items: center; }
+  .chip { font: 600 12px/16px ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #4CD7F6;
+          background: rgba(76,215,246,.12); border-radius: 999px; padding: 5px 10px; }
+  .count { color: #E1E2EB; background: #272A31; min-width: 48px; text-align: center; }
+  .prompt { font: 600 18px/25px -apple-system, system-ui; color: #E1E2EB; }
+  .stage { position: relative; flex: 1; min-height: 220px; border-radius: 16px; overflow: hidden; background: #12161F; border: 1px solid rgba(255,255,255,.08); }
   video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
-  .frame { position: absolute; inset: 14% 16%; border: 2px solid rgba(192,193,255,.55); border-radius: 24px; }
-  .bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,.12); margin-top: 8px; overflow: hidden; }
-  .bar > div { height: 100%; width: 0; background: #4CD7F6; }
-</style></head><body><div class="wrap">
-<video id="video" playsinline muted autoplay></video><div class="frame"></div>
-<div class="overlay">
-  <div><div class="phase" id="phase">Preparing</div><div class="prompt" id="prompt">Loading the face model…</div></div>
-  <div><div class="status" id="status"></div><div class="bar"><div id="progress"></div></div>
-  <button id="start" disabled>Start recording</button><button id="cancel" class="ghost">Cancel</button></div>
-</div></div>
+  /* Corner-bracket face guide, as in the check-in design. */
+  .guide { position: absolute; left: 50%; top: 50%; width: 56%; aspect-ratio: 3 / 4; max-height: 70%; transform: translate(-50%, -56%); }
+  .guide i { position: absolute; width: 28px; height: 28px; border: 3px solid #C0C1FF; }
+  .guide i:nth-child(1) { left: 0; top: 0; border-right: 0; border-bottom: 0; border-top-left-radius: 14px; }
+  .guide i:nth-child(2) { right: 0; top: 0; border-left: 0; border-bottom: 0; border-top-right-radius: 14px; }
+  .guide i:nth-child(3) { left: 0; bottom: 0; border-right: 0; border-top: 0; border-bottom-left-radius: 14px; }
+  .guide i:nth-child(4) { right: 0; bottom: 0; border-left: 0; border-top: 0; border-bottom-right-radius: 14px; }
+  .pill { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); white-space: nowrap;
+          font: 600 13px/18px -apple-system, system-ui; padding: 6px 12px; border-radius: 999px;
+          background: rgba(11,14,20,.72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .pill:empty { display: none; }
+  .bar { height: 6px; border-radius: 3px; background: #272A31; overflow: hidden; }
+  .bar > div { height: 100%; width: 0; background: linear-gradient(90deg, #4CD7F6, #A855F7); transition: width .2s linear; }
+  .controls { display: flex; flex-direction: column; gap: 8px; padding-bottom: 4px; }
+  .controls button { margin-top: 0; }
+  .secondary { background: #272A31; }
+</style></head><body><div class="page">
+  <div class="head">
+    <div class="chips"><span class="chip" id="phase">Preparing</span><span class="chip count" id="count"></span></div>
+    <div class="prompt" id="prompt">Loading the face model…</div>
+  </div>
+  <div class="stage">
+    <video id="video" playsinline muted autoplay></video>
+    <div class="guide"><i></i><i></i><i></i><i></i></div>
+    <div class="pill" id="status"></div>
+  </div>
+  <div class="bar"><div id="progress"></div></div>
+  <div class="controls" id="controls">
+    <button id="start" disabled>Start recording</button>
+    <button id="cancel" class="secondary">Cancel</button>
+  </div>
+</div>
 <script type="module">
 ${BRIDGE}
 const CONFIG = ${JSON.stringify(config)};
@@ -99,7 +130,7 @@ function preview() {
 
 function record() {
   recording = true;
-  $('start').disabled = true;
+  $('start').style.display = 'none';
   const recordedAt = new Date().toISOString();
   const t0 = performance.now();
   const framesByWindow = {};
@@ -110,7 +141,8 @@ function record() {
     const t = (now - t0) / 1000;
     if (t >= CONFIG.duration) return finish(recordedAt, framesByWindow, frames);
     const phase = CONFIG.phases.find((p) => t < p.until);
-    $('phase').textContent = phase.name + ' · ' + Math.ceil(phase.until - t) + 's';
+    $('phase').textContent = phase.name;
+    $('count').textContent = Math.ceil(phase.until - t) + 's';
     $('prompt').textContent = phase.prompt;
     $('progress').style.width = (100 * t / CONFIG.duration) + '%';
     if (now - lastSample >= 100 && video.readyState >= 2) { // ~10 Hz, as in the Python adapter
@@ -128,7 +160,9 @@ function record() {
 function finish(recordedAt, framesByWindow, frames) {
   recording = false;
   stopCamera();
-  $('phase').textContent = 'Done'; $('prompt').textContent = 'Sending numerical features…'; $('progress').style.width = '100%';
+  $('phase').textContent = 'Done'; $('count').textContent = ''; $('status').textContent = '';
+  $('prompt').textContent = 'Sending numerical features…'; $('progress').style.width = '100%';
+  $('controls').style.display = 'none';
   post({ type: 'face', recordedAt, frames, windows: buildWindows(framesByWindow, CONFIG.duration, CONFIG.protocol) });
 }
 
@@ -147,8 +181,9 @@ $('start').onclick = () => record();
     stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } }, audio: false });
     video.srcObject = stream;
     await video.play();
-    $('phase').textContent = CONFIG.protocol === 'neutral_only' ? 'Reference · 15 s' : 'Check-in · 45 s';
-    $('prompt').textContent = 'Fit your face inside the frame, then start.';
+    $('phase').textContent = CONFIG.protocol === 'neutral_only' ? 'Reference' : 'Check-in';
+    $('count').textContent = CONFIG.duration + 's';
+    $('prompt').textContent = 'Fit your face inside the corners, then start.';
     $('start').disabled = false;
     post({ type: 'ready' });
     preview();

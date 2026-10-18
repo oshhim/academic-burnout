@@ -160,7 +160,7 @@ function VoiceScreenContent() {
       <Notice icon={real ? 'mic' : 'science'} tone={real ? 'cyan' : 'violet'}>
         {real
           ? 'Your recording is uploaded as a WAV file. The model was trained on acted speech, so its label is not your emotion or wellbeing.'
-          : 'Demo data: public RAVDESS acted speech (CC BY-NC-SA 4.0). Switch to Real capture on Setup to use the microphone.'}
+          : 'Demo data: public RAVDESS acted speech (CC BY-NC-SA 4.0). Switch to Real capture on Profile to use the microphone.'}
       </Notice>
     </Screen>
   );
