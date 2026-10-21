@@ -16,7 +16,7 @@ export type IconName = ComponentProps<typeof MaterialIcons>['name'];
 
 /**
  * Screen shell in the launch-screen ("editorial") style: white logo and badge row,
- * a small spaced eyebrow label, then a large tight headline with an optional dimmed tail.
+ * a small spaced eyebrow label, then a compact one-line headline with an optional dimmed tail.
  */
 export function Screen({ eyebrow, title, dim, subtitle, badge, children }: {
   eyebrow?: string;
@@ -30,22 +30,39 @@ export function Screen({ eyebrow, title, dim, subtitle, badge, children }: {
     <SafeAreaView style={styles.screen} edges={['top']}>
       <AuroraBackground intensity={0.55} />
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        <View style={styles.header}>
-          <Logo size={34} color={colors.ink} />
-          <View style={{ flex: 1 }} />
-          {badge}
-        </View>
-        <View style={styles.titleBlock}>
-          {eyebrow ? <Text style={styles.eyebrow}>{eyebrow.toUpperCase()}</Text> : null}
-          <Text style={styles.headerTitle}>
-            {title}
-            {dim ? <Text style={styles.headerDim}>{` ${dim}`}</Text> : null}
-          </Text>
-          {subtitle ? <Text style={[styles.body, styles.muted]}>{subtitle}</Text> : null}
-        </View>
+        <ScreenHeader badge={badge} />
+        <ScreenTitle eyebrow={eyebrow} title={title} dim={dim} subtitle={subtitle} compact />
         {children}
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+/** The logo and badge row at the top of every screen (also used alone by full-screen tabs). */
+export function ScreenHeader({ badge }: { badge?: ReactNode }) {
+  return (
+    <View style={styles.header}>
+      <Logo size={34} color={colors.ink} />
+      <View style={{ flex: 1 }} />
+      {badge}
+    </View>
+  );
+}
+
+/**
+ * Eyebrow label and big editorial title (also used alone by full-screen tabs).
+ * `compact` uses a smaller title (long ones wrap to a second line), leaving more room for content.
+ */
+export function ScreenTitle({ eyebrow, title, dim, subtitle, compact }: { eyebrow?: string; title: string; dim?: string; subtitle?: string; compact?: boolean }) {
+  return (
+    <View style={[styles.titleBlock, compact && styles.titleBlockCompact]}>
+      {eyebrow ? <Text style={styles.eyebrow}>{eyebrow.toUpperCase()}</Text> : null}
+      <Text style={[styles.headerTitle, compact && styles.headerTitleCompact]}>
+        {title}
+        {dim ? <Text style={styles.headerDim}>{` ${dim}`}</Text> : null}
+      </Text>
+      {subtitle ? <Text style={[styles.body, styles.muted]}>{subtitle}</Text> : null}
+    </View>
   );
 }
 
@@ -369,6 +386,8 @@ export const styles = StyleSheet.create({
   scroll: { paddingHorizontal: space.gutter, paddingTop: space.base, paddingBottom: space.xl * 2, gap: space.lg },
   header: { flexDirection: 'row', alignItems: 'center', gap: space.sm, minHeight: 48 },
   titleBlock: { gap: space.base, marginTop: space.xs },
+  titleBlockCompact: { gap: 2, marginTop: 0 },
+  headerTitleCompact: { fontSize: 24, lineHeight: 30, letterSpacing: -0.4 },
   eyebrow: { fontFamily: fonts.semibold, fontSize: 11, letterSpacing: 2.2, color: colors.textFaint },
   headerTitle: { fontFamily: fonts.bold, fontSize: 32, lineHeight: 37, letterSpacing: -1, color: colors.ink },
   headerDim: { color: '#6E7184' },

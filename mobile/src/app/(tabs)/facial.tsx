@@ -1,6 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { Modal, View } from 'react-native';
 
 import { CaptureView, type FaceResult } from '@/components/capture-view';
 import { ModeBadge } from '@/components/mode-badge';
@@ -144,10 +145,11 @@ function FacialScreenContent() {
       setRatingSaved(true);
     });
 
-  if (capture) {
-    const reference = capture === 'neutral_only';
-    return (
-      <Screen eyebrow={reference ? 'Facial · Reference' : 'Facial · Check-in'} title={reference ? '15 seconds,' : '45 seconds,'} dim={reference ? 'relaxed and neutral.' : 'neutral, task, then quiet.'} badge={<ModeBadge />}>
+  // Full-screen camera in a modal, over the normal screen (covers the header and tab bar).
+  const captureModal = (
+    <Modal visible={capture !== null} animationType="fade" presentationStyle="fullScreen" statusBarTranslucent onRequestClose={() => setCapture(null)}>
+      <StatusBar style="light" />
+      {capture ? (
         <CaptureView
           kind="face"
           protocol={capture}
@@ -158,131 +160,133 @@ function FacialScreenContent() {
             setCapture(null);
           }}
         />
-        <Notice icon="shield" tone="cyan">Privacy: the camera image stays on this phone. Only per-window numbers are sent.</Notice>
-      </Screen>
-    );
-  }
+      ) : null}
+    </Modal>
+  );
 
   const level = result?.deviation ? LEVEL[result.deviation.level] : null;
 
   return (
-    <Screen eyebrow="Component 1 · Facial" title="Your face," dim="compared with your normal." badge={<ModeBadge />}>
-      <Section label="Reference" step={1} done={Boolean(baseline)}>
-        <Card>
-          {baseline ? <Body>{`Baseline ready (version ${baseline.version}, from ${baseline.session_ids.length} references)`}</Body> : null}
-          <View style={{ gap: space.base }}>
-            <Body small muted>{baseline ? `New references: ${freshCount} of 3` : `${freshCount} of 3 references recorded`}</Body>
-            <Progress value={freshCount} total={3} />
-            {baseline && fresh.length === 0 ? <Body small muted>To update your baseline, record 3 new references.</Body> : null}
-          </View>
-          {active.real ? (
-            <>
-              <Body small muted>Record each in good light, at different times, when you feel normal and calm.</Body>
-              <Toggle icon="self-improvement" label="I feel normal and calm now" value={calmConfirmed} onChange={setCalmConfirmed} />
-              <Button
-                label={baseline ? 'Record new reference' : 'Record reference'}
-                icon="videocam"
-                variant={freshCount >= 3 ? 'secondary' : 'primary'}
-                onPress={() => { setCaptureError(null); setCapture('neutral_only'); }}
-                loading={busy === 'calibration'}
-                disabled={!calmConfirmed}
-              />
-            </>
-          ) : (
-            <Button label="Add synthetic reference" icon="add" variant={freshCount >= 3 ? 'secondary' : 'primary'} onPress={addSyntheticCalibration} loading={busy === 'calibration'} />
-          )}
-          {fresh.length >= 3 ? (
-            <Button label={baseline ? 'Replace baseline with new references' : 'Create baseline'} icon="done-all" onPress={createBaseline} loading={busy === 'baseline'} />
-          ) : null}
-        </Card>
-      </Section>
-
-      <Section label="Check-in" step={2} done={Boolean(result?.deviation)}>
-        <Card>
-          {active.real ? (
-            <Body small muted>{`15 s neutral → 15 s task (“${TASK_PROMPT}”) → 15 s quiet observation.`}</Body>
-          ) : (
-            <>
-              <Body small muted>Choose a constructed scenario to send.</Body>
-              <Chips options={SCENARIOS} value={scenario} onChange={setScenario} format={(s) => s.replace('_', ' ')} />
-            </>
-          )}
-          <Button
-            label={active.real ? 'Start camera check-in' : 'Run check-in'}
-            icon={active.real ? 'videocam' : 'play-arrow'}
-            onPress={active.real ? () => { setCaptureError(null); setCapture('neutral_task_recovery'); } : syntheticCheckIn}
-            loading={busy === 'checkin'}
-            disabled={!baseline}
-          />
-          {!baseline ? <Body small muted center>Create your baseline first.</Body> : null}
-        </Card>
-      </Section>
-
-      <ErrorBox error={error ?? captureError} />
-
-      {result ? (
-        <Section label="Your result">
-          {level ? (
-            <ResultHero
-              icon="face"
-              label="Visual change"
-              value={level.title}
-              tone={level.tone}
-              meter={result.deviation.mean_absolute_standardized_deviation / 3}
-              meterLabel={`${result.deviation.mean_absolute_standardized_deviation.toFixed(2)} on the reference scale`}
-              explanation={[level.text, temporalText(result.temporal)].filter(Boolean).join(' ')}
-            />
-          ) : (
-            <ResultHero
-              icon="videocam-off"
-              label={result.protocol === 'neutral_only' ? 'Reference not usable' : 'Check-in not usable'}
-              value="Let's try again"
-              tone="error"
-              explanation={qualityTips(result.quality.reasons).join('. ') + '.'}
-            />
-          )}
-          <Details>
-            <KeyValue
-              rows={[
-                ['Usable fraction', String(result.quality.usable_fraction)],
-                ['Most changed features', result.deviation?.top_changed_features.join(', ') ?? '—'],
-                ['Phase deviations', result.temporal ? Object.entries(result.temporal.phase_deviations).map(([k, v]) => `${k} ${v}`).join(' · ') : '—'],
-                ['Extractor', result.extractor_version],
-                ['Session ID', result.session_id],
-              ]}
-            />
-            {result.warnings.map((w: string) => (
-              <Body key={w} small muted>
-                {w}
-              </Body>
-            ))}
-          </Details>
-        </Section>
-      ) : null}
-
-      {result?.deviation && result.protocol === 'neutral_task_recovery' ? (
-        <Section label="How do you feel?" step={3} done={ratingSaved}>
+    <>
+      <Screen eyebrow="Component 1 · Facial" title="Your face," dim="compared with your normal." badge={<ModeBadge />}>
+        <Section label="Reference" step={1} done={Boolean(baseline)}>
           <Card>
-            <Rating label="Fatigue" value={ratings.fatigue} onChange={(v) => setRatings({ ...ratings, fatigue: v })} required />
-            <Rating label="Mental strain" value={ratings.mental_strain} onChange={(v) => setRatings({ ...ratings, mental_strain: v })} required />
-            <Rating label="Ready to concentrate" value={ratings.concentration_readiness} onChange={(v) => setRatings({ ...ratings, concentration_readiness: v })} required low="Not ready" high="Very ready" />
-            <Button
-              label={ratingSaved ? 'Saved' : 'Save'}
-              icon={ratingSaved ? 'check' : undefined}
-              onPress={saveRatings}
-              loading={busy === 'ratings'}
-              disabled={ratingSaved || Object.values(ratings).some((v) => v === null)}
-            />
+            {baseline ? <Body>{`Baseline ready (version ${baseline.version}, from ${baseline.session_ids.length} references)`}</Body> : null}
+            <View style={{ gap: space.base }}>
+              <Body small muted>{baseline ? `New references: ${freshCount} of 3` : `${freshCount} of 3 references recorded`}</Body>
+              <Progress value={freshCount} total={3} />
+              {baseline && fresh.length === 0 ? <Body small muted>To update your baseline, record 3 new references.</Body> : null}
+            </View>
+            {active.real ? (
+              <>
+                <Body small muted>Record each in good light, at different times, when you feel normal and calm.</Body>
+                <Toggle icon="self-improvement" label="I feel normal and calm now" value={calmConfirmed} onChange={setCalmConfirmed} />
+                <Button
+                  label={baseline ? 'Record new reference' : 'Record reference'}
+                  icon="videocam"
+                  variant={freshCount >= 3 ? 'secondary' : 'primary'}
+                  onPress={() => { setCaptureError(null); setCapture('neutral_only'); }}
+                  loading={busy === 'calibration'}
+                  disabled={!calmConfirmed}
+                />
+              </>
+            ) : (
+              <Button label="Add synthetic reference" icon="add" variant={freshCount >= 3 ? 'secondary' : 'primary'} onPress={addSyntheticCalibration} loading={busy === 'calibration'} />
+            )}
+            {fresh.length >= 3 ? (
+              <Button label={baseline ? 'Replace baseline with new references' : 'Create baseline'} icon="done-all" onPress={createBaseline} loading={busy === 'baseline'} />
+            ) : null}
           </Card>
         </Section>
-      ) : null}
 
-      <Notice icon={active.real ? 'shield' : 'science'} tone={active.real ? 'cyan' : 'violet'}>
-        {active.real
-          ? `Measured on this phone with MediaPipe; only numbers are sent. Thresholds are provisional.`
-          : 'Demo data: synthetic numbers. Switch to Real capture on Profile to use the camera.'}
-      </Notice>
-    </Screen>
+        <Section label="Check-in" step={2} done={Boolean(result?.deviation)}>
+          <Card>
+            {active.real ? (
+              <Body small muted>{`15 s neutral → 15 s task (“${TASK_PROMPT}”) → 15 s quiet observation.`}</Body>
+            ) : (
+              <>
+                <Body small muted>Choose a constructed scenario to send.</Body>
+                <Chips options={SCENARIOS} value={scenario} onChange={setScenario} format={(s) => s.replace('_', ' ')} />
+              </>
+            )}
+            <Button
+              label={active.real ? 'Start camera check-in' : 'Run check-in'}
+              icon={active.real ? 'videocam' : 'play-arrow'}
+              onPress={active.real ? () => { setCaptureError(null); setCapture('neutral_task_recovery'); } : syntheticCheckIn}
+              loading={busy === 'checkin'}
+              disabled={!baseline}
+            />
+            {!baseline ? <Body small muted center>Create your baseline first.</Body> : null}
+          </Card>
+        </Section>
+
+        <ErrorBox error={error ?? captureError} />
+
+        {result ? (
+          <Section label="Your result">
+            {level ? (
+              <ResultHero
+                icon="face"
+                label="Visual change"
+                value={level.title}
+                tone={level.tone}
+                meter={result.deviation.mean_absolute_standardized_deviation / 3}
+                meterLabel={`${result.deviation.mean_absolute_standardized_deviation.toFixed(2)} on the reference scale`}
+                explanation={[level.text, temporalText(result.temporal)].filter(Boolean).join(' ')}
+              />
+            ) : (
+              <ResultHero
+                icon="videocam-off"
+                label={result.protocol === 'neutral_only' ? 'Reference not usable' : 'Check-in not usable'}
+                value="Let's try again"
+                tone="error"
+                explanation={qualityTips(result.quality.reasons).join('. ') + '.'}
+              />
+            )}
+            <Details>
+              <KeyValue
+                rows={[
+                  ['Usable fraction', String(result.quality.usable_fraction)],
+                  ['Most changed features', result.deviation?.top_changed_features.join(', ') ?? '—'],
+                  ['Phase deviations', result.temporal ? Object.entries(result.temporal.phase_deviations).map(([k, v]) => `${k} ${v}`).join(' · ') : '—'],
+                  ['Extractor', result.extractor_version],
+                  ['Session ID', result.session_id],
+                ]}
+              />
+              {result.warnings.map((w: string) => (
+                <Body key={w} small muted>
+                  {w}
+                </Body>
+              ))}
+            </Details>
+          </Section>
+        ) : null}
+
+        {result?.deviation && result.protocol === 'neutral_task_recovery' ? (
+          <Section label="How do you feel?" step={3} done={ratingSaved}>
+            <Card>
+              <Rating label="Fatigue" value={ratings.fatigue} onChange={(v) => setRatings({ ...ratings, fatigue: v })} required />
+              <Rating label="Mental strain" value={ratings.mental_strain} onChange={(v) => setRatings({ ...ratings, mental_strain: v })} required />
+              <Rating label="Ready to concentrate" value={ratings.concentration_readiness} onChange={(v) => setRatings({ ...ratings, concentration_readiness: v })} required low="Not ready" high="Very ready" />
+              <Button
+                label={ratingSaved ? 'Saved' : 'Save'}
+                icon={ratingSaved ? 'check' : undefined}
+                onPress={saveRatings}
+                loading={busy === 'ratings'}
+                disabled={ratingSaved || Object.values(ratings).some((v) => v === null)}
+              />
+            </Card>
+          </Section>
+        ) : null}
+
+        <Notice icon={active.real ? 'shield' : 'science'} tone={active.real ? 'cyan' : 'violet'}>
+          {active.real
+            ? `Measured on this phone with MediaPipe; only numbers are sent. Thresholds are provisional.`
+            : 'Demo data: synthetic numbers. Switch to Real capture on Profile to use the camera.'}
+        </Notice>
+      </Screen>
+      {captureModal}
+    </>
   );
 }
 
