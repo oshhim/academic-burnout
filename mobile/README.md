@@ -1,3 +1,5 @@
+> **Updated Activities tab:** optional C1–C3 context, eight guided activities, session restoration and synthetic comparison controls. See [../C4_START_HERE.md](../C4_START_HERE.md). No new mobile dependency was added.
+
 # EMPath+ mobile
 
 Expo (React Native, SDK 57) app for testing the four backend components from a phone, with real camera and microphone capture. It follows the minimal screen set in the frontend integration guide and the EMPath+ design system (`design-references/screens/empath/DESIGN.md`: dark "Digital Sanctuary" theme, Inter + Geist). It is a research test app, not the full product UI. Version: see `"version"` in `app.json` (shown at the bottom of Profile).

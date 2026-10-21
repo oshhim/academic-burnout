@@ -20,7 +20,7 @@ def test_c4_upgrade_preserves_existing_longitudinal_data(tmp_path, monkeypatch):
         db.execute(text("INSERT INTO risk_predictions (id,participant_id,client_prediction_id,request_hash,created_at,as_of,data_source,status,snapshot_hash,result) VALUES ('old-risk','OLD','p1','h','2026-10-17T01:00:00Z','2026-10-17T01:00:00Z','synthetic_demo','insufficient_history','h','{}')"))
     command.upgrade(config, "head")
     with engine.connect() as db:
-        assert db.execute(text("SELECT version_num FROM alembic_version")).scalar_one() == "0004"
+        assert db.execute(text("SELECT version_num FROM alembic_version")).scalar_one() == "0005"
         assert db.execute(text("SELECT COUNT(*) FROM risk_daily WHERE id='old-daily'")).scalar_one() == 1
         assert db.execute(text("SELECT COUNT(*) FROM risk_predictions WHERE id='old-risk'")).scalar_one() == 1
     schema = inspect(engine)

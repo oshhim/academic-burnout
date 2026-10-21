@@ -20,7 +20,7 @@ def feedback_summary(records, as_of):
             for activity, original in groups.items() for rows in [sorted(original)]}
 
 
-def rank(preferences, context, strategy, feedback, recent_activity_ids):
+def rank(preferences, context, strategy, feedback, recent_activity_ids, integration=None):
     candidates, excluded = [], []
     for activity in ACTIVITIES:
         aid = activity["activity_id"]
@@ -43,19 +43,38 @@ def rank(preferences, context, strategy, feedback, recent_activity_ids):
         preference = (preferences["category_ratings"].get(activity["category"], 3) - 1) / 4
         history = feedback.get(aid, {"count": 0, "sum": 0, "feedback_ids": []})
         posterior = (PRIOR_COUNT * 0.5 + history["sum"]) / (PRIOR_COUNT + history["count"])
-        penalty = RECENT_PENALTY if aid in recent_activity_ids and strategy == "adaptive" else 0.0
+        adaptive = strategy in {"adaptive", "multimodal_weighted"}
+        penalty = RECENT_PENALTY if aid in recent_activity_ids and adaptive else 0.0
+        independent = .55 * base + .25 * preference + .20 * posterior
+        contributions = {}
+        share = 0.0
+        if strategy == "multimodal_weighted" and integration and not integration["fallback"]:
+            share = integration["context_share"]
+            for kind, item in integration["modalities"].items():
+                if item["available"]:
+                    compatibility = item["compatibility_by_category"][activity["category"]]
+                    contributions[kind] = {"compatibility": compatibility, "normalized_weight": item["normalized_weight"],
+                                           "weighted_compatibility": item["normalized_weight"] * compatibility,
+                                           "final_score_contribution": share * item["normalized_weight"] * compatibility}
+        multimodal = sum(c["weighted_compatibility"] for c in contributions.values()) if contributions else None
+        weighted = (1 - share) * independent + share * (multimodal or 0.0) - penalty
         score = {"generic": base, "preference": 0.55 * base + 0.45 * preference,
-                 "adaptive": 0.55 * base + 0.25 * preference + 0.20 * posterior - penalty}[strategy]
+                 "adaptive": independent - penalty, "multimodal_weighted": weighted}[strategy]
         candidates.append({"activity": dict(activity), "score": round(score, 8),
                            "explanation": {"goal_match": goal_match, "duration_fit": round(duration_fit, 8), "category_preference": preference,
                                            "feedback_posterior": round(posterior, 8), "feedback_count": history["count"],
-                                           "feedback_used": strategy == "adaptive", "preference_used": strategy != "generic",
-                                           "recent_repeat_penalty": penalty, "feedback_ids": history["feedback_ids"] if strategy == "adaptive" else []}})
+                                           "feedback_used": adaptive, "preference_used": strategy != "generic",
+                                           "recent_repeat_penalty": penalty, "feedback_ids": history["feedback_ids"] if adaptive else [],
+                                           "independent_score_before_penalty": round(independent, 8),
+                                           "context_share": share, "context_score": multimodal,
+                                           "component_contributions": contributions,
+                                           "independent_final_contribution": (1 - share) * independent}})
     candidates.sort(key=lambda row: (-row["score"], row["activity"]["activity_id"]))
     return candidates, excluded
 
 
 def status():
-    return {"status": "implemented", "method": "deterministic_preference_and_feedback_ranking", "version": POLICY_VERSION,
+    return {"status": "implemented", "method": "optional_availability_weighted_preference_feedback_ranking", "version": POLICY_VERSION,
             "trained_model": False, "contextual_bandit": False, "clinical_validation": False,
-            "weight_status": "provisional_engineering_settings", "strategies": ["generic", "preference", "adaptive"]}
+            "weight_status": "provisional_engineering_settings", "strategies": ["generic", "preference", "adaptive", "multimodal_weighted"],
+            "optional_component_context": True, "context_mapping_scope": "synthetic_demo_only"}

@@ -1,3 +1,5 @@
+> **New: Component 4 optional multimodal integration.** Start with [C4_START_HERE.md](C4_START_HERE.md) for setup, testing, algorithm details and the complete change list.
+
 <p align="center">
   <img src="mobile/docs/logo.png" width="104" alt="EMPath+ logo">
 </p>

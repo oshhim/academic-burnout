@@ -1,12 +1,13 @@
 {
-  "policy_version": "preference-feedback-rules-v1",
-  "catalog_version": "student-activities-v1",
+  "policy_version": "optional-multimodal-rules-v2",
+  "catalog_version": "student-guided-activities-v2",
   "component": 4,
   "implementation": "deterministic_constraint_filter_and_weighted_ranker",
   "strategies": [
     "generic",
     "preference",
-    "adaptive"
+    "adaptive",
+    "multimodal_weighted"
   ],
   "training_dataset": null,
   "requires_trained_artifact": false,
@@ -19,19 +20,33 @@
     "chosen_goal",
     "available_seconds",
     "explicit_preferences",
-    "same_participant_source_matched_prior_helpfulness"
+    "same_participant_source_matched_prior_helpfulness",
+    "optional_source_matched_completed_component_results",
+    "explicit_C4_only_synthetic_fixtures"
   ],
   "modalities_used_for_ranking": {
-    "face": false,
-    "voice": false,
-    "risk": false
+    "face": "optional_synthetic_only",
+    "voice": "optional_synthetic_only",
+    "risk": "optional_synthetic_only"
   },
   "limits": [
     "No clinical benefit model or treatment claim.",
     "No unbiased causal comparison from deterministic self-selected logs.",
     "Response scores are not health probabilities.",
-    "Completion is unverified self-report."
+    "Completion is unverified self-report.",
+    "Compatibility maps are engineering hypotheses, evaluated on synthetic fixtures only.",
+    "No C1\u2013C3 results are required. Real/local participants currently use independent activity ranking."
   ],
   "entrypoint": "app.interventions.policy.rank",
-  "report": "models/interventions/evaluation.json"
+  "report": "models/interventions/optional_context_evaluation.json",
+  "context_share": 0.25,
+  "component_base_weights": {
+    "facial": 0.3,
+    "voice": 0.2,
+    "risk": 0.5
+  },
+  "mapping_version": "synthetic-compatibility-v1",
+  "missing_result_policy": "renormalize_eligible_weights_or_exact_adaptive_fallback",
+  "legacy_preference_simulation": "models/interventions/evaluation.json",
+  "trained_model": false
 }

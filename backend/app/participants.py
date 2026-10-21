@@ -6,7 +6,7 @@ from app.dependencies import get_db
 from app.facial.service import fail, now, participant
 from app.models import Participant, FacialBaseline, FacialSession, SelfReport, VoiceSession, RiskDaily, RiskWeekly, RiskPrediction
 from app.schemas import ParticipantCreate
-from app.models import InterventionPreference, InterventionRecommendation, InterventionSession, InterventionEvent, InterventionFeedback
+from app.models import InterventionPreference, InterventionRecommendation, InterventionSession, InterventionEvent, InterventionFeedback, InterventionDemoContext
 from app.interventions.service import preference_json, session_json
 
 router = APIRouter(prefix="/participants", tags=["Shared - participants"])
@@ -53,6 +53,7 @@ def export(participant_id: str, db: Session = Depends(get_db)):
         "intervention_sessions": [session_json(r) for r in db.scalars(select(InterventionSession).where(InterventionSession.participant_id == owner.id).order_by(InterventionSession.started_at)).all()],
         "intervention_events": [r.result for r in db.scalars(select(InterventionEvent).where(InterventionEvent.participant_id == owner.id).order_by(InterventionEvent.created_at)).all()],
         "intervention_feedback": [r.result for r in db.scalars(select(InterventionFeedback).where(InterventionFeedback.participant_id == owner.id).order_by(InterventionFeedback.created_at)).all()],
+        "intervention_demo_contexts": [r.result for r in db.scalars(select(InterventionDemoContext).where(InterventionDemoContext.participant_id == owner.id).order_by(InterventionDemoContext.created_at)).all()],
     }
 
 
@@ -60,7 +61,7 @@ def export(participant_id: str, db: Session = Depends(get_db)):
 def remove(participant_id: str, db: Session = Depends(get_db)):
     participant(db, participant_id)
     # Explicit transaction, scoped to one registered participant.
-    for model in (InterventionFeedback, InterventionEvent, InterventionSession, InterventionRecommendation, InterventionPreference, SelfReport, FacialSession, FacialBaseline, VoiceSession, RiskPrediction, RiskDaily, RiskWeekly):
+    for model in (InterventionFeedback, InterventionEvent, InterventionSession, InterventionRecommendation, InterventionPreference, InterventionDemoContext, SelfReport, FacialSession, FacialBaseline, VoiceSession, RiskPrediction, RiskDaily, RiskWeekly):
         db.execute(delete(model).where(model.participant_id == participant_id))
     db.execute(delete(Participant).where(Participant.id == participant_id))
     db.commit()

@@ -34,7 +34,7 @@ def create_app(settings: Settings | None = None):
         with engine.connect() as db:
             try:
                 revision = db.execute(text("SELECT version_num FROM alembic_version")).scalar_one()
-                if revision != "0004":
+                if revision != "0005":
                     raise RuntimeError("Database revision mismatch. Run: python -m alembic upgrade head")
             except Exception as exc:
                 raise RuntimeError("Initialize/update the database with: python -m alembic upgrade head") from exc
@@ -43,7 +43,7 @@ def create_app(settings: Settings | None = None):
         yield
         engine.dispose()
 
-    app = FastAPI(title="EMPath+ Model Backend", version="0.4.0", lifespan=lifespan, description="C1 facial reference, C2 public voice baseline, C3 longitudinal exhaustion-proxy and C4 preference/feedback recommendation research backend. The supplied C3 model is trained only on synthetic data.")
+    app = FastAPI(title="EMPath+ Model Backend", version="0.5.0", lifespan=lifespan, description="C1 facial reference, C2 public voice baseline, C3 longitudinal exhaustion-proxy and C4 independent preference/feedback ranking with optional synthetic multimodal context.")
     app.state.settings = settings
     app.state.engine = engine
     app.state.sessions = session_factory(engine)
@@ -89,7 +89,7 @@ def create_app(settings: Settings | None = None):
     def health():
         with engine.connect() as db:
             db.execute(text("SELECT 1"))
-        return {"status": "ok", "database": "reachable", "api_version": "0.4.0", "voice_model": app.state.voice_model.status()["status"], "risk_model": app.state.risk_model.status()}
+        return {"status": "ok", "database": "reachable", "api_version": "0.5.0", "voice_model": app.state.voice_model.status()["status"], "risk_model": app.state.risk_model.status()}
 
     @app.get("/", include_in_schema=False)
     @app.get("/facial-demo", include_in_schema=False)

@@ -1,3 +1,5 @@
+> **C4 integration update (v0.5.0):** read [../C4_START_HERE.md](../C4_START_HERE.md) and run `python -m alembic upgrade head` before starting. The latest schema revision is **0005**.
+
 # EMPath+ backend
 
 Part of the [EMPath+ repository](../README.md); the mobile app lives in [`../mobile/`](../mobile/).
@@ -9,7 +11,7 @@ Research-prototype backend for EMPath+, with four components behind one FastAPI 
 | **C1 Facial** | Personal facial-behaviour reference from numerical features (no raw video), deviation and return-towards-reference measurements | Robust statistics; no trained model | [docs/COMPONENT_1_FACIAL.md](docs/COMPONENT_1_FACIAL.md) |
 | **C2 Voice** | WAV upload → 88 eGeMAPSv02 acoustic features → acted-emotion style | Logistic regression trained on public RAVDESS speech | [docs/COMPONENT_2_VOICE.md](docs/COMPONENT_2_VOICE.md) |
 | **C3 Risk** | Daily/weekly longitudinal observations → point-in-time features → next-week high-exhaustion proxy | Random forest trained on **synthetic data only**; not applied to real records | [docs/COMPONENT_3_RISK.md](docs/COMPONENT_3_RISK.md) |
-| **C4 Interventions** | Generic, preference and feedback-adaptive ranking of six optional activities, with session tracking and helpfulness feedback | Deterministic policy; no trained model | [docs/COMPONENT_4_INTERVENTIONS.md](docs/COMPONENT_4_INTERVENTIONS.md) |
+| **C4 Interventions** | Eight guided activities; independent preference/feedback ranking plus optional availability-weighted synthetic C1–C3 context | Deterministic policy; no trained model | [docs/COMPONENT_4_INTERVENTIONS.md](docs/COMPONENT_4_INTERVENTIONS.md) |
 
 None of these is a validated burnout, stress or clinical model. No GPU, paid API, LLM, cloud account or student dataset is needed: after installing packages, everything runs locally on synthetic data and three bundled public RAVDESS recordings.
 

@@ -189,3 +189,17 @@ class InterventionFeedback(Base):
     helpfulness: Mapped[int] = mapped_column(Integer)
     would_repeat: Mapped[bool] = mapped_column(Integer)
     result: Mapped[dict] = mapped_column(JSON)
+
+
+class InterventionDemoContext(Base):
+    """C4-only simulated context. Never inserted into C1/C2/C3 assessment tables."""
+    __tablename__ = "intervention_demo_contexts"
+    __table_args__ = (UniqueConstraint("participant_id", "client_update_id", name="uq_intervention_demo_client"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    participant_id: Mapped[str] = mapped_column(ForeignKey("participants.id", ondelete="CASCADE"))
+    client_update_id: Mapped[str] = mapped_column(String(64))
+    request_hash: Mapped[str] = mapped_column(String(64))
+    data_source: Mapped[str] = mapped_column(String(24))
+    created_at: Mapped[str] = mapped_column(String(40))
+    expires_at: Mapped[str] = mapped_column(String(40))
+    result: Mapped[dict] = mapped_column(JSON)

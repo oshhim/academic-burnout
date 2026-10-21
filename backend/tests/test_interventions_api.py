@@ -51,6 +51,9 @@ def test_defaults_no_history_and_empty_recommendation(client):
     assert r["preference_snapshot"]["version"] == 0
     assert r["options"][0]["explanation"]["feedback_count"] == 0
     assert r["evidence"]["action_propensity"] is None
+    short = rec(client, request_id="short", available_seconds=60).json()
+    assert short["options"][0]["activity"]["activity_id"] == "sensory_pause"
+    prefs(client, excluded_activity_ids=["sensory_pause"])
     empty = rec(client, request_id="empty", available_seconds=60).json()
     assert empty["status"] == "no_eligible_activity" and empty["options"] == []
     metrics = client.get("/api/v1/interventions/metrics/I1").json()

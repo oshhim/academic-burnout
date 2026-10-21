@@ -4,9 +4,13 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import numpy as np
-from app.interventions.catalog import ACTIVITIES, CATALOG_VERSION, CATEGORIES, GOALS, POLICY_VERSION, STRATEGIES
+from app.interventions.catalog import ACTIVITIES, CATALOG_VERSION, CATEGORIES, GOALS, POLICY_VERSION
 from app.interventions.policy import feedback_summary, rank
 from app.interventions.schemas import default_preferences
+
+# This historical preference simulator has no component observations. Keep its
+# three baseline comparisons separate from the optional-context sensitivity audit.
+STRATEGIES = ("generic", "preference", "adaptive")
 
 
 def simulate(people=120, rounds=28, seed=418):
@@ -80,6 +84,7 @@ def simulate(people=120, rounds=28, seed=418):
     return {"policy_version": POLICY_VERSION, "catalog_version": CATALOG_VERSION, "data_source": "synthetic_demo", "synthetic_only": True,
             "human_participants": 0, "seed": seed, "simulated_people": people, "rounds_per_person": rounds, "strategy_comparison": results,
             "clinical_validation": False, "weight_optimization_performed": False, "real_world_off_policy_evaluation": False,
+            "optional_component_context_evaluated": False, "optional_context_audit": "models/interventions/optional_context_evaluation.json",
             "protocol": "Fixed policy weights, common synthetic person/context/potential responses across strategies. Each strategy receives only its own observed earlier feedback. First option always started; missing ratings stay missing.",
             "reward_generator": "Hidden random category likes + goal term + independent noise; noisy/partly neutral declared preferences. Completion and feedback sampling separate. This environment rewards category fit by construction.",
             "limitations": ["No human dataset or health outcomes. Results describe one engineered simulator only.", "Selection always chooses first offer; human choices, adherence and preferences can differ.", "Weights are not learned or clinically calibrated; simulator utility is not wellbeing improvement.", "Deterministic real logs have no full action support or valid propensity estimates for unbiased counterfactual comparisons."]}, logs

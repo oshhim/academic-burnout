@@ -1,3 +1,5 @@
+> **C4 update:** use this extracted project; a fresh Git clone will not contain these changes until you commit them. For an existing database, back it up, then run `python -m alembic upgrade head` (revision 0005). Full update guide: [C4_START_HERE.md](C4_START_HERE.md).
+
 # Run EMPath+ on Mac or Windows
 
 You run two parts:

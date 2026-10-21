@@ -5,12 +5,13 @@ from sqlalchemy import func, select, update
 from sqlalchemy.exc import IntegrityError
 
 from app.facial.service import fail, fingerprint, now, participant
-from app.interventions.catalog import BY_ID, CATALOG_VERSION, NOTICE, POLICY_VERSION
+from app.interventions.catalog import BY_ID, CATALOG_VERSION, NOTICE, POLICY_VERSION, STRATEGIES
+from app.interventions import context as component_context
 from app.interventions.policy import feedback_summary, rank, RECENT_DAYS
 from app.interventions.schemas import default_preferences
 from app.models import (FacialSession, VoiceSession, RiskPrediction, InterventionPreference as Preference,
                         InterventionRecommendation as Recommendation, InterventionSession as ActivitySession,
-                        InterventionEvent as Event, InterventionFeedback as Feedback)
+                        InterventionEvent as Event, InterventionFeedback as Feedback, InterventionDemoContext as DemoContext)
 
 
 def authorize(db, payload, settings):
@@ -87,7 +88,12 @@ def context_references(db, payload, owner):
 
 def recommend(db, payload, settings):
     owner = authorize(db, payload, settings)
-    digest = fingerprint(payload.model_dump(mode="json"))
+    serialized = payload.model_dump(mode="json")
+    # Preserve retry hashes from the v0.4 clients that had no context fields.
+    if payload.strategy != "multimodal_weighted" and payload.context_mode == "latest_eligible" and payload.demo_context_id is None:
+        serialized.pop("context_mode")
+        serialized.pop("demo_context_id")
+    digest = fingerprint(serialized)
     old = replay(db, Recommendation, "client_request_id", payload.client_request_id, owner, digest)
     if old:
         return old.result
@@ -100,19 +106,25 @@ def recommend(db, payload, settings):
     recent = db.scalars(select(ActivitySession).where(ActivitySession.participant_id == owner.id, ActivitySession.started_at <= created,
                                                       ActivitySession.started_at >= (clock - timedelta(days=RECENT_DAYS)).isoformat(timespec="microseconds"))).all()
     context = {"goal": payload.goal, "available_seconds": payload.available_seconds}
-    candidates, excluded = rank(prefs["preferences"], context, payload.strategy, feedback, {r.activity_id for r in recent})
     refs = context_references(db, payload, owner)
+    integration = component_context.resolve(db, owner, clock,
+        mode=payload.context_mode if payload.strategy == "multimodal_weighted" else "none",
+        refs=payload.model_dump(), demo_context_id=payload.demo_context_id)
+    for ref in refs:
+        ref["used_for_ranking"] = any(m["available"] and m["record_id"] == ref["record_id"] for m in integration["modalities"].values())
+    candidates, excluded = rank(prefs["preferences"], context, payload.strategy, feedback, {r.activity_id for r in recent}, integration)
     result = {"recommendation_id": str(uuid4()), "participant_id": owner.id, "data_source": owner.data_source,
               "client_request_id": payload.client_request_id, "created_at": created, "expires_at": (clock + timedelta(hours=24)).isoformat(timespec="microseconds"),
               "status": "offered" if candidates else "no_eligible_activity", "strategy": payload.strategy,
               "policy_version": POLICY_VERSION, "catalog_version": CATALOG_VERSION,
-              "context": context, "references": refs, "preference_snapshot": prefs,
+              "context": context, "references": refs, "preference_snapshot": prefs, "integration": integration,
               "options": candidates[:payload.limit], "eligible_count": len(candidates), "excluded": excluded,
               "evidence": {"clinical_validation": False, "clinical_risk_used": False, "trained_model": False,
                            "score_semantics": "engineering_ranking_score_not_health_benefit_probability",
                            "logging_policy": "deterministic_ranking_user_selects_from_options", "action_propensity": None,
                            "feedback_scope": "same_participant_same_source_last90days_last20_per_activity",
-                           "preference_defaulted": prefs["version"] == 0},
+                           "preference_defaulted": prefs["version"] == 0, "component_context_used": not integration["fallback"],
+                           "synthetic_context_mapping": True},
               "notice": NOTICE}
     db.add(Recommendation(id=result["recommendation_id"], participant_id=owner.id, client_request_id=payload.client_request_id,
                           request_hash=digest, created_at=created, data_source=owner.data_source, result=result))
@@ -210,7 +222,7 @@ def metrics(db, owner):
     sessions = db.scalars(select(ActivitySession).where(ActivitySession.participant_id == owner.id)).all()
     ratings = db.scalars(select(Feedback).where(Feedback.participant_id == owner.id)).all()
     out = []
-    for strategy in ("generic", "preference", "adaptive"):
+    for strategy in STRATEGIES:
         offers = [r for r in recommendations if r.result["strategy"] == strategy and r.result["status"] == "offered"]
         ids = {r.id for r in offers}
         started = [s for s in sessions if s.recommendation_id in ids]
@@ -229,3 +241,43 @@ def metrics(db, owner):
     return {"participant_id": owner.id, "data_source": owner.data_source, "strategies": out,
             "causal_policy_comparison": False, "clinical_effectiveness": False,
             "note": "Descriptive counts only. Nonresponse is missing, not a zero rating. User choices, unmatched contexts and deterministic ranking confound comparisons."}
+
+
+def save_demo_context(db, payload, settings):
+    owner = authorize(db, payload, settings)
+    if owner.data_source != "synthetic_demo":
+        fail(422, "synthetic_participant_required", "Synthetic contexts can only be attached to a synthetic_demo participant.")
+    digest = fingerprint(payload.model_dump(mode="json"))
+    old = replay(db, DemoContext, "client_update_id", payload.client_update_id, owner, digest)
+    if old:
+        return old.result
+    created = now()
+    expires = (datetime.fromisoformat(created) + timedelta(minutes=30)).isoformat(timespec="microseconds")
+    selected = set(payload.components)
+    modalities = {}
+    scenarios = {"facial": payload.facial_scenario, "voice": payload.voice_scenario, "risk": payload.risk_scenario}
+    keys = {"facial": {"persistent": "persistent_visual_change", "returned": "returned_or_stable_visual"},
+            "voice": {"sad": "sad_style_fixture", "neutral": "other_style_fixture"},
+            "risk": {"higher": "higher_exhaustion_proxy", "lower": "lower_exhaustion_proxy"}}
+    for k in component_context.BASE_WEIGHTS:
+        eligible = k in selected and scenarios[k] in keys[k]
+        modalities[k] = {"available": eligible, "reason": "eligible" if eligible else "not_completed" if k not in selected else scenarios[k],
+                         "mapping_key": keys[k].get(scenarios[k]) if eligible else None, "scenario": scenarios[k] if k in selected else None}
+    result = {"demo_context_id": str(uuid4()), "participant_id": owner.id, "data_source": owner.data_source,
+              "created_at": created, "expires_at": expires, "modalities": modalities,
+              "mapping_version": component_context.MAPPING_VERSION, "synthetic_only": True,
+              "assessment_records_created": False,
+              "notice": "C4-only simulated component outputs. No face/voice capture, trained-model inference or real assessment completion is claimed."}
+    db.add(DemoContext(id=result["demo_context_id"], participant_id=owner.id, client_update_id=payload.client_update_id,
+                       request_hash=digest, data_source=owner.data_source, created_at=created, expires_at=expires, result=result))
+    commit(db)
+    return result
+
+
+def current_state(db, owner):
+    sessions = select(ActivitySession).where(ActivitySession.participant_id == owner.id, ActivitySession.data_source == owner.data_source)
+    rated = select(Feedback.session_id).where(Feedback.participant_id == owner.id)
+    return {"participant_id": owner.id, "preferences": current_preferences(db, owner),
+            "unfinished": [session_json(r) for r in db.scalars(sessions.where(ActivitySession.status == "started").order_by(ActivitySession.started_at.desc()).limit(10)).all()],
+            "unrated": [session_json(r) for r in db.scalars(sessions.where(ActivitySession.status == "completed", ActivitySession.id.not_in(rated)).order_by(ActivitySession.started_at.desc()).limit(10)).all()],
+            "recent": [session_json(r) for r in db.scalars(sessions.order_by(ActivitySession.started_at.desc()).limit(10)).all()]}

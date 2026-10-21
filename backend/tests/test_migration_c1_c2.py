@@ -19,6 +19,6 @@ def test_upgrade_from_c1_preserves_participants_and_facial_records(tmp_path, mon
     with engine.connect() as db:
         assert db.execute(text("SELECT COUNT(*) FROM participants WHERE id='EXISTING'")).scalar_one() == 1
         assert db.execute(text("SELECT COUNT(*) FROM facial_sessions WHERE id='old-session'")).scalar_one() == 1
-        assert db.execute(text("SELECT version_num FROM alembic_version")).scalar_one() == "0004"
+        assert db.execute(text("SELECT version_num FROM alembic_version")).scalar_one() == "0005"
     assert "voice_sessions" in inspect(engine).get_table_names()
     engine.dispose()
