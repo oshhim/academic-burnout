@@ -112,10 +112,16 @@ function ActivitiesScreenContent() {
   };
   const submit = (kind: string, path: string, body: Record<string, unknown>) => task(kind, async () => accept(await write.send({ kind, path, body })));
   const prefChanged = () => { dirty.current = true; setPrefsSaved(false); };
-  const requestOffer = () => submit('offer', '/interventions/recommendations', { ...common, client_request_id: uid('offer'), strategy, goal, available_seconds: seconds, limit: 4,
-    context_mode: useContext ? 'latest_eligible' : 'none', ...(useContext && strategy === 'multimodal_weighted' && demoId ? { demo_context_id: demoId } : {}) });
+  const prefsBody = () => ({ ...common, client_update_id: uid('pref'), category_ratings: ratings, excluded_activity_ids: excluded, allow_movement: allowMovement, allow_audio: allowAudio, max_duration_seconds: maxDuration });
+  // Unsaved preference edits are saved first, so the options always reflect what the screen shows.
+  const requestOffer = () => task('offer', async () => {
+    if (dirty.current) await accept(await write.send({ kind: 'prefs', path: '/interventions/preferences', body: prefsBody() }));
+    await accept(await write.send({ kind: 'offer', path: '/interventions/recommendations', body: { ...common, client_request_id: uid('offer'), strategy, goal, available_seconds: seconds, limit: 4,
+      context_mode: useContext ? 'latest_eligible' : 'none', ...(useContext && strategy === 'multimodal_weighted' && demoId ? { demo_context_id: demoId } : {}) } }));
+  });
   const finish = (result: 'completed' | 'abandoned') => submit('event', '/interventions/events', { ...common, client_event_id: uid('end'), session_id: session!.session_id, outcome: result });
-  const pendingCard = write.pending ? <Card><Title>A request needs a retry</Title><Body small muted>The original request is saved. Retry it unchanged to recover the response. Clearing it does not undo a write that reached the server.</Body>
+  // A saved request exists during every send; it only needs attention once nothing is in flight.
+  const pendingCard = write.pending && !busy ? <Card><Title>A request needs a retry</Title><Body small muted>The original request is saved. Retry it unchanged to recover the response. Clearing it does not undo a write that reached the server.</Body>
     <Button label="Retry saved request" disabled={Boolean(busy)} onPress={() => task('retry', async () => accept(await write.retry()))} />
     <Button label="Clear pending request and refresh" variant="text" disabled={Boolean(busy)} onPress={() => task('clear', async () => { await write.discard(); await refresh(); })} /></Card> : null;
 
@@ -137,12 +143,12 @@ function ActivitiesScreenContent() {
     <Section label="What do you need?"><Card>
       <Chips options={GOALS} value={goal} onChange={setGoal} format={capitalize} icons={GOAL_ICON} />
       <Body small muted>Time available</Body><Chips options={[60, 120, 300, 600] as const} value={seconds} onChange={setSeconds} format={(s) => `${s / 60} min`} />
-      <Toggle label="Use available check-ins" description="Optional. Activities work even if you skip every assessment." icon="tune" value={useContext} onChange={(v) => { setUseContext(v); setOffer(null); }} />
+      {/* Context weighting is evaluated on synthetic data only, so the switch is a Demo-mode control. */}
+      {!active.real ? <Toggle label="Use available check-ins" description="Optional. Activities work even if you skip every assessment." icon="tune" value={useContext} onChange={(v) => { setUseContext(v); setOffer(null); }} /> : null}
       <Button label={offer ? 'Get new options' : 'Show options'} icon="auto-awesome" disabled={disabled || unfinished.length > 0} onPress={requestOffer} loading={busy === 'offer'} />
       {unfinished.length > 0 ? <Body small muted>Resume and finish or stop your current activity before requesting more options.</Body> : null}
     </Card></Section>
-    <ContextCard value={offer?.integration ?? previewContext} />
-    {active.real ? <Notice>Weighted mappings are currently evaluated with synthetic data. Your real activities continue using goals, preferences and feedback.</Notice> : null}
+    {!active.real ? <ContextCard value={offer?.integration ?? previewContext} /> : null}
 
     {offer && !session ? <Section label="Recommended for you">
       {!offer.options.length ? <Card><Title>Nothing fits right now</Title><Body>Try more time or review your activity exclusions. Your limits are always respected.</Body></Card> : offer.options.map((option: any, i: number) => {
@@ -170,8 +176,8 @@ function ActivitiesScreenContent() {
       <Toggle label="Audio activities" value={allowAudio} onChange={(v) => { setAllowAudio(v); prefChanged(); }} />
       <Body small muted>Maximum activity duration</Body><Chips options={[60, 120, 300, 600] as const} value={maxDuration} onChange={(v) => { setMaxDuration(v); prefChanged(); }} format={(s) => `${s / 60} min`} />
       <Details label="Exclude specific activities">{catalog.map((a) => <Toggle key={a.activity_id} label={a.title} description={excluded.includes(a.activity_id) ? 'Excluded' : 'Allowed'} value={!excluded.includes(a.activity_id)} onChange={(allow) => { setExcluded(allow ? excluded.filter((id) => id !== a.activity_id) : [...excluded, a.activity_id]); prefChanged(); }} />)}</Details>
-      <Button label="Save preferences" disabled={disabled || prefsSaved} onPress={() => submit('prefs', '/interventions/preferences', { ...common, client_update_id: uid('pref'), category_ratings: ratings, excluded_activity_ids: excluded, allow_movement: allowMovement, allow_audio: allowAudio, max_duration_seconds: maxDuration })} />
-      <Body small muted>Save changes before requesting options.</Body>
+      <Button label="Save preferences" disabled={disabled || prefsSaved} onPress={() => submit('prefs', '/interventions/preferences', prefsBody())} />
+      <Body small muted>Changes are also saved automatically when you ask for options.</Body>
     </Card></Details></Section>
 
     {!active.real ? <Section label="Synthetic comparison"><Details label="Try optional component scenarios"><Card>

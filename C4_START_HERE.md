@@ -114,6 +114,8 @@ On a fresh synthetic participant with no activity history, set Planning preferen
 
 Choose **Use actual completed demo check-ins instead**, or start without a fixture. Complete a C1 demo check-in within 30 minutes or obtain a C3 demo prediction within 24 hours; return to Activities and request fresh options. The backend reads those saved results automatically. Calibration alone is not a C1 check-in. A rejected capture or a C3 result with no score is not usable.
 
+In the current app, only **C1** is practical this way: run a Facial demo check-in (after creating a baseline), then return to Activities within 30 minutes. The Risk tab's **Load sample and forecast** creates a *separate* synthetic participant, so its prediction is not linked to you and does not count here. A C3 result only counts after **Forecast my diary** on your own participant, which needs at least 7 earlier days of diary entries. To demonstrate C3 weighting, use the synthetic scenarios above.
+
 The supplied Voice demo uses public RAVDESS audio under a **different public-dataset participant**. It is intentionally not attached to your synthetic participant. Use the C4 synthetic voice scenario to demonstrate C2 weighting; the automated adapter test also exercises generated synthetic audio through the actual C2 pipeline. Do not relabel a public recording as a synthetic observation.
 
 ## 7. Test the improved activities

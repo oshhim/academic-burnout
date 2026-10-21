@@ -29,7 +29,7 @@ export function Screen({ eyebrow, title, dim, subtitle, badge, children }: {
   return (
     <SafeAreaView style={styles.screen} edges={['top']}>
       <AuroraBackground intensity={0.55} />
-      <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
         <ScreenHeader badge={badge} />
         <ScreenTitle eyebrow={eyebrow} title={title} dim={dim} subtitle={subtitle} compact />
         {children}
