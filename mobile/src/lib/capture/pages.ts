@@ -12,7 +12,29 @@ export type FaceProtocol = 'neutral_only' | 'neutral_task_recovery';
 export const TASK_PROMPT = 'Silently count backwards from 300 in steps of 7.';
 
 const BRIDGE = `const post = (m) => window.ReactNativeWebView && window.ReactNativeWebView.postMessage(JSON.stringify(m));
-window.onerror = (msg) => post({ type: 'error', message: String(msg) });`;
+window.onerror = (msg) => post({ type: 'error', message: String(msg) });
+// Camera/microphone request that fails visibly instead of waiting forever.
+function getMedia(constraints, what) {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    return Promise.reject(new Error(what + ' is not available in this app view.'));
+  }
+  return new Promise((resolve, reject) => {
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      timedOut = true;
+      reject(new Error(what + ' did not respond. Check that ' + what.toLowerCase() + ' access is on for Expo Go, then try again.'));
+    }, 10000);
+    navigator.mediaDevices.getUserMedia(constraints).then(
+      (stream) => {
+        clearTimeout(timer);
+        // Answered after the timeout: nobody uses it, so switch it off again.
+        if (timedOut) stream.getTracks().forEach((t) => t.stop());
+        else resolve(stream);
+      },
+      (e) => { clearTimeout(timer); reject(e); },
+    );
+  });
+}`;
 
 /**
  * Full-screen face capture: the camera fills the screen behind a dashed face oval,
@@ -269,7 +291,7 @@ function showWhenSettled() {
     try { landmarker = await FaceLandmarker.createFromOptions(files, options('GPU')); }
     catch (e) { landmarker = await FaceLandmarker.createFromOptions(files, options('CPU')); }
     $('status').textContent = 'Starting the camera…';
-    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } }, audio: false });
+    stream = await getMedia({ video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } }, audio: false }, 'Camera');
     video.srcObject = stream;
     await video.play();
     render();
@@ -420,7 +442,7 @@ async function start() {
   $('toggle').disabled = true;
   setStatus('Starting the microphone\u2026', false);
   try {
-    stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+    stream = await getMedia({ audio: { channelCount: 1, echoCancellation: false, noiseSuppression: false, autoGainControl: false } }, 'Microphone');
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     await audioCtx.resume();
     const source = audioCtx.createMediaStreamSource(stream);

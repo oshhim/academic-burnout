@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useRef, useState, type RefObject } from 'react';
-import { ActivityIndicator, PermissionsAndroid, Platform, StyleSheet, View } from 'react-native';
+import { Camera } from 'expo-camera';
+import { ActivityIndicator, Linking, Platform, StyleSheet, View } from 'react-native';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Body, Button } from '@/components/ui';
 import { facePage, voicePage, type FaceProtocol } from '@/lib/capture/pages';
 import { colors } from '@/theme';
 
@@ -33,9 +35,13 @@ export function CaptureView(props: Props) {
   const protocol = isFace ? props.protocol : null;
   const html = useMemo(() => (protocol ? facePage(protocol, { top, bottom }) : voicePage()), [protocol, top, bottom]);
 
-  // On Android the WebView only gets the camera/microphone if the app (Expo Go) already
-  // holds the Android permission; without it the page's request hangs silently. Ask first.
+  // On Android the WebView only gets the camera/microphone once the app holds the permission. In Expo Go
+  // that must be granted through Expo's own permission system (Android's PermissionsAndroid is not
+  // enough: the page's request then waits forever), so ask with expo-camera before mounting the page.
   const [allowed, setAllowed] = useState(Platform.OS !== 'android');
+  // Shown in place of the page when access is refused (the Voice page cannot show errors before it exists).
+  const [refused, setRefused] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState(0);
   // Callers pass a new onError on every render; keep the latest without asking again.
   const onErrorRef = useRef(props.onError);
   useEffect(() => {
@@ -43,27 +49,26 @@ export function CaptureView(props: Props) {
   });
   useEffect(() => {
     if (Platform.OS !== 'android') return;
-    const permission = isFace ? PermissionsAndroid.PERMISSIONS.CAMERA : PermissionsAndroid.PERMISSIONS.RECORD_AUDIO;
+    let active = true;
     const what = isFace ? 'Camera' : 'Microphone';
-    let done = false;
-    const finish = (granted: boolean) => {
-      if (done) return;
-      done = true;
-      clearInterval(poll);
-      if (granted) setAllowed(true);
-      else onErrorRef.current(`${what} access was refused. Allow it in Android Settings → Apps → Expo Go → Permissions (choose "Allow", not "Ask every time"), then try again.`);
-    };
-    // Expo Go handles permission results itself, so request() may never resolve after the
-    // user taps Allow. Poll the actual permission state too and continue as soon as it is granted.
-    const poll = setInterval(() => {
-      PermissionsAndroid.check(permission).then((granted) => granted && finish(true));
-    }, 500);
-    PermissionsAndroid.request(permission).then((result) => finish(result === PermissionsAndroid.RESULTS.GRANTED));
+    (isFace ? Camera.requestCameraPermissionsAsync() : Camera.requestMicrophonePermissionsAsync())
+      .then((result) => {
+        if (!active) return;
+        if (result.granted) return setAllowed(true);
+        const message = `${what} access was refused. Allow it in Android Settings → Apps → Expo Go → Permissions, then try again.`;
+        setRefused(message);
+        onErrorRef.current(message);
+      })
+      .catch((e) => {
+        if (!active) return;
+        const message = `${what} permission could not be requested: ${e?.message ?? e}`;
+        setRefused(message);
+        onErrorRef.current(message);
+      });
     return () => {
-      done = true;
-      clearInterval(poll);
+      active = false;
     };
-  }, [isFace]);
+  }, [isFace, attempt]);
 
   const onMessage = (event: WebViewMessageEvent) => {
     let message: any;
@@ -102,6 +107,19 @@ export function CaptureView(props: Props) {
           style={styles.webview}
           onError={(e) => props.onError(e.nativeEvent.description)}
         />
+      ) : refused ? (
+        <View style={styles.waiting}>
+          <Body muted center>{refused}</Body>
+          <Button
+            label="Try again"
+            icon="refresh"
+            onPress={() => {
+              setRefused(null);
+              setAttempt((n) => n + 1);
+            }}
+          />
+          <Button label="Open settings" icon="settings" variant="secondary" onPress={() => Linking.openSettings()} />
+        </View>
       ) : (
         <View style={styles.waiting}>
           <ActivityIndicator color={colors.primary} />
@@ -115,5 +133,5 @@ const styles = StyleSheet.create({
   full: { flex: 1, backgroundColor: '#000' },
   voice: { flex: 1 },
   webview: { flex: 1, backgroundColor: 'transparent' },
-  waiting: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  waiting: { flex: 1, alignItems: 'stretch', justifyContent: 'center', gap: 12, padding: 24 },
 });
